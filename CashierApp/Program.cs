@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using CashierApp.DI;
 
 namespace CashierApp
 {
@@ -12,7 +13,7 @@ namespace CashierApp
 
             using (var container = builder.Build())
             {
-                var app = container.Resolve<CashierApp>(); // Create an instance of CashierApp
+                var app = container.Resolve<CashierApp>(); // Creates instances of all the dependencies
                 app.Run(); // Run the application
             }
         }

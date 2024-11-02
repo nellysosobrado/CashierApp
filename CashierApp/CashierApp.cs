@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CashierApp.Admin;
+using CashierApp.Customer;
+using CashierApp.UI.Menu;
 
 namespace CashierApp
 {

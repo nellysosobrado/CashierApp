@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashierApp.Services;
+using CashierApp.Product.Services;
 
-namespace CashierApp
+namespace CashierApp.Admin
 {
     public class AdminManager
     {
