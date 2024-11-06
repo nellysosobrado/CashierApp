@@ -11,9 +11,10 @@ namespace CashierApp.Menu
         public void ShowMenuOptions(string[] options, int selectedIndex)
         {
             Console.Clear();
-            Console.WriteLine("Use arrow keys and 'Enter' to select a option:");
+            Console.WriteLine("Use arrow keys and 'Enter' to select a option");
+            Console.WriteLine("\n╔══════════════════════════════════════╗");
 
-            for(int i = 0; i <options.Length; i++)
+            for (int i = 0; i <options.Length; i++)
             {
                 if( i == selectedIndex)
                 {
@@ -27,6 +28,7 @@ namespace CashierApp.Menu
                 }
                 
             }
+            Console.WriteLine("╚══════════════════════════════════════╝");
             Console.ResetColor();
         }
     }
