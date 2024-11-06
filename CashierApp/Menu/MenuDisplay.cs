@@ -19,12 +19,14 @@ namespace CashierApp.Menu
                 if( i == selectedIndex)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"-> {options[i]}");
+                    //Console.WriteLine($"-> {options[i]}");
+                    Console.WriteLine($"║ -> {options[i].PadRight(30)}    ║");
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.WriteLine($" {options[i]}");
+                    //Console.WriteLine($" {options[i]}");
+                    Console.WriteLine($"║    {options[i].PadRight(30)}    ║");
                 }
                 
             }
