@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CashierApp.Admin;
 using CashierApp.Customer;
-using CashierApp.UI.Menu;
+using CashierApp.Menu;
 
 namespace CashierApp
 {
@@ -24,26 +24,14 @@ namespace CashierApp
 
         public void Run()
         {
-            while (true)
-            {
-                string choice = _menuHandler.ShowMainMenu();
-                if (choice == "1")
-                {
-                    _customerHandler.HandleCustomer();
-                }
-                else if (choice == "2")
-                {
-                    _adminHandler.HandleAdmin();
-                }
-                else if (choice == "exit")
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid choice, please try again.");
-                }
-            }
+            _menuHandler.RunMenu();
+
+            // Customer
+
+            //Admin settings
+
+            //Close program
+
         }
     }
 }

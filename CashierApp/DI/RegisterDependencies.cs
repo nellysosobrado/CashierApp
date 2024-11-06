@@ -1,9 +1,9 @@
 ﻿using Autofac;
 using CashierApp.Admin;
 using CashierApp.Customer;
+using CashierApp.Menu;
 using CashierApp.Payment.Services;
 using CashierApp.Product.Services;
-using CashierApp.UI.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +23,7 @@ namespace CashierApp.DI
             builder.RegisterType<AdminManager>().AsSelf();
             builder.RegisterType<ProductService>().AsSelf();
             builder.RegisterType<PaymentService>().AsSelf();
+            builder.RegisterType<CashierApp>().AsSelf(); //Register Cashierapp as a dependency
         }
     }
 }

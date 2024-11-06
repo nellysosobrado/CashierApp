@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashierApp.Product.Services;
+
 
 namespace CashierApp.Admin
 {
     public class AdminManager
     {
-        private readonly ProductService _productService;
-
-        public AdminManager(ProductService productService)
-        {
-            _productService = productService;
-        }
 
         public void HandleAdmin()
         {

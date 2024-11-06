@@ -8,11 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Cart\**" />
+    <EmbeddedResource Remove="Cart\**" />
+    <None Remove="Cart\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="8.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Cart\" />
+    <Folder Include="Receipts\CustomerReceipts\" />
+    <Folder Include="UI\Menu\" />
   </ItemGroup>
 
 </Project>
