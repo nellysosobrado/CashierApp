@@ -39,7 +39,7 @@ namespace CashierApp.Payment.Services
 
             _receiptManager.SaveReceiptToFile(receiptContent, filePath);
 
-            ReceiptDisplay(receiptContent);
+            ReceiptDisplay(receiptContent); //Display receipt onto console
 
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
