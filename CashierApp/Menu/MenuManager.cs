@@ -12,7 +12,7 @@ namespace CashierApp.Menu
     //Menu Logic
     //UI Menu
     //Menu Navigation
-    public class Menu
+    public class MenuManager
     {
         private readonly CustomerManager _customerHandler;
         private readonly AdminManager _adminHandler;
@@ -20,7 +20,7 @@ namespace CashierApp.Menu
         private readonly MenuNavigation _menuNavigation;
         private readonly string[] _options = { "1. New Customer", "2. Admin Settings", "3. Exit" };
 
-        public Menu()
+        public MenuManager()
         {
             // Använd Factory-metoder för att skapa beroenden
             _customerHandler = MenuFactory.CreateCustomerManager();

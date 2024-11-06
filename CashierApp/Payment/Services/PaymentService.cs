@@ -20,6 +20,7 @@ namespace CashierApp.Payment.Services
         private readonly ReceiptFactory _receiptFactory;
         private readonly ReceiptService _receiptManager;
 
+
         public PaymentService()
         {
             _receiptFactory = new ReceiptFactory();
@@ -31,16 +32,20 @@ namespace CashierApp.Payment.Services
             Console.WriteLine("Processing payment and generating receipt...");
 
             Receipt receipt = _receiptFactory.CreateReceipt(cart, totalPrice);
-            string receiptContent = CreateReceiptContent(receipt);
+            string receiptContent = CreateReceipt(receipt);
             string filePath = _receiptManager.GetFilePath();
 
+
+
             _receiptManager.SaveReceiptToFile(receiptContent, filePath);
+
+            ReceiptDisplay(receiptContent);
 
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
 
-        private string CreateReceiptContent(Receipt receipt)
+        private string CreateReceipt(Receipt receipt)
         {
             var receiptBuilder = new System.Text.StringBuilder();
             receiptBuilder.AppendLine("\n==== Store ==============");
@@ -68,6 +73,16 @@ namespace CashierApp.Payment.Services
             receiptBuilder.AppendLine("===========================\n");
 
             return receiptBuilder.ToString();
+        }
+        public void ReceiptDisplay(string receiptContent)
+        {
+            Console.Clear();
+            Console.WriteLine("\n--- Receipt ---");
+            Console.WriteLine(receiptContent);
+            Console.WriteLine("\nThank you for shopping with us!");
+            Console.WriteLine("===========================");
+            Console.WriteLine("Press any key to finish...");
+            Console.ReadKey();
         }
     }
 }

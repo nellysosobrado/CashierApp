@@ -43,7 +43,7 @@ namespace CashierApp.Receipts.Services
 
             foreach (var line in lines)
             {
-                if (line.StartsWith("==== Receipt #"))
+                if (line.StartsWith("Receipt number:"))
                 {
                     var parts = line.Split(new char[] { '#', ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     if (parts.Length > 2 && int.TryParse(parts[2], out int number))
