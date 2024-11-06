@@ -18,12 +18,13 @@ namespace CashierApp.DI
         {
             //Register the dependencies, so they can injiac
             //'.AsSelf()' Instances will be accesabe for DI as their own type
-            builder.RegisterType<MenuManager>().AsSelf();
+            builder.RegisterType<Menu>().AsSelf();
             builder.RegisterType<CustomerManager>().AsSelf();
             builder.RegisterType<AdminManager>().AsSelf();
             builder.RegisterType<ProductService>().AsSelf();
             builder.RegisterType<PaymentService>().AsSelf();
-            builder.RegisterType<CashierApp>().AsSelf(); //Register Cashierapp as a dependency
+            builder.RegisterType<CashierSystemApp>().AsSelf();
+            builder.RegisterType<Menu>().AsSelf();
         }
     }
 }

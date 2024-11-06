@@ -41,8 +41,8 @@ namespace CashierApp
 
             using (var container = builder.Build())
             {
-                var app = container.Resolve<CashierApp>(); // Creates instances of all the dependencies
-                app.Run();
+                var application = container.Resolve<CashierSystemApp>(); // Creates instances of all the dependencies
+                application.RunApp();
             }
         }
     }

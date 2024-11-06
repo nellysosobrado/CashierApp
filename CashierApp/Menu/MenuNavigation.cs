@@ -19,7 +19,6 @@ namespace CashierApp.Menu
        
                 displayMenu(SelectedIndex);
 
-            
                 key = Console.ReadKey(true).Key;
 
                 if (key == ConsoleKey.UpArrow)

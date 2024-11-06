@@ -9,20 +9,21 @@ using CashierApp.Menu;
 
 namespace CashierApp
 {
-    public class CashierApp
+    //Program core
+    public class CashierSystemApp
     {
-        private readonly MenuManager _menuHandler;
+        private readonly Menu.Menu _menuHandler;
         private readonly CustomerManager _customerHandler;
         private readonly AdminManager _adminHandler;
 
-        public CashierApp(MenuManager menuHandler, CustomerManager customerHandler, AdminManager adminHandler)
+        public CashierSystemApp(Menu.Menu menuHandler, CustomerManager customerHandler, AdminManager adminHandler)
         {
             _menuHandler = menuHandler;
             _customerHandler = customerHandler;
             _adminHandler = adminHandler;
         }
 
-        public void Run()
+        public void RunApp()
         {
             _menuHandler.RunMenu();
 
