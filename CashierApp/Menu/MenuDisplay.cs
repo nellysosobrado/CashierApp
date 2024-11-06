@@ -27,7 +27,7 @@ namespace CashierApp.Menu
                 {
                     Console.ForegroundColor = ConsoleColor.Gray;
                     //Console.WriteLine($" {options[i]}");
-                    line = $"║ -> {options[i].PadRight(30)}    ║";
+                    line = $"║    {options[i].PadRight(30)}    ║";
                 }
                 CenterText(line);
 
