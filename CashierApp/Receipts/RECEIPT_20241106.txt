@@ -564,3 +564,72 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 14
+Staff: Name 	 Trans: 123456
+Date: 2024-11-06 18:08:23
+--------------------------
+Product             Price
+2x Apple            3,98 kr
+...........................
+
+Total Amount: 3,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 15
+Staff: Name 	 Trans: 123456
+Date: 2024-11-06 18:08:49
+--------------------------
+Product             Price
+1x Apple            1,99 kr
+...........................
+
+Total Amount: 1,99 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 16
+Staff: Name 	 Trans: 123456
+Date: 2024-11-06 18:09:08
+--------------------------
+Product             Price
+1x Apple            1,99 kr
+...........................
+
+Total Amount: 1,99 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

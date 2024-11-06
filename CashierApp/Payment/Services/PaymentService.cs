@@ -74,13 +74,11 @@ namespace CashierApp.Payment.Services
 
             return receiptBuilder.ToString();
         }
-        public void ReceiptDisplay(string receiptContent)
+        public static void ReceiptDisplay(string receiptContent)
         {
             Console.Clear();
-            Console.WriteLine("\n--- Receipt ---");
+            //Console.WriteLine("\n--- Receipt ---");
             Console.WriteLine(receiptContent);
-            Console.WriteLine("\nThank you for shopping with us!");
-            Console.WriteLine("===========================");
             Console.WriteLine("Press any key to finish...");
             Console.ReadKey();
         }
