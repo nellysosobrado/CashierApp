@@ -11,7 +11,7 @@ namespace CashierApp.Product.Factories
     {
         public static IProducts CreateProduct(string category, int productId, string name, decimal price, string priceType)
         {
-            Console.WriteLine($"Creating product: {name}, Category: {category}, Price Type: {priceType}");
+            //Console.WriteLine($"Creating product: {name}, Category: {category}, Price Type: {priceType}");
 
 
             var product = new Product
