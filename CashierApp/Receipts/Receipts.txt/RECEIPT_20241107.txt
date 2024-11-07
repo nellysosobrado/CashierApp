@@ -139,3 +139,118 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 7
+Staff: Name 	 Trans: 123456
+Date: 2024-11-07 09:06:37
+--------------------------
+Product             Price
+1x Apple            1,99 kr
+...........................
+
+Total Amount: 1,99 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 8
+Staff: Name 	 Trans: 123456
+Date: 2024-11-07 09:07:23
+--------------------------
+Product             Price
+1x Apple            1,99 kr
+...........................
+
+Total Amount: 1,99 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 9
+Staff: Name 	 Trans: 123456
+Date: 2024-11-07 09:07:40
+--------------------------
+Product             Price
+2x Apple            3,98 kr
+...........................
+
+Total Amount: 3,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 10
+Staff: Name 	 Trans: 123456
+Date: 2024-11-07 09:08:12
+--------------------------
+Product             Price
+2x Apple            3,98 kr
+...........................
+
+Total Amount: 3,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 11
+Staff: Name 	 Trans: 123456
+Date: 2024-11-07 09:08:23
+--------------------------
+Product             Price
+1x Apple            1,99 kr
+...........................
+
+Total Amount: 1,99 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

@@ -41,8 +41,6 @@ namespace CashierApp.Payment.Services
 
             ReceiptDisplay(receiptContent); //Display receipt onto console
 
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
         }
 
         private string CreateReceipt(Receipt receipt)
@@ -79,7 +77,7 @@ namespace CashierApp.Payment.Services
             Console.Clear();
             //Console.WriteLine("\n--- Receipt ---");
             Console.WriteLine(receiptContent);
-            Console.WriteLine("Press any key to finish...");
+            Console.WriteLine("Press any key to go back to main menu..");
             Console.ReadKey();
         }
     }
