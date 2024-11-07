@@ -24,7 +24,7 @@ namespace CashierApp.Customer
 
         public void HandleCustomer()
         {
-            _productService.ShowProducts();
+            _productService.ShowCategories();
 
             while (true)
             {

@@ -68,3 +68,49 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 4
+Staff: Name 	 Trans: 123456
+Date: 2024-11-07 09:44:45
+--------------------------
+Product             Price
+2x Apple            3,98 kr
+...........................
+
+Total Amount: 3,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 5
+Staff: Name 	 Trans: 123456
+Date: 2024-11-07 09:51:48
+--------------------------
+Product             Price
+1x bajs             0,00 kr
+...........................
+
+Total Amount: 0,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
