@@ -25,6 +25,8 @@ namespace CashierApp.DI
             builder.RegisterType<PaymentService>().AsSelf();
             builder.RegisterType<CashierSystemApp>().AsSelf();
             builder.RegisterType<MenuManager>().AsSelf();
+
+            
         }
     }
 }

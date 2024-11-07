@@ -114,3 +114,28 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 6
+Staff: Name 	 Trans: 123456
+Date: 2024-11-07 17:54:25
+--------------------------
+Product             Price
+2x Apple            3,98 kr
+2x Bread            4,98 kr
+6x Bread           14,94 kr
+...........................
+
+Total Amount: 23,90 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

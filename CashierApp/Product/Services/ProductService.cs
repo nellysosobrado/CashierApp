@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using CashierApp.Customer;
 using CashierApp.Product.Factories;
 using CashierApp.Product.Interfaces;
 
@@ -15,13 +16,13 @@ namespace CashierApp.Product.Services
 
         public IProducts GetProductById(int productId)
         {
-            // Hitta och returnera produkten med angivet ProductID
+            
             return _products.Find(p => p.ProductID == productId);
         }
 
         public ProductService()
         {
-            // Skapa produkter med hjälp av ProductFactory
+            
             _products = new List<IProducts>
         {
             ProductFactory.CreateProduct("fruit", 101, "Apple", 1.99m, "piece"),
@@ -35,7 +36,8 @@ namespace CashierApp.Product.Services
         }
         public void ShowCategories()
         {
-            Console.WriteLine("Available Categories:");
+            Console.Clear();
+            Console.WriteLine("\nAvailable Categories:");
 
             var categories = _products.Select(p => p.Category).Distinct();
 
@@ -44,7 +46,8 @@ namespace CashierApp.Product.Services
                 Console.WriteLine($"- {category}");
             }
 
-            Console.Write("\nEnter a category to view its products: ");
+            Console.Write("\nEnter a category to view its products" +
+                "\n>Commando:");
             string selectedCategory = Console.ReadLine()?.Trim().ToLower();
 
             ShowProductsByCategory(selectedCategory);
@@ -57,6 +60,7 @@ namespace CashierApp.Product.Services
 
             if (productsInCategory.Any())
             {
+                Console.Clear();
                 Console.WriteLine($"\nProducts in category '{category}':");
                 Console.WriteLine("───────────────────────────────────────────────");
 

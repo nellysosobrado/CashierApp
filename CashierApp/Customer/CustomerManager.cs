@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CashierApp.Menu;
 using CashierApp.Payment.Services;
 using CashierApp.Product.Interfaces;
 using CashierApp.Product.Services;
@@ -20,50 +21,73 @@ namespace CashierApp.Customer
         {
             _productService = productService;
             _paymentService = paymentService;
+   
         }
 
         public void HandleCustomer()
         {
-            _productService.ShowCategories();
-
             while (true)
             {
-                Console.Write("\nEnter 'PAY' to finish" +
-                "\nCommand:");
+                Console.WriteLine("\n1. Product Registry" +
+                                  "\n2. Main Menu" +
+                                  "\n3. Exit");
+
+                //Console.Write("\nEnter 'PAY' to finish or choose an option:\nCommand: ");
+                Console.Write("\n>Commando:");
                 var input = Console.ReadLine()?.Trim();
+
                 if (input?.ToUpper() == "PAY")
                 {
-                    Console.WriteLine("Processing payment");
+                    Console.WriteLine("\nProcessing payment...");
 
-                   
                     decimal totalPrice = CalculateTotalPrice(_cart);
+                    _paymentService.ProcessPayment(_cart, totalPrice); 
 
-                    _paymentService.ProcessPayment(_cart, totalPrice); //Displays cart and total price
-
-                    _cart.Clear(); //resetes cart
-
-
+                    _cart.Clear(); 
                     break;
                 }
-
-                var parts = input?.Split(' ');
-                if (parts?.Length == 2 && int.TryParse(parts[0], out int productId) && int.TryParse(parts[1], out int quantity))
+                else if (input == "1")
                 {
-                    var product = _productService.GetProductById(productId);
-                    if (product != null)
-                    {
-                        _cart.Add((product, quantity));
-                        Console.WriteLine("Product added to cart.");
-                        ShowCart();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Product not found. Please enter a valid product ID.");
-                    }
+                    
+                   
+                    _productService.ShowCategories(); 
+      
+                }
+                else if (input == "2")
+                {
+                    Console.WriteLine("\nReturning to Main Menu...");
+                    //Return to main menu
+                    break; 
+                }
+                else if (input == "3")
+                {
+                    Console.WriteLine("\nExiting...");
+                    Environment.Exit(0); 
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input. Please enter product ID and quantity.");
+                
+                    var parts = input?.Split(' ');
+                    if (parts?.Length == 2 && int.TryParse(parts[0], out int productId) && int.TryParse(parts[1], out int quantity))
+                    {
+                        var product = _productService.GetProductById(productId);
+                        if (product != null)
+                        {
+                            Console.Clear();
+                            _cart.Add((product, quantity));
+                          
+                            ShowCart(); 
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nProduct not found. Please enter a valid product ID.");
+                        }
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\nInvalid input. Please enter product ID and quantity (e.g., '101 2').");
+                    }
                 }
             }
         }
@@ -77,8 +101,7 @@ namespace CashierApp.Customer
             }
             return total;
         }
-
-        private void ShowCart()
+        public void ShowCart()
         {
             Console.WriteLine("\nCurrent cart:");
             foreach (var item in _cart)
