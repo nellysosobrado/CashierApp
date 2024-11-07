@@ -9,8 +9,11 @@
 
   <ItemGroup>
     <Compile Remove="Cart\**" />
+    <Compile Remove="Receipts\Receipts.txt\**" />
     <EmbeddedResource Remove="Cart\**" />
+    <EmbeddedResource Remove="Receipts\Receipts.txt\**" />
     <None Remove="Cart\**" />
+    <None Remove="Receipts\Receipts.txt\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Receipts\CustomerReceipts\" />
-    <Folder Include="Receipts\Receipts.txt\" />
   </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@ namespace CashierApp.Receipts.Services
 {
     public class ReceiptFileService
     {
-        private readonly string folderPath = "../../../Receipts/Receipts.txt";
+        private readonly string folderPath = "../../../Receipts/CustomerReceipts";
         private readonly string receiptFileName = $"RECEIPT_{DateTime.Now:yyyyMMdd}.txt";
 
         public ReceiptFileService()
