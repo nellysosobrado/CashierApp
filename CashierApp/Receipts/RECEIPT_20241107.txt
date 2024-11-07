@@ -1,0 +1,23 @@
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 1
+Staff: Name 	 Trans: 123456
+Date: 2024-11-07 08:50:56
+--------------------------
+Product             Price
+1x Apple            1,99 kr
+...........................
+
+Total Amount: 1,99 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

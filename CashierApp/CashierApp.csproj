@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Receipts\CustomerReceipts\" />
+    <Folder Include="Receipts\Receipts.txt\" />
   </ItemGroup>
 
 </Project>

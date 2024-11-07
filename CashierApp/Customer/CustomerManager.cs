@@ -25,10 +25,11 @@ namespace CashierApp.Customer
         public void HandleCustomer()
         {
             _productService.ShowProducts();
-            Console.WriteLine("Enter product ID and quantity, or 'PAY' to finish:");
 
             while (true)
             {
+                Console.Write("\nEnter 'PAY' to finish" +
+                "\nCommand:");
                 var input = Console.ReadLine()?.Trim();
                 if (input?.ToUpper() == "PAY")
                 {
@@ -37,7 +38,11 @@ namespace CashierApp.Customer
                    
                     decimal totalPrice = CalculateTotalPrice(_cart);
 
-                    _paymentService.ProcessPayment(_cart, totalPrice);
+                    _paymentService.ProcessPayment(_cart, totalPrice); //Displays cart and total price
+
+                    _cart.Clear(); //resetes cart
+
+
                     break;
                 }
 
@@ -80,6 +85,7 @@ namespace CashierApp.Customer
             {
                 Console.WriteLine($"Product: {item.Product.Name}, Quantity: {item.Quantity}, Total: {item.Product.Price * item.Quantity:C}");
             }
+            
             Console.WriteLine();
         }
     }
