@@ -10,11 +10,11 @@ namespace CashierApp.Receipts.Factories
 {
     public class ReceiptFactory
     {
-        private readonly ReceiptService _receiptManager;
+        private readonly ReceiptFileService _receiptManager;
 
         public ReceiptFactory()
         {
-            _receiptManager = new ReceiptService();
+            _receiptManager = new ReceiptFileService();
         }
 
         public Receipt CreateReceipt(List<(IProducts Product, int Quantity)> cart, decimal totalPrice)

@@ -8,7 +8,7 @@ namespace CashierApp.Receipts.Services
 {
     public class ReceiptService
     {
-        private readonly string folderPath = "../../../Receipts/Receipts.txt";
+        private readonly string folderPath = "../../../Receipts/";
         private readonly string receiptFileName = $"RECEIPT_{DateTime.Now:yyyyMMdd}.txt";
 
         public ReceiptService()
@@ -30,30 +30,45 @@ namespace CashierApp.Receipts.Services
             {
                 writer.WriteLine(receiptContent);
             }
-
             Console.WriteLine($"Receipt saved to {filePath}");
         }
 
-        public int GetLastReceiptNumber(string filePath)
+        public string CreateReceipt(Receipt receipt)
         {
-            if (!File.Exists(filePath)) return 1;
+            var receiptBuilder = new System.Text.StringBuilder();
+            receiptBuilder.AppendLine("\n==== Store ==============");
+            receiptBuilder.AppendLine("Store Liljeholmen, Stockholm");
+            receiptBuilder.AppendLine("Årstaängsvägen 31");
+            receiptBuilder.AppendLine("117 43 Stockholm");
+            receiptBuilder.AppendLine("Org:123456-1234 ");
+            receiptBuilder.AppendLine("--------------------------");
+            receiptBuilder.AppendLine($"Receipt number: {receipt.ReceiptNumber}");
+            receiptBuilder.AppendLine("Staff: Name \t Trans: 123456");
+            receiptBuilder.AppendLine($"Date: {receipt.Date}");
+            receiptBuilder.AppendLine("--------------------------");
+            receiptBuilder.AppendLine("Product             Price");
 
-            var lines = File.ReadAllLines(filePath);
-            int lastReceiptNumber = 0;
-
-            foreach (var line in lines)
+            foreach (var item in receipt.Cart)
             {
-                if (line.StartsWith("Receipt number:"))
-                {
-                    var parts = line.Split(new char[] { '#', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (parts.Length > 2 && int.TryParse(parts[2], out int number))
-                    {
-                        lastReceiptNumber = Math.Max(lastReceiptNumber, number);
-                    }
-                }
+                decimal itemTotal = item.Product.Price * item.Quantity;
+                receiptBuilder.AppendLine($"{item.Quantity,1}x {item.Product.Name.PadRight(15)} {itemTotal,8:C2}");
             }
 
-            return lastReceiptNumber + 1;
+            receiptBuilder.AppendLine("...........................\n");
+            receiptBuilder.AppendLine($"Total Amount: {receipt.TotalPrice:C2}");
+            receiptBuilder.AppendLine("...........................\n");
+            receiptBuilder.AppendLine("\nThank you for shopping with us!");
+            receiptBuilder.AppendLine("===========================\n");
+
+            return receiptBuilder.ToString();
+        }
+
+        public static void ReceiptDisplay(string receiptContent)
+        {
+            Console.Clear();
+            Console.WriteLine(receiptContent);
+            Console.WriteLine("Press any key to go back to main menu..");
+            Console.ReadKey();
         }
     }
 }
