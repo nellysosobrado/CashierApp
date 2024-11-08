@@ -47,20 +47,21 @@ namespace CashierApp.Customer
             _newCustomer.ShowCart(_cart);
             Console.ReadLine();
         }
-       
+
         public void HandleCustomer()
         {
-
             while (true)
             {
-               
-                //Console.ReadKey();
-                //Console.Clear(); 
                 _newCustomer.ShowCart(_cart);
+                var input = Console.ReadLine()?.Trim();
 
-                var input = Console.ReadLine()?.Trim(); 
-
-                if (input?.ToUpper() == "PAY")
+                if (string.IsNullOrEmpty(input))
+                {
+                    _errorManager.DisplayError("Input cannot be empty. Press any key to try again");
+                    Console.ReadKey();
+                    continue;
+                }
+                else if (input?.ToUpper() == "PAY")
                 {
                     Console.WriteLine("\nProcessing payment...");
                     decimal totalPrice = CalculateTotalPrice(_cart);
@@ -70,11 +71,9 @@ namespace CashierApp.Customer
                 }
                 else if (input == "1")
                 {
-                    //Console.Clear();
                     ShowProductCategoriesAndProducts();
                     _newCustomer.ShowCart(_cart);
                     Console.ReadLine();
-
                 }
                 else if (input == "2")
                 {
@@ -84,29 +83,48 @@ namespace CashierApp.Customer
                 }
                 else
                 {
-                    var parts = input?.Split(' ');
-                    if (parts?.Length == 2 && int.TryParse(parts[0], out int productId) && int.TryParse(parts[1], out int quantity))
+                    var parts = input.Split(' ');
+                    if (parts.Length == 2 && int.TryParse(parts[1], out int quantity))
                     {
-                        var product = _productService.GetProductById(productId);
-                        if (product != null) 
+                        
+                        if (int.TryParse(parts[0], out int productId))
                         {
-                            _cart.Add((product, quantity)); 
-                            _newCustomer.ShowCart(_cart); 
+                            var product = _productService.GetProductById(productId);
+                            if (product != null)
+                            {
+                                _cart.Add((product, quantity));
+                                _newCustomer.ShowCart(_cart);
+                            }
+                            else
+                            {
+                                _errorManager.DisplayError("Product ID does not exist. Press any key to try again");
+                                Console.ReadKey();
+                            }
                         }
                         else 
                         {
-                            _errorManager.DisplayError("\nProduct ID not found. Please enter a valid product ID");
+                            var productName = parts[0].ToLower();
+                            var product = _productService.GetProductByName(productName);
+                            if (product != null)
+                            {
+                                _cart.Add((product, quantity));
+                                _newCustomer.ShowCart(_cart);
+                            }
+                            else
+                            {
+                                _errorManager.DisplayError("Product name does not exist. Press any key to try again");
+                                Console.ReadKey();
+                            }
                         }
                     }
                     else
                     {
-                        _errorManager.DisplayError("\nInvalid input. Please enter product ID and quantity.");
+                        _errorManager.DisplayError("Invalid input. Please enter a valid product ID or name followed by quantity. Press any key to try again");
+                        Console.ReadKey();
                     }
                 }
-                
             }
         }
-
         private decimal CalculateTotalPrice(List<(IProducts Product, int Quantity)> cart)
         {
             decimal total = 0;

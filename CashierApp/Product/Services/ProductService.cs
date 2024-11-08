@@ -19,7 +19,7 @@ namespace CashierApp.Product.Services
         private readonly List<IProducts> _products;
 
         public ProductService()
-        {//The stores storage products
+        {
             _products = new List<IProducts>
             {
                 ProductFactory.CreateProduct("fruit", 101, "Apple", 1.99m, "piece"),
@@ -31,10 +31,14 @@ namespace CashierApp.Product.Services
                 ProductFactory.CreateProduct("bajskorv", 107, "bajs", 0m, "piece")
             };
         }
+        public IProducts GetProductByName(string productName)
+        {
+            return _products.FirstOrDefault(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+        }
 
         public IProducts GetProductById(int productId)
         {
-            return _products.Find(p => p.ProductID == productId); //Returns null if the productId not found
+            return _products.Find(p => p.ProductID == productId); 
         }
 
         public IEnumerable<string> GetDistinctCategories()

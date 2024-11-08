@@ -10,7 +10,27 @@ namespace CashierApp.ErrorManagement
     {
         public void DisplayError(string errorMessage)
         {
-            Console.WriteLine($"ERROR: {errorMessage}");
+            string fullMessage = $"ERROR: {errorMessage}";
+
+            
+            int windowWidth = Console.WindowWidth;
+            int leftPadding = (windowWidth - fullMessage.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0; 
+
+         
+            int windowHeight = Console.WindowHeight;
+            int topPadding = windowHeight / 2;
+            Console.SetCursorPosition(leftPadding, topPadding);
+
+            Console.ForegroundColor = ConsoleColor.Red;
+  
+
+            Console.WriteLine(fullMessage);
+            Console.ResetColor();
+
+
         }
+
+
     }
 }

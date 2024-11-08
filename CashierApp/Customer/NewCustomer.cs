@@ -11,39 +11,51 @@ namespace CashierApp.Customer
     {
         public void ShowCart(List<(IProducts Product, int Quantity)> cart)
         {
-            
-            //Console.Clear(); 
+            Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("                           ╔═══════════════════════════════════════════════╗");
-            Console.WriteLine("                           ║              KYH CHECKOUT SYSTEM              ║");
-            Console.WriteLine("                           ╚═══════════════════════════════════════════════╝");
-            Console.WriteLine("                                       Current Cart");
-            Console.WriteLine("                           ────────────────────────────────────────────────");
-            Console.WriteLine("                           ID   │ Product Name        │ Qty │ Total");
-            Console.WriteLine("                           ────────────────────────────────────────────────");
+            CenterText("╔═══════════════════════════════════════════════╗");
+            CenterText("║              KYH CHECKOUT SYSTEM              ║");
+            CenterText("╚═══════════════════════════════════════════════╝");
+            CenterText("Current Cart");
+            CenterText("───────────────────────────────────────────────");
+            CenterText("ID   │ Product Name        │ Qty │ Total");
+            CenterText("───────────────────────────────────────────────");
 
             decimal grandTotal = 0;
             foreach (var item in cart)
             {
                 decimal total = item.Product.Price * item.Quantity;
-                Console.WriteLine($"                           {item.Product.ProductID,-4} │ {item.Product.Name,-17} │ {item.Quantity,3} │ {total,6:C}");
+                CenterText($"{item.Product.ProductID,-4}   │   {item.Product.Name,-17} │ {item.Quantity,3} │ {total,6:C}");
                 grandTotal += total;
             }
 
-            
-            if (grandTotal > 50) 
+            if (grandTotal > 50)
             {
-                Console.WriteLine($"                           │  Campaign Price     │     │  -2.00 KR (Saved)");
+                CenterText("│  Campaign Price     │     │  -2.00 KR (Saved)");
             }
 
-            Console.WriteLine("                           ────────────────────────────────────────────────");
-            Console.WriteLine($"                                         Total: {grandTotal:C}");
-            Console.WriteLine("                           ────────────────────────────────────────────────");
-            Console.WriteLine("                                 [1] Products    [PAY] Pay    [3] Menu");
-            Console.WriteLine("                           ────────────────────────────────────────────────");
-            Console.Write("                           Command: ");
+            CenterText("───────────────────────────────────────────────");
+            CenterText($"Total: {grandTotal:C}");
+            CenterText("───────────────────────────────────────────────");
+            CenterText("[1] Products    [PAY] Pay    [3] Menu");
+            CenterText("───────────────────────────────────────────────");
 
-            
+            int windowWidth = Console.WindowWidth;
+            string commandText = "Command: ";
+            int leftPadding = (windowWidth - commandText.Length) / 2;
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            Console.Write(commandText);
+
+
+        }
+        private void CenterText(string text)
+        {
+            int windowWidth = Console.WindowWidth;
+            int leftPadding = (windowWidth - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0; 
+
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            Console.WriteLine(text);
         }
     }
 }
