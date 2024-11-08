@@ -12,41 +12,45 @@ namespace CashierApp.Customer
         public void ShowCart(List<(IProducts Product, int Quantity)> cart)
         {
             Console.Clear();
-            Console.WriteLine();
-            CenterText("╔═══════════════════════════════════════════════╗");
-            CenterText("║              KYH CHECKOUT SYSTEM              ║");
-            CenterText("╚═══════════════════════════════════════════════╝");
-            CenterText("Current Cart");
-            CenterText("───────────────────────────────────────────────");
-            CenterText("ID   │ Product Name        │ Qty │ Total");
-            CenterText("───────────────────────────────────────────────");
+            Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
+            Console.WriteLine("                                   ║              KYH CHECKOUT SYSTEM              ║");
+            Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
+            Console.WriteLine("                                                      Current Cart");
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            Console.WriteLine("                                    ID    │ Product Name        │   Qty   │      Total");
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
 
             decimal grandTotal = 0;
             foreach (var item in cart)
             {
                 decimal total = item.Product.Price * item.Quantity;
-                CenterText($"{item.Product.ProductID,-4}   │   {item.Product.Name,-17} │ {item.Quantity,3} │ {total,6:C}");
+                // Trunkera produktnamn om det är längre än 17 tecken
+                string productName = item.Product.Name.Length > 17 ? item.Product.Name.Substring(0, 17) + "…" : item.Product.Name;
+
+                // Begränsa kvantiteten till max 7 tecken
+                string quantityDisplay = item.Quantity.ToString();
+                if (quantityDisplay.Length > 7)
+                {
+                    quantityDisplay = quantityDisplay.Substring(0, 6) + "…"; // Trunkera och lägg till "…"
+                }
+
+                Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {total}");
                 grandTotal += total;
             }
 
-            if (grandTotal > 50)
-            {
-                CenterText("│  Campaign Price     │     │  -2.00 KR (Saved)");
-            }
+            
+            //if (grandTotal > 50)
+            //{
+            //    string campaignText = "  Campaign Price                -2.00 KR (Saved)";
+            //    Console.WriteLine($"{"",35}{campaignText,50}"); // 35 mellanslag för att centrera texten i din layout
+            //}
 
-            CenterText("───────────────────────────────────────────────");
-            CenterText($"Total: {grandTotal:C}");
-            CenterText("───────────────────────────────────────────────");
-            CenterText("[1] Products    [PAY] Pay    [3] Menu");
-            CenterText("───────────────────────────────────────────────");
-
-            int windowWidth = Console.WindowWidth;
-            string commandText = "Command: ";
-            int leftPadding = (windowWidth - commandText.Length) / 2;
-            Console.SetCursorPosition(leftPadding, Console.CursorTop);
-            Console.Write(commandText);
-
-
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            Console.WriteLine($"                                                 Total: {grandTotal,10:C}");
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            Console.WriteLine("                                        [1] Products    [PAY] Pay    [3] Menu");
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            Console.Write("                                                      Command: ");
         }
         private void CenterText(string text)
         {
