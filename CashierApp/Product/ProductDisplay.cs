@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Product
 {
+    //Display Products
     public class ProductDisplay
     {
         public void ShowCategories(IEnumerable<string> categories)

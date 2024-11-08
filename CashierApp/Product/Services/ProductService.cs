@@ -11,12 +11,15 @@ using CashierApp.ErrorManagement;
 
 namespace CashierApp.Product.Services
 {
+    /// <summary>
+    /// Manages the productdata 
+    /// </summary>
     public class ProductService
     {
         private readonly List<IProducts> _products;
 
         public ProductService()
-        {
+        {//The stores storage products
             _products = new List<IProducts>
             {
                 ProductFactory.CreateProduct("fruit", 101, "Apple", 1.99m, "piece"),
@@ -31,7 +34,7 @@ namespace CashierApp.Product.Services
 
         public IProducts GetProductById(int productId)
         {
-            return _products.Find(p => p.ProductID == productId);
+            return _products.Find(p => p.ProductID == productId); //Returns null if the productId not found
         }
 
         public IEnumerable<string> GetDistinctCategories()
