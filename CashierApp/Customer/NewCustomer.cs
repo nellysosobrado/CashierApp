@@ -48,7 +48,7 @@ namespace CashierApp.Customer
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             Console.WriteLine($"                                                 Total: {grandTotal,10:C}");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
-            Console.WriteLine("                                        [1] Products    [PAY] Pay    [3] Menu");
+            Console.WriteLine("                                        [1] Products    [2] Menu    [PAY] PAY");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             Console.Write("                                                      Command: ");
         }

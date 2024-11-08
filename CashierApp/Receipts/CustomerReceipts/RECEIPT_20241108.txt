@@ -136,3 +136,50 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 7
+Staff: Name 	 Trans: 123456
+Date: 2024-11-08 19:22:30
+--------------------------
+Product             Price
+10000x bajs             0,00 kr
+...........................
+
+Total Amount: 0,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 8
+Staff: Name 	 Trans: 123456
+Date: 2024-11-08 19:22:49
+--------------------------
+Product             Price
+22x Chicken         131,78 kr
+1000x bajs             0,00 kr
+...........................
+
+Total Amount: 131,78 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
