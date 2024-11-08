@@ -23,7 +23,7 @@ namespace CashierApp.Product
         {
             if (products.Any())
             {
-                Console.Clear();
+                //Console.Clear();
                 Console.WriteLine($"\nProducts in category '{category}':");
                 Console.WriteLine("───────────────────────────────────────────────");
 
@@ -34,6 +34,8 @@ namespace CashierApp.Product
                     Console.WriteLine($" Price     : {product.Price:C}");
                     Console.WriteLine($" Unit      : {product.PriceType}");
                 }
+
+                Console.Write(">Command:");
             }
             else
             {

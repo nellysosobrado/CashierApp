@@ -30,6 +30,7 @@ namespace CashierApp.DI
             builder.RegisterType<MenuManager>().AsSelf();
             builder.RegisterType<CashierSystemApp>().AsSelf();
             builder.RegisterType<ProductDisplay>().AsSelf();
+            builder.RegisterType<NewCustomer>().AsSelf();
 
 
         }
