@@ -5,22 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CashierApp.Product.Interfaces;
-using CashierApp.Payment;
 using CashierApp.Receipts;
 using CashierApp.Receipts.Factories;
 using CashierApp.Receipts.Services;
 
-namespace CashierApp.Payment.Services
+namespace CashierApp.Payment
 {
     /// <summary>
     /// PaymentService, takes care of the payment. And calls receipt class
     /// </summary>
-    public class PaymentService
+    public class PAY
     {
         private readonly ReceiptFactory _receiptFactory;
         private readonly ReceiptService _receiptManager;
 
-        public PaymentService()
+        public PAY()
         {
             _receiptFactory = new ReceiptFactory();
             _receiptManager = new ReceiptService();

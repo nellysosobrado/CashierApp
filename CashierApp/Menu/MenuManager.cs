@@ -1,5 +1,6 @@
 ﻿using CashierApp.Admin;
 using CashierApp.Customer;
+using CashierApp.ErrorManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +20,13 @@ namespace CashierApp.Menu
         private readonly MenuNavigation _menuNavigation;
         private readonly string[] _options = { "1. New Customer", "2. Admin Settings", "3. Exit" };
 
-        public MenuManager()
+        // Injicera alla beroenden via konstruktorn
+        public MenuManager(CustomerManager customerHandler, AdminManager adminHandler, MenuDisplay menuDisplay, MenuNavigation menuNavigation)
         {
-            // Använd Factory-metoder för att skapa beroenden
-            _customerHandler = MenuFactory.CreateCustomerManager();
-            _adminHandler = MenuFactory.CreateAdminManager();
-            _menuDisplay = MenuFactory.CreateMenuDisplay();
-            _menuNavigation = MenuFactory.CreateMenuNavigation();
+            _customerHandler = customerHandler;
+            _adminHandler = adminHandler;
+            _menuDisplay = menuDisplay;
+            _menuNavigation = menuNavigation;
         }
 
         public void RunMenu()

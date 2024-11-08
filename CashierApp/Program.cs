@@ -14,7 +14,8 @@ namespace CashierApp
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            var builder = new ContainerBuilder();//Container in order to manage the dependencies
+            //ContainerBuilder, handles all the dependencies in the application. 
+            var builder = new ContainerBuilder();
             DependencyRegister.RegisterDependencies(builder); //Register dependencies with builder
 
 

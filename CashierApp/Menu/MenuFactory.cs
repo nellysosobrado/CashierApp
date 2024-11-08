@@ -1,6 +1,8 @@
 ﻿using CashierApp.Admin;
 using CashierApp.Customer;
-using CashierApp.Payment.Services;
+using CashierApp.ErrorManagement;
+using CashierApp.Payment;
+using CashierApp.Product;
 using CashierApp.Product.Services;
 using System;
 using System.Collections.Generic;
@@ -12,21 +14,29 @@ namespace CashierApp.Menu
 {
     public class MenuFactory
     {
-        public static ProductService CreateProductService()
+        private readonly IErrorManager _errorManager;
+
+        // Konstruktor för att injicera IErrorManager
+        public MenuFactory(IErrorManager errorManager)
+        {
+            _errorManager = errorManager;
+        }
+        public ProductService CreateProductService()
         {
             return new ProductService();
         }
 
-        public static PaymentService CreatePaymentService()
+        public static PAY CreatePaymentService()
         {
-            return new PaymentService();
+            return new PAY();
         }
 
-        public static CustomerManager CreateCustomerManager()
+        public CustomerManager CreateCustomerManager(IErrorManager errorManager)
         {
-            var productService = CreateProductService();
+            var productService = new ProductService();
             var paymentService = CreatePaymentService();
-            return new CustomerManager(productService, paymentService);
+            var productDisplay = new ProductDisplay();
+            return new CustomerManager(productService, paymentService, _errorManager, productDisplay);
         }
 
         public static AdminManager CreateAdminManager()

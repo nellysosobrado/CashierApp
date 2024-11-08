@@ -4,26 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CashierApp.Menu;
-using CashierApp.Payment.Services;
+using CashierApp.Payment;
 using CashierApp.Product.Interfaces;
 using CashierApp.Product.Services;
+using CashierApp.ErrorManagement;
+using CashierApp.Product;
 
 
 namespace CashierApp.Customer
 {
     public class CustomerManager
     {
+        private readonly ProductDisplay _productDisplay;
+        private readonly IErrorManager _errorManager;
         private readonly ProductService _productService;
-        private readonly PaymentService _paymentService;
+        private readonly PAY _paymentService;
         private List<(IProducts Product, int Quantity)> _cart = new List<(IProducts Product, int Quantity)>();
 
-        public CustomerManager(ProductService productService, PaymentService paymentService)
+        public CustomerManager(ProductService productService, PAY paymentService, IErrorManager errorManager, ProductDisplay productDisplay)
         {
+
             _productService = productService;
             _paymentService = paymentService;
-   
+            _errorManager = errorManager;
+            _productDisplay = productDisplay;
         }
+        public void ShowProductCategoriesAndProducts()
+        {
+            var categories = _productService.GetDistinctCategories();
+            _productDisplay.ShowCategories(categories);
 
+            Console.Write("\nEnter a category to view its products\n>Commando: ");
+            string selectedCategory = Console.ReadLine()?.Trim().ToLower();
+            var products = _productService.GetProductsByCategory(selectedCategory);
+            _productDisplay.ShowProductsByCategory(products, selectedCategory);
+        }
         public void HandleCustomer()
         {
             while (true)
@@ -48,14 +63,17 @@ namespace CashierApp.Customer
                 }
                 else if (input == "1")
                 {
-                    
-                   
-                    _productService.ShowCategories(); 
-      
+
+                    Console.Clear();
+                    ShowProductCategoriesAndProducts();
+                    ShowCart();
+
+
                 }
                 else if (input == "2")
                 {
                     Console.WriteLine("\nReturning to Main Menu...");
+                    _cart.Clear();
                     //Return to main menu
                     break; 
                 }
@@ -71,22 +89,25 @@ namespace CashierApp.Customer
                     if (parts?.Length == 2 && int.TryParse(parts[0], out int productId) && int.TryParse(parts[1], out int quantity))
                     {
                         var product = _productService.GetProductById(productId);
-                        if (product != null)
+
+                        if (product != null)// product is not empty
                         {
-                            Console.Clear();
+                            //Console.Clear();
                             _cart.Add((product, quantity));
                           
                             ShowCart(); 
                         }
-                        else
+                        else//if does not find
                         {
-                            Console.WriteLine("\nProduct not found. Please enter a valid product ID.");
+                            _errorManager.DisplayError("\nProduct ID not found. Please enter a valid product ID");
                         }
                     }
                     else
                     {
-                        Console.Clear();
-                        Console.WriteLine("\nInvalid input. Please enter product ID and quantity (e.g., '101 2').");
+                        //Console.Clear();
+                        _errorManager.DisplayError("\nInvalid input. Please enter product ID and quantity. Example: '302 1'");
+                        ShowCart();
+                        
                     }
                 }
             }
