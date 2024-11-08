@@ -9,7 +9,7 @@ using CashierApp.Menu;
 
 namespace CashierApp
 {
-    //Program core
+    //Program core, focuses on the program flow
     public class CashierSystemApp
     {
         private readonly Menu.MenuManager _menuHandler;
