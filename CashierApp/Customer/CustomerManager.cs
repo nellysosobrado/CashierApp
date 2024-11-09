@@ -32,22 +32,84 @@ namespace CashierApp.Customer
         }
         public void ShowProductCategoriesAndProducts()
         {
-           
-            var categories = _productService.GetDistinctCategories();
-            _productDisplay.ShowCategories(categories);
+            while (true)
+            {
+                Console.Clear();
+                var categories = _productService.GetDistinctCategories();
+                _productDisplay.ShowCategories(categories);
 
-            Console.Write("\nEnter a category to view its products\n>Commando: ");
-            string selectedCategory = Console.ReadLine()?.Trim().ToLower();
+                //Console.Write("\nEnter a category to view its products or press [C] to return to cart\n>Command: ");
+                string input = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
 
-            
+               if (input == "c")
+                {
+                    // Återgå till kundvagnen om användaren väljer "C"
+                    return;
+                }
 
-            var products = _productService.GetProductsByCategory(selectedCategory);
-            Console.WriteLine($"Found {categories.Count()} categories.");
-            _productDisplay.ShowProductsByCategory(products, selectedCategory);
-            _newCustomer.ShowCart(_cart);
-            Console.ReadLine();
+                var products = _productService.GetProductsByCategory(input);
+
+                if (products.Any())
+                {
+                    int pageSize = 5; // Antal produkter per sida
+                    int currentPage = 0;
+                    bool browsing = true;
+
+                    while (browsing)
+                    {
+                        _productDisplay.ShowProductsByCategory(products, input, currentPage, pageSize);
+
+                        string command = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
+
+                        switch (command)
+                        {
+                            case "n":
+                                if ((currentPage + 1) * pageSize < products.Count())
+                                {
+                                    currentPage++;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You are on the last page. Press any key to continue...");
+                                    Console.ReadKey();
+                                }
+                                break;
+
+                            case "p":
+                                if (currentPage > 0)
+                                {
+                                    currentPage--;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You are on the first page. Press any key to continue...");
+                                    Console.ReadKey();
+                                }
+                                break;
+
+                            case "r":
+                                // Gå tillbaka till kategorilistan
+                                browsing = false;
+                                break;
+
+                            case "c":
+                                // Återgå till kundvagnen
+                                return;
+
+                            default:
+                                Console.WriteLine("Invalid command. Press any key to try again...");
+                                Console.ReadKey();
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    _productDisplay.ShowNoProductsMessage(input);
+                    Console.ReadKey();
+                }
+            }
         }
-
         public void HandleCustomer()
         {
             while (true)
@@ -61,67 +123,67 @@ namespace CashierApp.Customer
                     Console.ReadKey();
                     continue;
                 }
-                else if (input?.ToUpper() == "PAY")
+
+                switch (input?.ToUpper())
                 {
-                    Console.WriteLine("\nProcessing payment...");
-                    decimal totalPrice = CalculateTotalPrice(_cart);
-                    _paymentService.ProcessPayment(_cart, totalPrice);
-                    _cart.Clear();
-                    break;
-                }
-                else if (input == "1")
-                {
-                    ShowProductCategoriesAndProducts();
-                    _newCustomer.ShowCart(_cart);
-                    Console.ReadLine();
-                }
-                else if (input == "2")
-                {
-                    Console.WriteLine("\nReturning to Main Menu...");
-                    _cart.Clear();
-                    break;
-                }
-                else
-                {
-                    var parts = input.Split(' ');
-                    if (parts.Length == 2 && int.TryParse(parts[1], out int quantity))
-                    {
-                        
-                        if (int.TryParse(parts[0], out int productId))
+                    case "PAY":
+                        Console.WriteLine("\nProcessing payment...");
+                        decimal totalPrice = CalculateTotalPrice(_cart);
+                        _paymentService.ProcessPayment(_cart, totalPrice);
+                        _cart.Clear();
+                        return; // Exit the method after payment
+
+                    case "1":
+                        ShowProductCategoriesAndProducts();
+                        _newCustomer.ShowCart(_cart);
+                        //Console.ReadLine();
+                        break;
+
+                    case "2":
+                        Console.WriteLine("\nReturning to Main Menu...");
+                        _cart.Clear();
+                        return; // Exit the method to return to main menu
+
+                    default:
+                        var parts = input.Split(' ');
+                        if (parts.Length == 2 && int.TryParse(parts[1], out int quantity))
                         {
-                            var product = _productService.GetProductById(productId);
-                            if (product != null)
+                            if (int.TryParse(parts[0], out int productId))
                             {
-                                _cart.Add((product, quantity));
-                                _newCustomer.ShowCart(_cart);
+                                var product = _productService.GetProductById(productId);
+                                if (product != null)
+                                {
+                                    _cart.Add((product, quantity));
+                                    _newCustomer.ShowCart(_cart);
+                                }
+                                else
+                                {
+                                    _errorManager.DisplayError("Product ID does not exist. Press any key to try again");
+                                    Console.ReadKey();
+                                }
                             }
                             else
                             {
-                                _errorManager.DisplayError("Product ID does not exist. Press any key to try again");
-                                Console.ReadKey();
+                                var productName = parts[0].ToLower();
+                                var product = _productService.GetProductByName(productName);
+                                if (product != null)
+                                {
+                                    _cart.Add((product, quantity));
+                                    _newCustomer.ShowCart(_cart);
+                                }
+                                else
+                                {
+                                    _errorManager.DisplayError("Product name does not exist. Press any key to try again");
+                                    Console.ReadKey();
+                                }
                             }
                         }
-                        else 
+                        else
                         {
-                            var productName = parts[0].ToLower();
-                            var product = _productService.GetProductByName(productName);
-                            if (product != null)
-                            {
-                                _cart.Add((product, quantity));
-                                _newCustomer.ShowCart(_cart);
-                            }
-                            else
-                            {
-                                _errorManager.DisplayError("Product name does not exist. Press any key to try again");
-                                Console.ReadKey();
-                            }
+                            _errorManager.DisplayError("Invalid input. Please enter a valid product ID or name followed by quantity. Press any key to try again");
+                            Console.ReadKey();
                         }
-                    }
-                    else
-                    {
-                        _errorManager.DisplayError("Invalid input. Please enter a valid product ID or name followed by quantity. Press any key to try again");
-                        Console.ReadKey();
-                    }
+                        break;
                 }
             }
         }

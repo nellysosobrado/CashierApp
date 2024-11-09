@@ -24,14 +24,14 @@ namespace CashierApp.Customer
             foreach (var item in cart)
             {
                 decimal total = item.Product.Price * item.Quantity;
-                // Trunkera produktnamn om det är längre än 17 tecken
+                
                 string productName = item.Product.Name.Length > 17 ? item.Product.Name.Substring(0, 17) + "…" : item.Product.Name;
 
-                // Begränsa kvantiteten till max 7 tecken
+                
                 string quantityDisplay = item.Quantity.ToString();
                 if (quantityDisplay.Length > 7)
                 {
-                    quantityDisplay = quantityDisplay.Substring(0, 6) + "…"; // Trunkera och lägg till "…"
+                    quantityDisplay = quantityDisplay.Substring(0, 6) + "…"; 
                 }
 
                 Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {total}");

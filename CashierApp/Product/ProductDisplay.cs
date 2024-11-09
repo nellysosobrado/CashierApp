@@ -12,35 +12,66 @@ namespace CashierApp.Product
     {
         public void ShowCategories(IEnumerable<string> categories)
         {
-            Console.WriteLine("\nAvailable Categories:");
+            Console.Clear();
+            Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
+            Console.WriteLine("                                   ║                AVAILABLE CATEGORIES           ║");
+            Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
+
             foreach (var category in categories)
             {
-                Console.WriteLine($"- {category}");
+                CenterText($"- {category}");
             }
+
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            CenterText("Enter a category to view its products");
+            Console.Write("                                                      Command: ");
         }
 
-        public void ShowProductsByCategory(IEnumerable<IProducts> products, string category)
+        public void ShowProductsByCategory(IEnumerable<IProducts> products, string category, int currentPage, int pageSize)
         {
-            if (products.Any())
-            {
-                //Console.Clear();
-                Console.WriteLine($"\nProducts in category '{category}':");
-                Console.WriteLine("───────────────────────────────────────────────");
+            Console.Clear();
+            Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
+            Console.WriteLine($"                                   ║       PRODUCTS IN CATEGORY: '{category.ToUpper()}'       ║");
+            Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            Console.WriteLine($"                                   Page {currentPage + 1}");
+            Console.WriteLine("                                    ID    │ Product Name        │   Price   │   Unit");
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
 
-                foreach (var product in products)
-                {
-                    Console.WriteLine($"\n Name      : {product.Name}");
-                    Console.WriteLine($" Product ID: {product.ProductID}");
-                    Console.WriteLine($" Price     : {product.Price:C}");
-                    Console.WriteLine($" Unit      : {product.PriceType}");
-                }
-
-                Console.Write(">Command:");
-            }
-            else
+            var pagedProducts = products.Skip(currentPage * pageSize).Take(pageSize);
+            foreach (var product in pagedProducts)
             {
-                Console.WriteLine($"\nNo products found in the category '{category}'.");
+                // Trunkera produktnamn om det är längre än 17 tecken
+                string productName = product.Name.Length > 17 ? product.Name.Substring(0, 17) + "…" : product.Name;
+
+                // Skriv ut produkten i format
+                Console.WriteLine($"                                    {product.ProductID,-5} │ {productName,-17} │ {product.Price,8:C} │ {product.PriceType}");
             }
+
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            CenterText("[N] Next page  [P] Previous page  [C] Return to cart  [R] Return to categories");
+            Console.Write("                                                      Command: ");
+        }
+
+        public void ShowNoProductsMessage(string category)
+        {
+            Console.Clear();
+            Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
+            Console.WriteLine($"                                   ║      NO PRODUCTS IN CATEGORY: '{category.ToUpper()}'     ║");
+            Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
+            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            CenterText("Press any key to return to categories...");
+        }
+
+        private void CenterText(string text)
+        {
+            int windowWidth = Console.WindowWidth;
+            int leftPadding = (windowWidth - text.Length) / 2;
+            if (leftPadding < 0) leftPadding = 0;
+
+            Console.SetCursorPosition(leftPadding, Console.CursorTop);
+            Console.WriteLine(text);
         }
     }
 }

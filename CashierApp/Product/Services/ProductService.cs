@@ -22,8 +22,16 @@ namespace CashierApp.Product.Services
         {
             _products = new List<IProducts>
             {
-                ProductFactory.CreateProduct("fruit", 101, "Apple", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit", 102, "Orange", 1.49m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 102, "Orange", 1.49m, "piece"),
                 ProductFactory.CreateProduct("meat", 103, "Chicken", 5.99m, "kg"),
                 ProductFactory.CreateProduct("drink", 104, "Milk", 1.49m, "liter"),
                 ProductFactory.CreateProduct("bakery", 105, "Bread", 2.49m, "piece"),

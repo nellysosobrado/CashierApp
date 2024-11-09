@@ -14,6 +14,6 @@ namespace CashierApp.Product
         public decimal Price { get; set; }
         public string PriceType { get; set; }
         public int Quantity { get; set; }
-        public string Category { get; set; }
+        public string? Category { get; set; }
     }
 }
