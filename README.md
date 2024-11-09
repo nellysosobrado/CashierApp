@@ -2,10 +2,12 @@ University Examination Project
 
 Cashier app in C#[CASHIER_UML.pdf](https://github.com/user-attachments/files/17688723/CASHIER_UML.pdf)
 
-Description
-This project is an object-oriented cash register system that simulates cash handling in a grocery store. The system includes features for product management, receipt generation, and campaign price handling.
+Description:
+This project is an object-oriented cash register system that I developed as part of my final examination assignment for the course 'OOP C#'. 
 
-Functionality:
+The system simulates cash handling in a grocery store and demonstrates my understanding of key programming principles, including object-oriented design, file handling, and user interaction. This project represents a comprehensive test of my ability to build a complete, functional application from scratch while incorporating advanced features and maintaining code quality.
+
+Program Functionality :
 
 - Product Registration: Products are stored with a product ID, name, price, and type (per kilo/unit).
   
@@ -18,4 +20,3 @@ Functionality:
 - Admin Tool: Manage products, modify prices, and add new products.
   
 - Campaign Prices: Handle time-limited campaigns that apply during specific dates and are displayed on receipts.
-
