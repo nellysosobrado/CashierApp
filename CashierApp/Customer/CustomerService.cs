@@ -13,7 +13,7 @@ using CashierApp.Product;
 
 namespace CashierApp.Customer
 {
-    public class CustomerManager
+    public class CustomerService
     {
         private readonly NewCustomer _newCustomer;
         private readonly ProductDisplay _productDisplay;
@@ -23,7 +23,7 @@ namespace CashierApp.Customer
         private List<(IProducts Product, int Quantity)> _cart = new List<(IProducts Product, int Quantity)>();
 
         //Constructor
-        public CustomerManager
+        public CustomerService
             (ProductService productService, PAY paymentService,
             IErrorManager errorManager, ProductDisplay productDisplay,
             NewCustomer newCustomer
@@ -201,7 +201,7 @@ namespace CashierApp.Customer
             Console.WriteLine("\nCurrent cart:");
             foreach (var item in _cart)
             {
-                Console.WriteLine($"Product: {item.Product.Name}, Quantity: {item.Quantity}, Total: {item.Product.Price * item.Quantity:C}");
+                Console.WriteLine($"Product: {item.Product.ProductName}, Quantity: {item.Quantity}, Total: {item.Product.Price * item.Quantity:C}");
             }
             
             Console.WriteLine();

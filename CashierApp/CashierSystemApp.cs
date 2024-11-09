@@ -12,11 +12,11 @@ namespace CashierApp
     //Program core, focuses on the program flow
     public class CashierSystemApp
     {
-        private readonly Menu.MenuManager _menuHandler;
-        private readonly CustomerManager _customerHandler;
+        private readonly Menu.MenuService _menuHandler;
+        private readonly CustomerService _customerHandler;
         private readonly AdminManager _adminHandler;
 
-        public CashierSystemApp(Menu.MenuManager menuHandler, CustomerManager customerHandler, AdminManager adminHandler)
+        public CashierSystemApp(Menu.MenuService menuHandler, CustomerService customerHandler, AdminManager adminHandler)
         {
             _menuHandler = menuHandler;
             _customerHandler = customerHandler;

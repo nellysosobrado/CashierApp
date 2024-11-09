@@ -12,16 +12,16 @@ namespace CashierApp.Menu
     //Menu Logic
     //UI Menu
     //Menu Navigation
-    public class MenuManager
+    public class MenuService
     {
-        private readonly CustomerManager _customerHandler;
+        private readonly CustomerService _customerHandler;
         private readonly AdminManager _adminHandler;
         private readonly MenuDisplay _menuDisplay;
         private readonly MenuNavigation _menuNavigation;
         private readonly string[] _options = { "1. New Customer", "2. Admin Settings", "3. Exit" };
 
         // Injicera alla beroenden via konstruktorn
-        public MenuManager(CustomerManager customerHandler, AdminManager adminHandler, MenuDisplay menuDisplay, MenuNavigation menuNavigation)
+        public MenuService(CustomerService customerHandler, AdminManager adminHandler, MenuDisplay menuDisplay, MenuNavigation menuNavigation)
         {
             _customerHandler = customerHandler;
             _adminHandler = adminHandler;
@@ -40,7 +40,6 @@ namespace CashierApp.Menu
             }
             while (selectedIndex != 2);
 
-            Console.WriteLine("Program exiting...");
         }
 
         private void DisplayMenuWithSelection(int index)

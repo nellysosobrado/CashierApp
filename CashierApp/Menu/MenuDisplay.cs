@@ -8,10 +8,12 @@ namespace CashierApp.Menu
 {
     public class MenuDisplay
     {
+        //Notes: TExt and display needs to be in centered of console!!
         public void ShowMenuOptions(string[] options, int selectedIndex)
         {
             Console.Clear();
-            CenterText("Use arrow keys and 'Enter' to select a option");
+            CenterText("CASHIER SYSTEM");
+            
             CenterText("╔══════════════════════════════════════╗");
 
             for (int i = 0; i <options.Length; i++)
@@ -34,6 +36,7 @@ namespace CashierApp.Menu
             }
             CenterText("╚══════════════════════════════════════╝");
             Console.ResetColor();
+            CenterText("Use arrow keys and 'Enter' to select a option");
         }
         private void CenterText(string text)
         {

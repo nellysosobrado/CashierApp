@@ -17,7 +17,7 @@ namespace CashierApp.Product.Factories
             var product = new Product
             {
                 ProductID = productId,
-                Name = name,
+                ProductName = name,
                 Price = price,
                 PriceType = priceType,
                 Category = category 

@@ -43,7 +43,7 @@ namespace CashierApp.Receipts.Services
             receiptBuilder.AppendLine("Org:123456-1234 ");
             receiptBuilder.AppendLine("--------------------------");
             receiptBuilder.AppendLine($"Receipt number: {receipt.ReceiptNumber}");
-            receiptBuilder.AppendLine("Staff: Name \t Trans: 123456");
+            receiptBuilder.AppendLine("Staff: Staff Name \t Trans: 123456");
             receiptBuilder.AppendLine($"Date: {receipt.Date}");
             receiptBuilder.AppendLine("--------------------------");
             receiptBuilder.AppendLine("Product             Price");
@@ -51,7 +51,7 @@ namespace CashierApp.Receipts.Services
             foreach (var item in receipt.Cart)
             {
                 decimal itemTotal = item.Product.Price * item.Quantity;
-                receiptBuilder.AppendLine($"{item.Quantity,1}x {item.Product.Name.PadRight(15)} {itemTotal,8:C2}");
+                receiptBuilder.AppendLine($"{item.Quantity,1}x {item.Product.ProductName.PadRight(15)} {itemTotal,8:C2}");
             }
 
             receiptBuilder.AppendLine("...........................\n");

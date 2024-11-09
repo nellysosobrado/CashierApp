@@ -69,3 +69,120 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 4
+Staff: ProductName 	 Trans: 123456
+Date: 2024-11-09 17:11:37
+--------------------------
+Product             Price
+2x Orange           2,98 kr
+...........................
+
+Total Amount: 2,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 5
+Staff: ProductName 	 Trans: 123456
+Date: 2024-11-09 17:21:19
+--------------------------
+Product             Price
+5x Orange           7,45 kr
+7x bajs             0,00 kr
+...........................
+
+Total Amount: 7,45 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 6
+Staff: ProductName 	 Trans: 123456
+Date: 2024-11-09 17:28:45
+--------------------------
+Product             Price
+2x Orange           2,98 kr
+...........................
+
+Total Amount: 2,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 7
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-09 17:29:32
+--------------------------
+Product             Price
+2x Orange           2,98 kr
+...........................
+
+Total Amount: 2,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 8
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-09 17:29:53
+--------------------------
+Product             Price
+1x Orange           1,49 kr
+2x Orange           2,98 kr
+...........................
+
+Total Amount: 4,47 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

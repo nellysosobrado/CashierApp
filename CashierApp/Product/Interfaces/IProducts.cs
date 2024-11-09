@@ -10,7 +10,7 @@ namespace CashierApp.Product.Interfaces
     public interface IProducts
     {
         int ProductID { get; set; }
-        string Name { get; set; }
+        string ProductName { get; set; }
         decimal Price { get; set; }
         string PriceType { get; set; }
         int Quantity { get; set; }

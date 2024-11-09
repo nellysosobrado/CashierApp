@@ -13,11 +13,11 @@ namespace CashierApp.Customer
         {
             Console.Clear();
             Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
-            Console.WriteLine("                                   ║              KYH CHECKOUT SYSTEM              ║");
+            Console.WriteLine("                                   ║                     CASHIER                   ║");
             Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
             Console.WriteLine("                                                      Current Cart");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
-            Console.WriteLine("                                    ID    │ Product Name        │   Qty   │      Total");
+            Console.WriteLine("                                    ID    │ Product         │   Qty     │    Total");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
 
             decimal grandTotal = 0;
@@ -25,7 +25,7 @@ namespace CashierApp.Customer
             {
                 decimal total = item.Product.Price * item.Quantity;
                 
-                string productName = item.Product.Name.Length > 17 ? item.Product.Name.Substring(0, 17) + "…" : item.Product.Name;
+                string productName = item.Product.ProductName.Length > 17 ? item.Product.ProductName.Substring(0, 17) + "…" : item.Product.ProductName;
 
                 
                 string quantityDisplay = item.Quantity.ToString();

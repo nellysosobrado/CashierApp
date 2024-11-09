@@ -9,11 +9,12 @@ namespace CashierApp.Product
 {
     public class Product : IProducts
     {
+        //Properties
         public int ProductID { get; set; }
-        public string Name { get; set; }
+        public required string ProductName { get; set; }
         public decimal Price { get; set; }
-        public string PriceType { get; set; }
+        public required string PriceType { get; set; }
         public int Quantity { get; set; }
-        public string? Category { get; set; }
+        public required string Category { get; set; }
     }
 }

@@ -23,11 +23,11 @@ namespace CashierApp.DI
             builder.RegisterType<Error>().As<IErrorManager>().SingleInstance();
             builder.RegisterType<ProductService>().AsSelf();
             builder.RegisterType<PAY>().AsSelf();
-            builder.RegisterType<CustomerManager>().AsSelf();
+            builder.RegisterType<CustomerService>().AsSelf();
             builder.RegisterType<AdminManager>().AsSelf();
             builder.RegisterType<MenuDisplay>().AsSelf();
             builder.RegisterType<MenuNavigation>().AsSelf();
-            builder.RegisterType<MenuManager>().AsSelf();
+            builder.RegisterType<MenuService>().AsSelf();
             builder.RegisterType<CashierSystemApp>().AsSelf();
             builder.RegisterType<ProductDisplay>().AsSelf();
             builder.RegisterType<NewCustomer>().AsSelf();

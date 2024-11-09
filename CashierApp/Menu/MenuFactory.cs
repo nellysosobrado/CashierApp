@@ -31,13 +31,13 @@ namespace CashierApp.Menu
             return new PAY();
         }
 
-        public CustomerManager CreateCustomerManager(IErrorManager errorManager)
+        public CustomerService CreateCustomerManager(IErrorManager errorManager)
         {
             var productService = new ProductService();
             var paymentService = CreatePaymentService();
             var productDisplay = new ProductDisplay();
             var newCustomer = new NewCustomer();
-            return new CustomerManager(productService, paymentService, _errorManager, productDisplay, newCustomer);
+            return new CustomerService(productService, paymentService, _errorManager, productDisplay, newCustomer);
         }
 
         public static AdminManager CreateAdminManager()

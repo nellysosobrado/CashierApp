@@ -36,13 +36,13 @@ namespace CashierApp.Product
             Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             Console.WriteLine($"                                   Page {currentPage + 1}");
-            Console.WriteLine("                                    ID    │ Product Name        │   Price   │   Unit");
+            Console.WriteLine("                                    ID    │ Product ProductName        │   Price   │   Unit");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
 
             var pagedProducts = products.Skip(currentPage * pageSize).Take(pageSize);
             foreach (var product in pagedProducts)
             {
-                string productName = product.Name.Length > 17 ? product.Name.Substring(0, 17) + "…" : product.Name;
+                string productName = product.ProductName.Length > 17 ? product.ProductName.Substring(0, 17) + "…" : product.ProductName;
                 Console.WriteLine($"                                    {product.ProductID,-5} │ {productName,-17} │ {product.Price,8:C} │ {product.PriceType}");
             }
 

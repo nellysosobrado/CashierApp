@@ -18,7 +18,7 @@ namespace CashierApp.Product.Services
     {
         private readonly List<IProducts> _products;
 
-        public ProductService()
+        public ProductService() // Products stored as a list
         {
             _products = new List<IProducts>
             {
@@ -41,7 +41,7 @@ namespace CashierApp.Product.Services
         }
         public IProducts GetProductByName(string productName)
         {
-            return _products.FirstOrDefault(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+            return _products.FirstOrDefault(p => p.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase));
         }
 
         public IProducts GetProductById(int productId)
