@@ -38,12 +38,11 @@ namespace CashierApp.Customer
                 var categories = _productService.GetDistinctCategories();
                 _productDisplay.ShowCategories(categories);
 
-                //Console.Write("\nEnter a category to view its products or press [C] to return to cart\n>Command: ");
                 string input = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
 
                if (input == "c")
                 {
-                    // Återgå till kundvagnen om användaren väljer "C"
+                    
                     return;
                 }
 
@@ -51,7 +50,7 @@ namespace CashierApp.Customer
 
                 if (products.Any())
                 {
-                    int pageSize = 5; // Antal produkter per sida
+                    int pageSize = 5; 
                     int currentPage = 0;
                     bool browsing = true;
 
@@ -88,12 +87,10 @@ namespace CashierApp.Customer
                                 break;
 
                             case "r":
-                                // Gå tillbaka till kategorilistan
                                 browsing = false;
                                 break;
 
                             case "c":
-                                // Återgå till kundvagnen
                                 return;
 
                             default:
@@ -131,18 +128,18 @@ namespace CashierApp.Customer
                         decimal totalPrice = CalculateTotalPrice(_cart);
                         _paymentService.ProcessPayment(_cart, totalPrice);
                         _cart.Clear();
-                        return; // Exit the method after payment
+                        return; 
 
                     case "1":
                         ShowProductCategoriesAndProducts();
                         _newCustomer.ShowCart(_cart);
-                        //Console.ReadLine();
+
                         break;
 
                     case "2":
                         Console.WriteLine("\nReturning to Main Menu...");
                         _cart.Clear();
-                        return; // Exit the method to return to main menu
+                        return; 
 
                     default:
                         var parts = input.Split(' ');
