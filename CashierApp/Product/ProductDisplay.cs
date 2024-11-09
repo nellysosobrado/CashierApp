@@ -10,7 +10,7 @@ namespace CashierApp.Product
     //Display Products
     public class ProductDisplay
     {
-        public void ShowCategories(IEnumerable<string> categories)
+        public void ShowCategories(IEnumerable<string> categories) //CATEGORIES
         {
             Console.Clear();
             Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
@@ -28,7 +28,7 @@ namespace CashierApp.Product
             Console.Write("                                                      Command: ");
         }
 
-        public void ShowProductsByCategory(IEnumerable<IProducts> products, string category, int currentPage, int pageSize)
+        public void ShowProductsByCategory(IEnumerable<IProducts> products, string category, int currentPage, int pageSize) //PRODUCTS, after categoires
         {
             Console.Clear();
             Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
@@ -42,10 +42,7 @@ namespace CashierApp.Product
             var pagedProducts = products.Skip(currentPage * pageSize).Take(pageSize);
             foreach (var product in pagedProducts)
             {
-                // Trunkera produktnamn om det är längre än 17 tecken
                 string productName = product.Name.Length > 17 ? product.Name.Substring(0, 17) + "…" : product.Name;
-
-                // Skriv ut produkten i format
                 Console.WriteLine($"                                    {product.ProductID,-5} │ {productName,-17} │ {product.Price,8:C} │ {product.PriceType}");
             }
 
@@ -55,7 +52,7 @@ namespace CashierApp.Product
             Console.Write("                                                      Command: ");
         }
 
-        public void ShowNoProductsMessage(string category)
+        public void ShowNoProductsMessage(string category) //If there's no products
         {
             Console.Clear();
             Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
@@ -65,7 +62,7 @@ namespace CashierApp.Product
             CenterText("Press any key to return to categories...");
         }
 
-        private void CenterText(string text)
+        private void CenterText(string text) //Design
         {
             int windowWidth = Console.WindowWidth;
             int leftPadding = (windowWidth - text.Length) / 2;

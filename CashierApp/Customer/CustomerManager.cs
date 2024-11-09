@@ -22,7 +22,12 @@ namespace CashierApp.Customer
         private readonly PAY _paymentService;
         private List<(IProducts Product, int Quantity)> _cart = new List<(IProducts Product, int Quantity)>();
 
-        public CustomerManager(ProductService productService, PAY paymentService, IErrorManager errorManager, ProductDisplay productDisplay, NewCustomer newCustomer)
+        //Constructor
+        public CustomerManager
+            (ProductService productService, PAY paymentService,
+            IErrorManager errorManager, ProductDisplay productDisplay,
+            NewCustomer newCustomer
+            )
         {
             _newCustomer = newCustomer;
             _productService = productService;
@@ -30,7 +35,7 @@ namespace CashierApp.Customer
             _errorManager = errorManager;
             _productDisplay = productDisplay;
         }
-        public void ShowProductCategoriesAndProducts()
+        public void ShowProductCatalog() //Categories & their products information
         {
             while (true)
             {
@@ -42,10 +47,8 @@ namespace CashierApp.Customer
 
                if (input == "c")
                 {
-                    
                     return;
                 }
-
                 var products = _productService.GetProductsByCategory(input);
 
                 if (products.Any())
@@ -107,7 +110,7 @@ namespace CashierApp.Customer
                 }
             }
         }
-        public void HandleCustomer()
+        public void HandleCustomer() //NEW CUSTOMER
         {
             while (true)
             {
@@ -131,7 +134,7 @@ namespace CashierApp.Customer
                         return; 
 
                     case "1":
-                        ShowProductCategoriesAndProducts();
+                        ShowProductCatalog();
                         _newCustomer.ShowCart(_cart);
 
                         break;
@@ -184,7 +187,7 @@ namespace CashierApp.Customer
                 }
             }
         }
-        private decimal CalculateTotalPrice(List<(IProducts Product, int Quantity)> cart)
+        private decimal CalculateTotalPrice(List<(IProducts Product, int Quantity)> cart) //TOTAL PRICE
         {
             decimal total = 0;
             foreach (var item in cart)
@@ -193,7 +196,7 @@ namespace CashierApp.Customer
             }
             return total;
         }
-        public void ShowCart()
+        public void ShowCart() // LIVE CART
         {
             Console.WriteLine("\nCurrent cart:");
             foreach (var item in _cart)
