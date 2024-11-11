@@ -139,3 +139,27 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 7
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-11 16:51:13
+--------------------------
+Product             Price
+1x Orange           1,49 kr
+1x Chicken          5,99 kr
+...........................
+
+Total Amount: 7,48 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

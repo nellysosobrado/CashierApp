@@ -31,7 +31,7 @@ namespace CashierApp.DI
             builder.RegisterType<CashierSystemApp>().AsSelf();
             builder.RegisterType<ProductDisplay>().AsSelf();
             builder.RegisterType<CartDisplay>().AsSelf();
-
+            builder.RegisterType<ProductCatalog>().AsSelf();
 
         }
     }

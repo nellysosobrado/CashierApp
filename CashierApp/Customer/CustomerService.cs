@@ -20,13 +20,14 @@ namespace CashierApp.Customer
         private readonly IErrorManager _errorManager;
         private readonly ProductService _productService;
         private readonly PAY _paymentService;
+        private readonly ProductCatalog _productCatalog;
         private List<(IProducts Product, int Quantity)> _cart = new List<(IProducts Product, int Quantity)>();
 
         //Constructor
         public CustomerService
             (ProductService productService, PAY paymentService,
             IErrorManager errorManager, ProductDisplay productDisplay,
-            CartDisplay newCustomer
+            CartDisplay newCustomer, ProductCatalog productCatalog
             )
         {
             _newCustomer = newCustomer;
@@ -34,82 +35,9 @@ namespace CashierApp.Customer
             _paymentService = paymentService;
             _errorManager = errorManager;
             _productDisplay = productDisplay;
+            _productCatalog = productCatalog;
         }
-        public void ShowProductCatalog() //Categories & their products information
-        {
-            while (true)
-            {
-                Console.Clear();
-                var categories = _productService.GetDistinctCategories();
-                _productDisplay.ShowCategories(categories);
-
-                string input = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
-
-               if (input == "c")
-                {
-                    return;
-                }
-                var products = _productService.GetProductsByCategory(input);
-
-                if (products.Any())
-                {
-                    int pageSize = 5; 
-                    int currentPage = 0;
-                    bool browsing = true;
-
-                    while (browsing)
-                    {
-                        _productDisplay.ShowProductsByCategory(products, input, currentPage, pageSize);
-
-                        string command = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
-
-                        switch (command)
-                        {
-                            case "n":
-                                if ((currentPage + 1) * pageSize < products.Count())
-                                {
-                                    currentPage++;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("You are on the last page. Press any key to continue...");
-                                    Console.ReadKey();
-                                }
-                                break;
-
-                            case "p":
-                                if (currentPage > 0)
-                                {
-                                    currentPage--;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("You are on the first page. Press any key to continue...");
-                                    Console.ReadKey();
-                                }
-                                break;
-
-                            case "r":
-                                browsing = false;
-                                break;
-
-                            case "c":
-                                return;
-
-                            default:
-                                Console.WriteLine("Invalid command. Press any key to try again...");
-                                Console.ReadKey();
-                                break;
-                        }
-                    }
-                }
-                else
-                {
-                    _productDisplay.ShowNoProductsMessage(input);
-                    Console.ReadKey();
-                }
-            }
-        }
+             
         public void HandleCustomer() //NEW CUSTOMER
         {
             while (true)
@@ -135,7 +63,7 @@ namespace CashierApp.Customer
                         return; 
 
                     case "1":
-                        ShowProductCatalog();
+                        _productCatalog.ShowProductCatalog();
                         _newCustomer.ShowCart(_cart);
 
                         break;
