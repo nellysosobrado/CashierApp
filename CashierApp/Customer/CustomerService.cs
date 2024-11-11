@@ -15,7 +15,7 @@ namespace CashierApp.Customer
 {
     public class CustomerService
     {
-        private readonly NewCustomer _newCustomer;
+        private readonly CartDisplay _newCustomer;
         private readonly ProductDisplay _productDisplay;
         private readonly IErrorManager _errorManager;
         private readonly ProductService _productService;
@@ -26,7 +26,7 @@ namespace CashierApp.Customer
         public CustomerService
             (ProductService productService, PAY paymentService,
             IErrorManager errorManager, ProductDisplay productDisplay,
-            NewCustomer newCustomer
+            CartDisplay newCustomer
             )
         {
             _newCustomer = newCustomer;
@@ -196,15 +196,6 @@ namespace CashierApp.Customer
             }
             return total;
         }
-        public void ShowCart() // LIVE CART
-        {
-            Console.WriteLine("\nCurrent cart:");
-            foreach (var item in _cart)
-            {
-                Console.WriteLine($"Product: {item.Product.ProductName}, Quantity: {item.Quantity}, Total: {item.Product.Price * item.Quantity:C}");
-            }
-            
-            Console.WriteLine();
-        }
+        
     }
 }

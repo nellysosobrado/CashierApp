@@ -36,7 +36,7 @@ namespace CashierApp.Menu
             var productService = new ProductService();
             var paymentService = CreatePaymentService();
             var productDisplay = new ProductDisplay();
-            var newCustomer = new NewCustomer();
+            var newCustomer = new CartDisplay();
             return new CustomerService(productService, paymentService, _errorManager, productDisplay, newCustomer);
         }
 

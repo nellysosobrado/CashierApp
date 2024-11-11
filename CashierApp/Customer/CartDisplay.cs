@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Customer
 {
-    public class NewCustomer
+    public class CartDisplay
     {
         public void ShowCart(List<(IProducts Product, int Quantity)> cart)
         {
