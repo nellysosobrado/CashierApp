@@ -128,9 +128,10 @@ namespace CashierApp.Customer
                 {
                     case "PAY":
                         Console.WriteLine("\nProcessing payment...");
-                        decimal totalPrice = CalculateTotalPrice(_cart);
+                        decimal totalPrice = PriceCalculator.CalculateTotalPrice(_cart);
                         _paymentService.ProcessPayment(_cart, totalPrice);
                         _cart.Clear();
+                        
                         return; 
 
                     case "1":

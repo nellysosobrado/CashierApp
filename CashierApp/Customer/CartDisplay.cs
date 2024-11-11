@@ -20,24 +20,22 @@ namespace CashierApp.Customer
             Console.WriteLine("                                    ID    │ Product         │   Qty     │    Total");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
 
-            decimal grandTotal = 0;
             foreach (var item in cart)
             {
                 decimal total = item.Product.Price * item.Quantity;
-                
+
                 string productName = item.Product.ProductName.Length > 17 ? item.Product.ProductName.Substring(0, 17) + "…" : item.Product.ProductName;
 
-                
                 string quantityDisplay = item.Quantity.ToString();
                 if (quantityDisplay.Length > 7)
                 {
-                    quantityDisplay = quantityDisplay.Substring(0, 6) + "…"; 
+                    quantityDisplay = quantityDisplay.Substring(0, 6) + "…";
                 }
 
                 Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {total}");
-                grandTotal += total;
+                
             }
-
+            decimal grandTotal = PriceCalculator.CalculateTotalPrice(cart);
             
             //if (grandTotal > 50)
             //{
