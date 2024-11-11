@@ -38,7 +38,8 @@ namespace CashierApp.Menu
             var productDisplay = new ProductDisplay();
             var newCustomer = new CartDisplay();
             var productCatalog = new ProductCatalog(productService,productDisplay);
-            return new CustomerService(productService, paymentService, _errorManager, productDisplay, newCustomer, productCatalog);
+            var customerInputChecker = new CustomerInputChecker(productService, errorManager);
+            return new CustomerService(productService, paymentService, _errorManager, productDisplay, newCustomer, productCatalog, customerInputChecker);
         }
 
         public static AdminManager CreateAdminManager()

@@ -21,13 +21,14 @@ namespace CashierApp.Customer
         private readonly ProductService _productService;
         private readonly PAY _paymentService;
         private readonly ProductCatalog _productCatalog;
+        private readonly CustomerInputChecker _CustomerInputChecker;
         private List<(IProducts Product, int Quantity)> _cart = new List<(IProducts Product, int Quantity)>();
 
         //Constructor
         public CustomerService
             (ProductService productService, PAY paymentService,
             IErrorManager errorManager, ProductDisplay productDisplay,
-            CartDisplay newCustomer, ProductCatalog productCatalog
+            CartDisplay newCustomer, ProductCatalog productCatalog, CustomerInputChecker CustomerInputChecker
             )
         {
             _newCustomer = newCustomer;
@@ -36,9 +37,9 @@ namespace CashierApp.Customer
             _errorManager = errorManager;
             _productDisplay = productDisplay;
             _productCatalog = productCatalog;
+            _CustomerInputChecker = CustomerInputChecker;
         }
-             
-        public void HandleCustomer() //NEW CUSTOMER
+        public void HandleCustomer()
         {
             while (true)
             {
@@ -47,82 +48,70 @@ namespace CashierApp.Customer
 
                 if (string.IsNullOrEmpty(input))
                 {
-                    _errorManager.DisplayError("Input cannot be empty. Press any key to try again");
-                    Console.ReadKey();
+                    DisplayEmptyInputError();
                     continue;
                 }
 
-                switch (input?.ToUpper())
+                if (!ProcessCustomerInput(input))
                 {
-                    case "PAY":
-                        Console.WriteLine("\nProcessing payment...");
-                        decimal totalPrice = PriceCalculator.CalculateTotalPrice(_cart);
-                        _paymentService.ProcessPayment(_cart, totalPrice);
-                        _cart.Clear();
-                        
-                        return; 
-
-                    case "1":
-                        _productCatalog.ShowProductCatalog();
-                        _newCustomer.ShowCart(_cart);
-
-                        break;
-
-                    case "2":
-                        Console.WriteLine("\nReturning to Main Menu...");
-                        _cart.Clear();
-                        return;
-
-                    default:
-                        ProcessProductInput(input); 
-                        break;
+                    continue;
                 }
             }
         }
-        private void ProcessProductInput(string input)
+
+        private bool ProcessCustomerInput(string input)
         {
-            var parts = input.Split(' ');
+            switch (input.ToUpper())
+            {
+                case "PAY":
+                    ProcessPayment();
+                    return false;
 
-           
-            if (parts.Length == 2 && int.TryParse(parts[1], out int quantity))
-            {
-              
-                if (int.TryParse(parts[0], out int productId))
-                {
-                    var product = _productService.GetProductById(productId);
-                    if (product != null)
+                case "1":
+                    DisplayProductCatalog();
+                    return true;
+
+                case "2":
+                    ReturnToMainMenu();
+                    return false;
+
+                default:
+                    var result = _CustomerInputChecker.ProcessProductInput(input);
+                    if (result.HasValue)
                     {
-                        _cart.Add((product, quantity));
+                        _cart.Add(result.Value);
                         _newCustomer.ShowCart(_cart);
                     }
-                    else
-                    {
-                        _errorManager.DisplayError("Product ID does not exist. Press any key to try again");
-                        Console.ReadKey();
-                    }
-                }
-                else
-                {
-                  
-                    var productName = parts[0].ToLower();
-                    var product = _productService.GetProductByName(productName);
-                    if (product != null)
-                    {
-                        _cart.Add((product, quantity));
-                        _newCustomer.ShowCart(_cart);
-                    }
-                    else
-                    {
-                        _errorManager.DisplayError("Product name does not exist. Press any key to try again");
-                        Console.ReadKey();
-                    }
-                }
-            }
-            else
-            {
-                _errorManager.DisplayError("Invalid input. Please enter a valid product ID or name followed by quantity. Press any key to try again");
-                Console.ReadKey();
+                    return true;
             }
         }
+
+        private void ProcessPayment()
+        {
+            Console.WriteLine("\nProcessing payment...");
+            decimal totalPrice = PriceCalculator.CalculateTotalPrice(_cart);
+            _paymentService.ProcessPayment(_cart, totalPrice);
+            _cart.Clear();
+        }
+
+        private void DisplayProductCatalog()
+        {
+            _productCatalog.ShowProductCatalog();
+            _newCustomer.ShowCart(_cart);
+        }
+
+        private void ReturnToMainMenu()
+        {
+            Console.WriteLine("\nReturning to Main Menu...");
+            _cart.Clear();
+        }
+
+        private void DisplayEmptyInputError()
+        {
+            _errorManager.DisplayError("Input cannot be empty. Press any key to try again");
+            Console.ReadKey();
+        }
+
     }
+
 }
