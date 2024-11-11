@@ -71,51 +71,58 @@ namespace CashierApp.Customer
                     case "2":
                         Console.WriteLine("\nReturning to Main Menu...");
                         _cart.Clear();
-                        return; 
+                        return;
 
                     default:
-                        var parts = input.Split(' ');
-                        if (parts.Length == 2 && int.TryParse(parts[1], out int quantity))
-                        {
-                            if (int.TryParse(parts[0], out int productId))
-                            {
-                                var product = _productService.GetProductById(productId);
-                                if (product != null)
-                                {
-                                    _cart.Add((product, quantity));
-                                    _newCustomer.ShowCart(_cart);
-                                }
-                                else
-                                {
-                                    _errorManager.DisplayError("Product ID does not exist. Press any key to try again");
-                                    Console.ReadKey();
-                                }
-                            }
-                            else
-                            {
-                                var productName = parts[0].ToLower();
-                                var product = _productService.GetProductByName(productName);
-                                if (product != null)
-                                {
-                                    _cart.Add((product, quantity));
-                                    _newCustomer.ShowCart(_cart);
-                                }
-                                else
-                                {
-                                    _errorManager.DisplayError("Product name does not exist. Press any key to try again");
-                                    Console.ReadKey();
-                                }
-                            }
-                        }
-                        else
-                        {
-                            _errorManager.DisplayError("Invalid input. Please enter a valid product ID or name followed by quantity. Press any key to try again");
-                            Console.ReadKey();
-                        }
+                        ProcessProductInput(input); 
                         break;
                 }
             }
         }
+        private void ProcessProductInput(string input)
+        {
+            var parts = input.Split(' ');
 
+           
+            if (parts.Length == 2 && int.TryParse(parts[1], out int quantity))
+            {
+              
+                if (int.TryParse(parts[0], out int productId))
+                {
+                    var product = _productService.GetProductById(productId);
+                    if (product != null)
+                    {
+                        _cart.Add((product, quantity));
+                        _newCustomer.ShowCart(_cart);
+                    }
+                    else
+                    {
+                        _errorManager.DisplayError("Product ID does not exist. Press any key to try again");
+                        Console.ReadKey();
+                    }
+                }
+                else
+                {
+                  
+                    var productName = parts[0].ToLower();
+                    var product = _productService.GetProductByName(productName);
+                    if (product != null)
+                    {
+                        _cart.Add((product, quantity));
+                        _newCustomer.ShowCart(_cart);
+                    }
+                    else
+                    {
+                        _errorManager.DisplayError("Product name does not exist. Press any key to try again");
+                        Console.ReadKey();
+                    }
+                }
+            }
+            else
+            {
+                _errorManager.DisplayError("Invalid input. Please enter a valid product ID or name followed by quantity. Press any key to try again");
+                Console.ReadKey();
+            }
+        }
     }
 }

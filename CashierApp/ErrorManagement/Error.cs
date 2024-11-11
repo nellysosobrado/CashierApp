@@ -16,17 +16,16 @@ namespace CashierApp.ErrorManagement
             int leftPadding = (windowWidth - fullMessage.Length) / 2;
             if (leftPadding < 0) leftPadding = 0;
 
-            // Flytta kursorn till raden precis ovanför där "Command:" visas
-            int commandLine = Console.CursorTop; // Spara den nuvarande positionen (där "Command:" är)
-            int errorLine = commandLine - 1; // Visa felmeddelandet precis ovanför
+            int commandLine = Console.CursorTop; 
+            int errorLine = commandLine - 1; 
             Console.SetCursorPosition(leftPadding, errorLine);
 
-            // Skriv ut felmeddelandet
+           
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(fullMessage);
             Console.ResetColor();
 
-            // Flytta tillbaka kursorn till "Command:"-raden för användarens input
+            
             Console.SetCursorPosition(0, commandLine);
         }
 
