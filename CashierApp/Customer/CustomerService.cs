@@ -188,15 +188,6 @@ namespace CashierApp.Customer
                 }
             }
         }
-        private decimal CalculateTotalPrice(List<(IProducts Product, int Quantity)> cart) //TOTAL PRICE
-        {
-            decimal total = 0;
-            foreach (var item in cart)
-            {
-                total += item.Product.Price * item.Quantity;
-            }
-            return total;
-        }
-        
+
     }
 }
