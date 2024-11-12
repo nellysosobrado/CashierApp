@@ -1,0 +1,23 @@
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 1
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-12 11:31:43
+--------------------------
+Product             Price
+2x Banana 5-7 pack Class 1  3,98 kr
+...........................
+
+Total Amount: 3,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

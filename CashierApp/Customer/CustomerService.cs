@@ -15,6 +15,7 @@ namespace CashierApp.Customer
 {
     public class CustomerService
     {
+        public bool IsReturningToMenu { get; private set; }
         private readonly CartDisplay _newCustomer;
         private readonly ProductDisplay _productDisplay;
         private readonly IErrorManager _errorManager;
@@ -41,7 +42,9 @@ namespace CashierApp.Customer
         }
         public void HandleCustomer()
         {
-            while (true)
+            IsReturningToMenu = false; 
+
+            while (!IsReturningToMenu)
             {
                 _newCustomer.ShowCart(_cart);
                 var input = Console.ReadLine()?.Trim();
@@ -54,7 +57,7 @@ namespace CashierApp.Customer
 
                 if (!ProcessCustomerInput(input))
                 {
-                    continue;
+                    break;
                 }
             }
         }
@@ -104,6 +107,7 @@ namespace CashierApp.Customer
         {
             Console.WriteLine("\nReturning to Main Menu...");
             _cart.Clear();
+            IsReturningToMenu = true;
         }
 
         private void DisplayEmptyInputError()

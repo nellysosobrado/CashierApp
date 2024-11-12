@@ -1,4 +1,5 @@
-﻿using CashierApp.Product.Interfaces;
+﻿using CashierApp.Payment;
+using CashierApp.Product.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

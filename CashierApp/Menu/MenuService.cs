@@ -56,6 +56,16 @@ namespace CashierApp.Menu
                 case 0:
                     Console.WriteLine("You selected: New Customer\n");
                     _customerHandler.HandleCustomer();
+                    if (_customerHandler.IsReturningToMenu)
+                    {
+                        break; 
+                    }
+                    else
+                    {
+                        Console.WriteLine("Exiting...");
+                        selectedIndex = 2;
+                    }
+                    
                     break;
                 case 1:
                     Console.WriteLine("You selected: Admin Settings\n");
