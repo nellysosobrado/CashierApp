@@ -22,21 +22,21 @@ namespace CashierApp.Product.Services
         {
             _products = new List<IProducts>
             {
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana 5-7 pack Class 1", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 102, "Orange", 1.49m, "piece"),
-                ProductFactory.CreateProduct("meat", 103, "Chicken", 5.99m, "kg"),
-                ProductFactory.CreateProduct("drink", 104, "Milk", 1.49m, "liter"),
-                ProductFactory.CreateProduct("bakery", 105, "Bread", 2.49m, "piece"),
-                ProductFactory.CreateProduct("dairy", 106, "Cheese", 3.99m, "kg"),
-                ProductFactory.CreateProduct("bajskorv", 107, "bajs", 0m, "piece")
+                ProductFactory.CreateProduct("fruit & greens", 1, "Banana", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 2, "Orange", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 3, "Apple", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 4, "Caesar Sallad", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 5, "Onion", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 6, "Garlic", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 7, "Ginger", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 8, "Grapes", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 9, "Clementines", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 10,"Mushroom", 1.49m, "piece"),
+                ProductFactory.CreateProduct("meat", 11, "Chicken", 5.99m, "kg"),
+                ProductFactory.CreateProduct("drink", 12, "Milk", 1.49m, "liter"),
+                ProductFactory.CreateProduct("bakery", 13, "Bread", 2.49m, "piece"),
+                ProductFactory.CreateProduct("dairy", 14, "Cheese", 3.99m, "kg"),
+                ProductFactory.CreateProduct("bajskorv", 15, "bajs", 0m, "piece")
             };
         }
         public IProducts GetProductByName(string productName)

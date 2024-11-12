@@ -35,7 +35,15 @@ namespace CashierApp.ErrorManagement
                 return null;
             }
 
-            int quantity = int.Parse(parts[1]); // Vi vet nu att detta är ett giltigt int-värde
+            int quantity = int.Parse(parts[1]);
+
+            if (quantity == 0)
+            {
+                _errorManager.DisplayError("Quantity cannot be zero. Please enter a valid quantity.");
+                Console.ReadKey();
+                return null;
+            }
+
             ProductSearchDelegate searchMethod = DetermineSearchMethod(parts[0]);
             var product = searchMethod(parts[0]);
 
