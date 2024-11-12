@@ -1,5 +1,4 @@
-﻿using CashierApp.ErrorManagement;
-using CashierApp.Product.Interfaces;
+﻿using CashierApp.Product.Interfaces;
 using CashierApp.Product.Services;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashierApp
+namespace CashierApp.ErrorManagement
 {
     public delegate IProducts ProductSearchDelegate(string input);
 
@@ -62,7 +61,7 @@ namespace CashierApp
 
         private IProducts SearchById(string input)
         {
-            int productId = int.Parse(input); 
+            int productId = int.Parse(input);
             return _productService.GetProductById(productId);
         }
 
