@@ -39,7 +39,7 @@ namespace CashierApp.ErrorManagement
 
             if (quantity == 0)
             {
-                _errorManager.DisplayError("Quantity cannot be zero. Please enter a valid quantity.");
+                _errorManager.DisplayError("Quantity cannot be zero. Press any key to try again.");
                 Console.ReadKey();
                 return null;
             }
