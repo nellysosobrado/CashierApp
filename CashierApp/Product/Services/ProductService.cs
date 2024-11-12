@@ -58,5 +58,10 @@ namespace CashierApp.Product.Services
         {
             return _products.Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase));
         }
+        public bool CategoryExists(string categoryName)
+        {
+            return _products.Any(p => p.Category.Equals(categoryName, StringComparison.OrdinalIgnoreCase));
+        }
+
     }
 }

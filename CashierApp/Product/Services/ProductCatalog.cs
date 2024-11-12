@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CashierApp.ErrorManagement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,13 @@ namespace CashierApp.Product.Services
     {
         private readonly ProductDisplay _productDisplay;
         private readonly ProductService _productService;
+        private readonly IErrorManager _errorManager;
 
-        public ProductCatalog(ProductService productService, ProductDisplay productDisplay)
+        public ProductCatalog(ProductService productService, ProductDisplay productDisplay, IErrorManager errorManager = null)
         {
             _productService = productService;
             _productDisplay = productDisplay;
+            _errorManager = errorManager;
         }
 
         public void ShowProductCatalog()
@@ -86,9 +89,14 @@ namespace CashierApp.Product.Services
                         }
                     }
                 }
+                else if(input == string.Empty)
+                {
+                    _errorManager.DisplayError($" Invalid. Input cannot be empty. Press any key to try again...");
+                    Console.ReadKey();
+                }
                 else
                 {
-                    _productDisplay.ShowNoProductsMessage(input);
+                    _errorManager.DisplayError($"Category '{input}' does not exist. Press any key to try again...");
                     Console.ReadKey();
                 }
             }

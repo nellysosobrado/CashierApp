@@ -24,6 +24,8 @@ namespace CashierApp.ErrorManagement
         /// <summary>
         /// Processar användarens produktinmatning, validerar format och letar efter produkten.
         /// </summary>
+        /// 
+
         public (IProducts Product, int Quantity)? ProcessProductInput(string input)
         {
             var parts = input.Split(' ');
@@ -44,12 +46,20 @@ namespace CashierApp.ErrorManagement
                 return null;
             }
 
+            // Kontrollera om användaren angav en kategori som inte finns
+            if (!string.IsNullOrEmpty(parts[0]) && !_productService.CategoryExists(parts[0]))
+            {
+                _errorManager.DisplayError($"Category '{parts[0]}' does not exist. Please enter a valid category.");
+                Console.ReadKey();
+                return null;
+            }
+
             ProductSearchDelegate searchMethod = DetermineSearchMethod(parts[0]);
             var product = searchMethod(parts[0]);
 
             if (product == null)
             {
-                _errorManager.DisplayError("Product does not exist. Press any key to try again");
+                _errorManager.DisplayError("Product does not exist. Press any key to try again.");
                 Console.ReadKey();
                 return null;
             }

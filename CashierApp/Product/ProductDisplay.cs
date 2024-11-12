@@ -52,16 +52,6 @@ namespace CashierApp.Product
             Console.Write("                                                      Command: ");
         }
 
-        public void ShowNoProductsMessage(string category) //If there's no products
-        {
-            Console.Clear();
-            Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
-            Console.WriteLine($"                                   ║      NO PRODUCTS IN CATEGORY: '{category.ToUpper()}'     ║");
-            Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
-            Console.WriteLine("                                   ────────────────────────────────────────────────");
-            CenterText("Press any key to return to categories...");
-        }
-
         private void CenterText(string text) //Design
         {
             int windowWidth = Console.WindowWidth;
