@@ -27,12 +27,6 @@ namespace CashierApp
         {
             _menuHandler.RunMenu();
 
-            // Customer
-
-            //Admin settings
-
-            //Close program
-
         }
     }
 }

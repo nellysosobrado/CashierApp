@@ -21,3 +21,49 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 2
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-12 19:22:03
+--------------------------
+Product             Price
+100x Orange          199,00 kr
+...........................
+
+Total Amount: 199,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 3
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-12 19:22:12
+--------------------------
+Product             Price
+2000x Orange          3 980,00 kr
+...........................
+
+Total Amount: 3 980,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
