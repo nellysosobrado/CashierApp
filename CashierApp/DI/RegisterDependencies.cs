@@ -23,36 +23,54 @@ namespace CashierApp.DI
             // Get the assembly containing all types in the current project
             var assembly = Assembly.GetExecutingAssembly();
 
-            
+            // 1. Register services with no dependencies)
             builder.RegisterAssemblyTypes(assembly)
                    .Where(t => t.Namespace == "CashierApp.ErrorManagement")
                    .AsImplementedInterfaces()
                    .AsSelf()
-                   .SingleInstance(); 
+                   .SingleInstance(); // Example: IErrorManager
 
-            // List of namespaces for registering related types to reduce duplicate code
+            builder.RegisterAssemblyTypes(assembly)
+                   .Where(t => t.Namespace != null && t.Namespace.StartsWith("CashierApp.Product"))
+                   .AsImplementedInterfaces()
+                   .AsSelf()
+                   .SingleInstance(); // Example: IProductService
+
+            // 2. Register services that depend on foundational services)
+            builder.RegisterType<CustomerInputChecker>().AsSelf().SingleInstance();
+
+            // 3. Register services with higher dependencies
             var namespaces = new[]
             {
-                "CashierApp.Product",
-                "CashierApp.Product.Services",
                 "CashierApp.Customer",
                 "CashierApp.Payment",
                 "CashierApp.Menu",
                 "CashierApp.Admin"
             };
 
-            // Register all types based on the namespaces list
             foreach (var ns in namespaces)
             {
                 builder.RegisterAssemblyTypes(assembly)
-                       .Where(t => t.Namespace == ns)
-                       .AsSelf(); 
+                       .Where(t => t.Namespace != null && t.Namespace.StartsWith(ns))
+                       .AsImplementedInterfaces()
+                       .AsSelf();
             }
 
             builder.RegisterType<MenuService>().As<IMenuService>().SingleInstance();
 
-            // Register the main application program
+            // 4. Register the main application program
             builder.RegisterType<CashierSystemApp>().AsSelf();
+
+            // Debug: showcase all dependencies
+            builder.RegisterBuildCallback(container =>
+            {
+                Console.WriteLine("Registered dependencies:");
+                foreach (var registration in container.ComponentRegistry.Registrations)
+                {
+                    Console.WriteLine($"- {registration.Activator.LimitType}");
+                }
+                Console.ReadLine();
+            });
         }
     }
 }

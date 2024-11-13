@@ -14,7 +14,7 @@ namespace CashierApp.Product.Services
     /// <summary>
     /// Manages the productdata 
     /// </summary>
-    public class ProductService
+    public class ProductService : IProductService
     {
         private readonly List<IProducts> _products;
 

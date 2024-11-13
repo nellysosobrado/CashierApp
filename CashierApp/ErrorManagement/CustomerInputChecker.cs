@@ -16,12 +16,12 @@ namespace CashierApp.ErrorManagement
 
     public delegate IProducts ProductSearchDelegate(string input);
 
-    public class CustomerInputChecker
+    public class CustomerInputChecker 
     {
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
         private readonly IErrorManager _errorManager;
 
-        public CustomerInputChecker(ProductService productService, IErrorManager errorManager)
+        public CustomerInputChecker(IProductService productService, IErrorManager errorManager)
         {
             _productService = productService;
             _errorManager = errorManager;
@@ -67,6 +67,7 @@ namespace CashierApp.ErrorManagement
 
         private ProductSearchDelegate DetermineSearchMethod(string input)
         {
+            //Depending on user INPUT
             return int.TryParse(input, out _) ? SearchById : SearchByName;
         }
 
