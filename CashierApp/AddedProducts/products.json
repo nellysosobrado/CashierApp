@@ -1,0 +1,42 @@
+[
+  {
+    "ProductID": 1,
+    "ProductName": "Banana",
+    "Price": 1.99,
+    "PriceType": "piece",
+    "Quantity": 0,
+    "Category": "fruit \u0026 greens"
+  },
+  {
+    "ProductID": 2,
+    "ProductName": "Orange",
+    "Price": 1.99,
+    "PriceType": "piece",
+    "Quantity": 0,
+    "Category": "fruit \u0026 greens"
+  },
+  {
+    "ProductID": 3,
+    "ProductName": "Apple",
+    "Price": 1.99,
+    "PriceType": "piece",
+    "Quantity": 0,
+    "Category": "fruit \u0026 greens"
+  },
+  {
+    "ProductID": 4,
+    "ProductName": "Chicken",
+    "Price": 5.99,
+    "PriceType": "kg",
+    "Quantity": 0,
+    "Category": "meat"
+  },
+  {
+    "ProductID": 110,
+    "ProductName": "slay2025",
+    "Price": 1,
+    "PriceType": "piece",
+    "Quantity": 0,
+    "Category": "bajskorv"
+  }
+]

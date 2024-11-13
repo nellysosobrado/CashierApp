@@ -13,14 +13,14 @@ namespace CashierApp.Product
     {
         public override IProducts Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            // Deserialisera till den konkreta klassen Product
+            
             var product = JsonSerializer.Deserialize<Product>(ref reader, options);
             return product;
         }
 
         public override void Write(Utf8JsonWriter writer, IProducts value, JsonSerializerOptions options)
         {
-            // Serialisera den konkreta klassen
+            
             JsonSerializer.Serialize(writer, (Product)value, options);
         }
     }

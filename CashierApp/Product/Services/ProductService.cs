@@ -17,11 +17,21 @@ namespace CashierApp.Product.Services
     /// </summary>
     public class ProductService : IProductService
     {
-        private const string FilePath = "products.json";
+        private readonly string folderPath = "../../../AddedProducts"; // where it saves
+        private readonly string FilePath;
         private readonly List<IProducts> _products;
 
         public ProductService()
         {
+            //Filepath!! IT combines
+            FilePath = Path.Combine(folderPath, "products.json");
+
+            //creates a map
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
             _products = LoadProducts();
 
             if (_products == null || !_products.Any())
