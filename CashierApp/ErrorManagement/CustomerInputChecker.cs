@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace CashierApp.ErrorManagement
 {
+    //Error handler
+    //Checks user input
+    //Product
+    //Category
+    //Input : RPdocutID & Quantity
+
     public delegate IProducts ProductSearchDelegate(string input);
 
     public class CustomerInputChecker
@@ -20,11 +26,11 @@ namespace CashierApp.ErrorManagement
             _productService = productService;
             _errorManager = errorManager;
         }
+        private bool IsValidInput(string[] parts)
+        {
+            return parts.Length == 2 && int.TryParse(parts[1], out _);
+        }
 
-        /// <summary>
-        /// Processar användarens produktinmatning, validerar format och letar efter produkten.
-        /// </summary>
-        /// 
 
         public (IProducts Product, int Quantity)? ProcessProductInput(string input)
         {
@@ -46,14 +52,6 @@ namespace CashierApp.ErrorManagement
                 return null;
             }
 
-            // Kontrollera om användaren angav en kategori som inte finns
-            if (!string.IsNullOrEmpty(parts[0]) && !_productService.CategoryExists(parts[0]))
-            {
-                _errorManager.DisplayError($"Category '{parts[0]}' does not exist. Please enter a valid category.");
-                Console.ReadKey();
-                return null;
-            }
-
             ProductSearchDelegate searchMethod = DetermineSearchMethod(parts[0]);
             var product = searchMethod(parts[0]);
 
@@ -65,11 +63,6 @@ namespace CashierApp.ErrorManagement
             }
 
             return (product, quantity);
-        }
-
-        private bool IsValidInput(string[] parts)
-        {
-            return parts.Length == 2 && int.TryParse(parts[1], out _);
         }
 
         private ProductSearchDelegate DetermineSearchMethod(string input)

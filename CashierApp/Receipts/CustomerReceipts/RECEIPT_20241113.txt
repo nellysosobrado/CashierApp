@@ -1,0 +1,25 @@
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 1
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-13 09:26:43
+--------------------------
+Product             Price
+1x Banana           1,99 kr
+1x Banana           1,99 kr
+1x bajs             0,00 kr
+...........................
+
+Total Amount: 3,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
