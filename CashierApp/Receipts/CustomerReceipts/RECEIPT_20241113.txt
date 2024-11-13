@@ -46,3 +46,95 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 3
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-13 17:44:37
+--------------------------
+Product             Price
+1x dev              1,00 kr
+...........................
+
+Total Amount: 1,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 4
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-13 17:49:20
+--------------------------
+Product             Price
+1x dev              1,00 kr
+...........................
+
+Total Amount: 1,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 5
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-13 17:49:45
+--------------------------
+Product             Price
+1x dev              1,00 kr
+...........................
+
+Total Amount: 1,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 6
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-13 17:50:43
+--------------------------
+Product             Price
+1x slay             1,00 kr
+...........................
+
+Total Amount: 1,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

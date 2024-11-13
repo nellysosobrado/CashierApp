@@ -42,9 +42,9 @@ namespace CashierApp.Menu
             return new CustomerService(productService, paymentService, _errorManager, productDisplay, newCustomer, productCatalog, customerInputChecker);
         }
 
-        public static AdminManager CreateAdminManager()
+        public AdminManager CreateAdminManager(ProductService productService)
         {
-            return new AdminManager();
+            return new AdminManager(productService);
         }
 
         public static MenuDisplay CreateMenuDisplay()
