@@ -57,6 +57,25 @@ namespace CashierApp.Product.Services
                 SaveProducts();
             }
         }
+        public void UpdateProductName(int productId, string newName)
+        {
+            // Hitta produkten i listan
+            var product = _products.FirstOrDefault(p => p.ProductID == productId);
+
+            if (product == null)
+            {
+                Console.WriteLine($"ERROR: Product with ID {productId} does not exist.");
+                return;
+            }
+
+            // Uppdatera produktens namn
+            product.ProductName = newName;
+
+            // Spara uppdateringarna till JSON-filen
+            SaveProducts();
+
+            Console.WriteLine($"Product ID {productId} has been updated with new name: {newName}");
+        }
 
         public void AddProduct(string category, int productId, string productName, decimal price, string priceType)
         {
@@ -75,7 +94,6 @@ namespace CashierApp.Product.Services
         private void SaveProducts()
         {
             var options = new JsonSerializerOptions { WriteIndented = true };
-            options.Converters.Add(new ProductConverter());
             var json = JsonSerializer.Serialize(_products, options);
             File.WriteAllText(FilePath, json);
         }

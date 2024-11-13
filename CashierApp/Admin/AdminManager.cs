@@ -17,8 +17,24 @@ namespace CashierApp.Admin
         {
             _productService = productService;
         }
-
+        
         public void HandleAdmin()
+        {
+            Console.WriteLine("1. Add Product" +
+                "\n2.Edit product");
+            string input = Console.ReadLine();
+
+            if (input == "1")
+            {
+                AddProduct();
+            }
+            else if (input == "2")
+            {
+                UpdateProductNameFlow();
+            }
+
+        }
+        public void AddProduct()
         {
             Console.WriteLine("ADD NEW PRODUCT");
             Console.Write("Category: ");
@@ -45,5 +61,34 @@ namespace CashierApp.Admin
             _productService.AddProduct(category, productId, productName, price, priceType);
             Console.ReadLine();
         }
+        public void UpdateProductNameFlow()
+        {
+            Console.WriteLine("UPDATE PRODUCT NAME");
+
+ 
+            Console.Write("Enter the Product ID to update: ");
+            if (!int.TryParse(Console.ReadLine(), out int productId))
+            {
+                Console.WriteLine("Invalid ID. Please enter a valid number.");
+                return;
+            }
+
+            Console.Write("Enter the new product name: ");
+            string newName = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(newName))
+            {
+                Console.WriteLine("Product name cannot be empty.");
+                return;
+            }
+            if (_productService == null)
+            {
+                Console.WriteLine("_productService is not initialized.");
+                return;
+            }
+
+            _productService.UpdateProductName(productId, newName);
+        }
+
     }
 }
