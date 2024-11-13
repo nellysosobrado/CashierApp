@@ -13,50 +13,69 @@ namespace CashierApp.Customer
         public void DisplayCartUI(List<(IProducts Product, int Quantity)> cart)
         {
             Console.Clear();
-            Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
-            Console.WriteLine("                                   ║                     CASHIER                   ║");
-            Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
+            DisplayHeader();
+            DisplayCartItems(cart);
+            DisplayTotal(PriceCalculator.CalculateTotalPrice(cart));
+            DisplayFooter();
+            PromptCommand();
+        }
+
+        private void DisplayHeader()
+        {
+            CenterText("╔═══════════════════════════════════════════════╗");
+            CenterText("║                     CASHIER                   ║");
+            CenterText("╚═══════════════════════════════════════════════╝");
             Console.WriteLine("                                                      Current Cart");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             Console.WriteLine("                                    ID    │ Product         │   Qty     │    Total");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
+        }
 
+        private void DisplayCartItems(List<(IProducts Product, int Quantity)> cart)
+        {
             foreach (var item in cart)
             {
+                string productName = FormatProductName(item.Product.ProductName);
+                string quantityDisplay = FormatQuantity(item.Quantity);
                 decimal total = item.Product.Price * item.Quantity;
 
-                string productName = item.Product.ProductName.Length > 17 ? item.Product.ProductName.Substring(0, 17) + "…" : item.Product.ProductName;
-
-                string quantityDisplay = item.Quantity.ToString();
-                if (quantityDisplay.Length > 7)
-                {
-                    quantityDisplay = quantityDisplay.Substring(0, 6) + "…";
-                }
-
-                Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {total}");
-                
+                Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {total:C}");
             }
-            decimal TotalAmount = PriceCalculator.CalculateTotalPrice(cart);
-            
-            //if (TotalAmount > 50)
-            //{
-            //    string campaignText = "  Campaign Price                -2.00 KR (Saved)";
-            //    Console.WriteLine($"{"",35}{campaignText,50}"); // 35 mellanslag för att centrera texten i din layout
-            //}
+        }
 
+        private void DisplayTotal(decimal totalAmount)
+        {
             Console.WriteLine("                                   ────────────────────────────────────────────────");
-            Console.WriteLine($"                                                 Total: {TotalAmount,10:C}");
+            CenterText($"Total: {totalAmount,10:C}");
+        }
+
+        private void DisplayFooter()
+        {
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             Console.WriteLine("                                        [1] Products    [2] Menu    [PAY] PAY");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
+        }
+
+        private void PromptCommand()
+        {
             Console.Write("                                                      Command: ");
         }
+
+        private string FormatProductName(string name)
+        {
+            return name.Length > 17 ? name.Substring(0, 17) + "…" : name;
+        }
+
+        private string FormatQuantity(int quantity)
+        {
+            string quantityDisplay = quantity.ToString();
+            return quantityDisplay.Length > 7 ? quantityDisplay.Substring(0, 6) + "…" : quantityDisplay;
+        }
+
         private void CenterText(string text)
         {
             int windowWidth = Console.WindowWidth;
-            int leftPadding = (windowWidth - text.Length) / 2;
-            if (leftPadding < 0) leftPadding = 0; 
-
+            int leftPadding = Math.Max((windowWidth - text.Length) / 2, 0);
             Console.SetCursorPosition(leftPadding, Console.CursorTop);
             Console.WriteLine(text);
         }
