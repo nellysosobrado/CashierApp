@@ -41,9 +41,19 @@ namespace CashierApp.Product.Services
                 ProductFactory.CreateProduct("fruit & greens", 1, "Banana", 1.99m, "piece"),
                 ProductFactory.CreateProduct("fruit & greens", 2, "Orange", 1.99m, "piece"),
                 ProductFactory.CreateProduct("fruit & greens", 3, "Apple", 1.99m, "piece"),
-                ProductFactory.CreateProduct("meat", 4, "Chicken", 5.99m, "kg")
+                ProductFactory.CreateProduct("fruit & greens", 4, "Caesar Sallad", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 5, "Onion", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 6, "Garlic", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 7, "Ginger", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 8, "Grapes", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 9, "Clementines", 1.99m, "piece"),
+                ProductFactory.CreateProduct("fruit & greens", 10,"Mushroom", 1.49m, "piece"),
+                ProductFactory.CreateProduct("meat", 11, "Chicken", 5.99m, "kg"),
+                ProductFactory.CreateProduct("drink", 12, "Milk", 1.49m, "liter"),
+                ProductFactory.CreateProduct("bakery", 13, "Bread", 2.49m, "piece"),
+                ProductFactory.CreateProduct("dairy", 14, "Cheese", 3.99m, "kg"),
+                ProductFactory.CreateProduct("bajskorv", 15, "bajs", 0m, "piece")
             };
-
                 SaveProducts();
             }
         }
@@ -52,14 +62,14 @@ namespace CashierApp.Product.Services
         {
             if (_products.Any(p => p.ProductID == productId))
             {
-                Console.WriteLine("En produkt med samma ID finns redan.");
+                Console.WriteLine("ERROR: Product already exists");
                 return;
             }
 
             var newProduct = ProductFactory.CreateProduct(category, productId, productName, price, priceType);
             _products.Add(newProduct);
             SaveProducts();
-            Console.WriteLine($"Produkten {productName} har lagts till.");
+            Console.WriteLine($"Product{productName} has been added");
         }
 
         private void SaveProducts()

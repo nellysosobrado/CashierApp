@@ -184,3 +184,26 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 9
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-13 18:17:01
+--------------------------
+Product             Price
+1x bajs             0,00 kr
+...........................
+
+Total Amount: 0,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

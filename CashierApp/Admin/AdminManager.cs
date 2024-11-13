@@ -43,7 +43,6 @@ namespace CashierApp.Admin
             }
             Console.ReadKey();
             _productService.AddProduct(category, productId, productName, price, priceType);
-            Console.WriteLine($"Product {productName} has been added.");
             Console.ReadLine();
         }
     }
