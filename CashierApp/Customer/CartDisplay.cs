@@ -10,7 +10,7 @@ namespace CashierApp.Customer
 {
     public class CartDisplay
     {
-        public void ShowCart(List<(IProducts Product, int Quantity)> cart)
+        public void DisplayCartUI(List<(IProducts Product, int Quantity)> cart)
         {
             Console.Clear();
             Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
@@ -36,16 +36,16 @@ namespace CashierApp.Customer
                 Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {total}");
                 
             }
-            decimal grandTotal = PriceCalculator.CalculateTotalPrice(cart);
+            decimal TotalAmount = PriceCalculator.CalculateTotalPrice(cart);
             
-            //if (grandTotal > 50)
+            //if (TotalAmount > 50)
             //{
             //    string campaignText = "  Campaign Price                -2.00 KR (Saved)";
             //    Console.WriteLine($"{"",35}{campaignText,50}"); // 35 mellanslag för att centrera texten i din layout
             //}
 
             Console.WriteLine("                                   ────────────────────────────────────────────────");
-            Console.WriteLine($"                                                 Total: {grandTotal,10:C}");
+            Console.WriteLine($"                                                 Total: {TotalAmount,10:C}");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             Console.WriteLine("                                        [1] Products    [2] Menu    [PAY] PAY");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
