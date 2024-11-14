@@ -2,11 +2,11 @@
   {
     "ProductID": 3,
     "ProductName": "Apple",
-    "Price": 1.99,
+    "Price": 20,
     "PriceType": "piece",
     "Quantity": 0,
     "Category": "fruit \u0026 greens",
-    "CampaignPrice": 10000,
+    "CampaignPrice": 10,
     "CampaignStartDate": "2024-11-13T00:00:00",
     "CampaignEndDate": "2024-11-16T00:00:00"
   },

@@ -38,11 +38,19 @@ namespace CashierApp.Customer
                 string productName = FormatProductName(item.Product.ProductName);
                 string quantityDisplay = FormatQuantity(item.Quantity);
 
-                // Kontrollera om kampanjen är aktiv och använd kampanjpriset om det finns
-                decimal price = item.Product.IsCampaignActive() ? item.Product.CampaignPrice.Value : item.Product.Price;
-                decimal total = price * item.Quantity;
+                decimal originalPrice = item.Product.Price * item.Quantity;
+                decimal discountedPrice = item.Product.IsCampaignActive() ? item.Product.CampaignPrice.Value * item.Quantity : originalPrice;
+                decimal discount = originalPrice - discountedPrice;
 
-                Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {total:C}");
+                
+                Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {originalPrice,10:C}");
+
+                // Checks campaign
+                if (item.Product.IsCampaignActive())
+                {
+                   // Console.WriteLine($"                                              Campaign Price: {discountedPrice,10:C}");
+                    Console.WriteLine($"                                                       Discount:       -{discount,10:C}");
+                }
             }
         }
 
