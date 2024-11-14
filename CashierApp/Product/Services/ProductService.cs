@@ -13,126 +13,169 @@ using System.Text.Json;
 namespace CashierApp.Product.Services
 {
     /// <summary>
-    /// Manages the productdata 
+    /// Manages product data using a json file as the main source
     /// </summary>
     public class ProductService : IProductService
     {
-        private readonly string folderPath = "../../../AddedProducts"; // where it saves
-        private readonly string FilePath;
-        private readonly List<IProducts> _products;
+        private readonly string folderPath = "../../../AddedProducts"; // Path to save the products
+        private readonly string FilePath; // Full file path for the JSON file
 
         public ProductService()
         {
-            //Filepath!! IT combines
+            // Combine folder path and file name
             FilePath = Path.Combine(folderPath, "products.json");
 
-            //creates a map
+            // Create the folder if it doesn't exist
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
 
-            _products = LoadProducts();
-
-            if (_products == null || !_products.Any())
+            // Ensure the JSON file exists
+            if (!File.Exists(FilePath))
             {
-                _products = new List<IProducts>
-            {
-                ProductFactory.CreateProduct("fruit & greens", 1, "Banana", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 2, "Orange", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 3, "Apple", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 4, "Caesar Sallad", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 5, "Onion", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 6, "Garlic", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 7, "Ginger", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 8, "Grapes", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 9, "Clementines", 1.99m, "piece"),
-                ProductFactory.CreateProduct("fruit & greens", 10,"Mushroom", 1.49m, "piece"),
-                ProductFactory.CreateProduct("meat", 11, "Chicken", 5.99m, "kg"),
-                ProductFactory.CreateProduct("drink", 12, "Milk", 1.49m, "liter"),
-                ProductFactory.CreateProduct("bakery", 13, "Bread", 2.49m, "piece"),
-                ProductFactory.CreateProduct("dairy", 14, "Cheese", 3.99m, "kg"),
-                ProductFactory.CreateProduct("bajskorv", 15, "bajs", 0m, "piece")
-            };
-                SaveProducts();
+                File.WriteAllText(FilePath, "[]"); // Create an empty JSON array
             }
         }
+
+        // Add a new product to the JSON file
+        public void AddProduct(string category, int productId, string productName, decimal price, string priceType)
+        {
+            // Load all products from JSON
+            var products = LoadProducts();
+
+            // Check if a product with the same ID already exists
+            if (products.Any(p => p.ProductID == productId))
+            {
+                Console.WriteLine("ERROR: Product already exists");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+                return;
+            }
+
+            // Create a new product
+            var newProduct = ProductFactory.CreateProduct(category, productId, productName, price, priceType);
+
+            // Add the new product to the list
+            products.Add(newProduct);
+
+            // Save the updated list back to JSON
+            SaveProducts(products);
+
+            Console.WriteLine($"Product {productName} has been added.");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+        }
+
+        // Update the name of a product in the JSON file
         public void UpdateProductName(int productId, string newName)
         {
-            // Hitta produkten i listan
-            var product = _products.FirstOrDefault(p => p.ProductID == productId);
+            // Load all products from JSON
+            var products = LoadProducts();
 
+            // Find the product by ID
+            var product = products.FirstOrDefault(p => p.ProductID == productId);
+
+            // If the product doesn't exist, show an error
             if (product == null)
             {
                 Console.WriteLine($"ERROR: Product with ID {productId} does not exist.");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
                 return;
             }
 
-            // Uppdatera produktens namn
+            // Update the product name
             product.ProductName = newName;
 
-            // Spara uppdateringarna till JSON-filen
-            SaveProducts();
+            // Save the updated list back to JSON
+            SaveProducts(products);
 
-            Console.WriteLine($"Product ID {productId} has been updated with new name: {newName}");
+            Console.WriteLine($"Product ID {productId} has been updated to {newName}.");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
         }
 
-        public void AddProduct(string category, int productId, string productName, decimal price, string priceType)
+        // Remove a product from the JSON file
+        public void RemoveProduct(int productId)
         {
-            if (_products.Any(p => p.ProductID == productId))
+            // Load all products from JSON
+            var products = LoadProducts();
+
+            // Find the product by ID
+            var product = products.FirstOrDefault(p => p.ProductID == productId);
+
+            // If the product doesn't exist, show an error
+            if (product == null)
             {
-                Console.WriteLine("ERROR: Product already exists");
+                Console.WriteLine($"ERROR: Product with ID {productId} does not exist.");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
                 return;
             }
 
-            var newProduct = ProductFactory.CreateProduct(category, productId, productName, price, priceType);
-            _products.Add(newProduct);
-            SaveProducts();
-            Console.WriteLine($"Product{productName} has been added");
+
+            // Remove the product
+            products.Remove(product);
+
+            // Save the updated list back to JSON
+            SaveProducts(products);
+
+            Console.WriteLine($"Product ID {productId} has been removed.");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
         }
 
-        private void SaveProducts()
-        {
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            var json = JsonSerializer.Serialize(_products, options);
-            File.WriteAllText(FilePath, json);
-        }
-
-        private List<IProducts> LoadProducts()
-        {
-            if (File.Exists(FilePath))
-            {
-                var options = new JsonSerializerOptions();
-                options.Converters.Add(new ProductConverter());
-                var json = File.ReadAllText(FilePath);
-                return JsonSerializer.Deserialize<List<IProducts>>(json, options) ?? new List<IProducts>();
-            }
-            return new List<IProducts>();
-        }
-
+        // Get a product by name
         public IProducts GetProductByName(string productName)
         {
-            return _products.FirstOrDefault(p => p.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase));
+            // Load all products from JSON and find the one with the matching name
+            return LoadProducts().FirstOrDefault(p => p.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase));
         }
 
+        // Get a product by ID
         public IProducts GetProductById(int productId)
         {
-            return _products.Find(p => p.ProductID == productId);
+            // Load all products from JSON and find the one with the matching ID
+            return LoadProducts().FirstOrDefault(p => p.ProductID == productId);
         }
 
+        // Get all distinct categories
         public IEnumerable<string> GetDistinctCategories()
         {
-            return _products.Select(p => p.Category).Distinct();
+            // Load all products from JSON and return distinct categories
+            return LoadProducts().Select(p => p.Category).Distinct();
         }
 
+        // Get all products in a specific category
         public IEnumerable<IProducts> GetProductsByCategory(string category)
         {
-            return _products.Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase));
+            // Load all products from JSON and filter by category
+            return LoadProducts().Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase));
         }
 
+        // Check if a category exists
         public bool CategoryExists(string categoryName)
         {
-            return _products.Any(p => p.Category.Equals(categoryName, StringComparison.OrdinalIgnoreCase));
+            // Load all products from JSON and check if the category exists
+            return LoadProducts().Any(p => p.Category.Equals(categoryName, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // Load all products from the JSON file
+        private List<IProducts> LoadProducts()
+        {
+            var json = File.ReadAllText(FilePath);
+            var options = new JsonSerializerOptions();
+            options.Converters.Add(new ProductConverter()); // Add custom converter for products
+            return JsonSerializer.Deserialize<List<IProducts>>(json, options) ?? new List<IProducts>();
+        }
+
+        // Save all products to the JSON file
+        private void SaveProducts(List<IProducts> products)
+        {
+            var options = new JsonSerializerOptions { WriteIndented = true }; // Make JSON easier to read
+            var json = JsonSerializer.Serialize(products, options);
+            File.WriteAllText(FilePath, json); // Write JSON to the file
         }
     }
 }

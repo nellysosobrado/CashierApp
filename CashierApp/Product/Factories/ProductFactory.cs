@@ -20,7 +20,8 @@ namespace CashierApp.Product.Factories
                 ProductName = name,
                 Price = price,
                 PriceType = priceType,
-                Category = category 
+                Category = category,
+                Quantity = 1
             };
 
             return product;

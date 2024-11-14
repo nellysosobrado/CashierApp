@@ -1,10 +1,42 @@
 [
   {
-    "ProductID": 1,
-    "ProductName": "nyttnamn",
-    "Price": 0,
+    "ProductID": 3,
+    "ProductName": "Apple",
+    "Price": 1.99,
+    "PriceType": "piece",
+    "Quantity": 0,
+    "Category": "fruit \u0026 greens"
+  },
+  {
+    "ProductID": 4,
+    "ProductName": "Chicken",
+    "Price": 5.99,
+    "PriceType": "kg",
+    "Quantity": 0,
+    "Category": "meat"
+  },
+  {
+    "ProductID": 101,
+    "ProductName": "slay2024",
+    "Price": 1,
     "PriceType": "piece",
     "Quantity": 0,
     "Category": "bajskorv"
+  },
+  {
+    "ProductID": 1,
+    "ProductName": "bajsdev",
+    "Price": 0,
+    "PriceType": "piece",
+    "Quantity": 1,
+    "Category": "bajskorv"
+  },
+  {
+    "ProductID": 2,
+    "ProductName": "fairy",
+    "Price": 0,
+    "PriceType": "piece",
+    "Quantity": 1,
+    "Category": "fairy"
   }
 ]

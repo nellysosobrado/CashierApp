@@ -21,7 +21,8 @@ namespace CashierApp.Admin
         public void HandleAdmin()
         {
             Console.WriteLine("1. Add Product" +
-                "\n2.Edit product");
+                "\n2.Edit product" +
+                "\n3.Remove product");
             string input = Console.ReadLine();
 
             if (input == "1")
@@ -31,6 +32,13 @@ namespace CashierApp.Admin
             else if (input == "2")
             {
                 UpdateProductNameFlow();
+            }
+            else
+            {
+                if (input == "3")
+                {
+                    RemoveProductFlow();
+                }
             }
 
         }
@@ -88,6 +96,40 @@ namespace CashierApp.Admin
             }
 
             _productService.UpdateProductName(productId, newName);
+        }
+        public void RemoveProductFlow()
+        {
+            Console.WriteLine("REMOVE PRODUCT");
+
+            // Be användaren ange produkt-ID
+            Console.Write("Enter the Product ID to remove: ");
+            if (!int.TryParse(Console.ReadLine(), out int productId))
+            {
+                Console.WriteLine("Invalid ID. Please enter a valid number.");
+                return;
+            }
+
+            // Kontrollera att ProductService är initierat
+            if (_productService == null)
+            {
+                Console.WriteLine("_productService is not initialized.");
+                return;
+            }
+
+            // Ta bort produkten
+            _productService.RemoveProduct(productId);
+
+            //DEBUGG CONTROLL
+            //Ifn product exist after removing
+            var removedProduct = _productService.GetProductById(productId);
+            if(removedProduct != null)
+            {
+                Console.WriteLine($"\nDEBUG:ERROR {productId} still exists after removal");
+                Console.WriteLine("Enter any key to continue to menu.");
+                Console.ReadKey();
+            }
+ 
+
         }
 
     }

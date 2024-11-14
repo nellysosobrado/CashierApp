@@ -1,0 +1,51 @@
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 1
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-14 06:50:30
+--------------------------
+Product             Price
+1x nyttnamn         0,00 kr
+1x Orange           1,99 kr
+1x Orange           1,99 kr
+1x bajs             0,00 kr
+...........................
+
+Total Amount: 3,98 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 2
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-14 07:27:31
+--------------------------
+Product             Price
+1x fairy            0,00 kr
+1x fairy            0,00 kr
+10000x fairy            0,00 kr
+...........................
+
+Total Amount: 0,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
