@@ -5,7 +5,10 @@
     "Price": 1.99,
     "PriceType": "piece",
     "Quantity": 0,
-    "Category": "fruit \u0026 greens"
+    "Category": "fruit \u0026 greens",
+    "CampaignPrice": 10000,
+    "CampaignStartDate": "2024-11-13T00:00:00",
+    "CampaignEndDate": "2024-11-16T00:00:00"
   },
   {
     "ProductID": 4,
@@ -13,7 +16,10 @@
     "Price": 5.99,
     "PriceType": "kg",
     "Quantity": 0,
-    "Category": "meat"
+    "Category": "meat",
+    "CampaignPrice": null,
+    "CampaignStartDate": null,
+    "CampaignEndDate": null
   },
   {
     "ProductID": 101,
@@ -21,7 +27,10 @@
     "Price": 1,
     "PriceType": "piece",
     "Quantity": 0,
-    "Category": "bajskorv"
+    "Category": "bajskorv",
+    "CampaignPrice": null,
+    "CampaignStartDate": null,
+    "CampaignEndDate": null
   },
   {
     "ProductID": 1,
@@ -29,7 +38,10 @@
     "Price": 0,
     "PriceType": "piece",
     "Quantity": 1,
-    "Category": "bajskorv"
+    "Category": "bajskorv",
+    "CampaignPrice": null,
+    "CampaignStartDate": null,
+    "CampaignEndDate": null
   },
   {
     "ProductID": 2,
@@ -37,6 +49,9 @@
     "Price": 0,
     "PriceType": "piece",
     "Quantity": 1,
-    "Category": "fairy"
+    "Category": "fairy",
+    "CampaignPrice": null,
+    "CampaignStartDate": null,
+    "CampaignEndDate": null
   }
 ]

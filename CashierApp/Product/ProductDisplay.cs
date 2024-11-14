@@ -39,12 +39,19 @@ namespace CashierApp.Product
             Console.WriteLine("                                    ID    │ Product ProductName        │   Price   │   Unit");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
 
-            var pagedProducts = products.Skip(currentPage * pageSize).Take(pageSize);
-            foreach (var product in pagedProducts)
-            {
-                string productName = product.ProductName.Length > 17 ? product.ProductName.Substring(0, 17) + "…" : product.ProductName;
-                Console.WriteLine($"                                    {product.ProductID,-5} │ {productName,-17} │ {product.Price,8:C} │ {product.PriceType}");
-            }
+            foreach (var product in products)
+    {
+        // Kontrollera om kampanjen är aktiv
+        if (product.IsCampaignActive())
+        {
+            Console.WriteLine($"                                  ID: {product.ProductID} | Name: {product.ProductName} | Campaign Price: {product.CampaignPrice:C} | Regular Price: {product.Price:C}");
+            Console.WriteLine($"                                  Campaign Active: {product.CampaignStartDate:yyyy-MM-dd} to {product.CampaignEndDate:yyyy-MM-dd}");
+        }
+        else
+        {
+            Console.WriteLine($"ID: {product.ProductID} | Name: {product.ProductName} | Price: {product.Price:C}");
+        }
+    }
 
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             CenterText("[N] Next page  [P] Previous page  ");

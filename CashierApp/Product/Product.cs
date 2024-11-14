@@ -16,5 +16,21 @@ namespace CashierApp.Product
         public required string PriceType { get; set; }
         public int Quantity { get; set; }
         public required string Category { get; set; }
+
+        // Kampanjrelaterade egenskaper
+        public decimal? CampaignPrice { get; set; }
+        public DateTime? CampaignStartDate { get; set; }
+        public DateTime? CampaignEndDate { get; set; }
+
+        // Kontrollera om kampanjen är aktiv
+        public bool IsCampaignActive()
+        {
+            if (CampaignPrice.HasValue && CampaignStartDate.HasValue && CampaignEndDate.HasValue)
+            {
+                DateTime now = DateTime.Now;
+                return now >= CampaignStartDate.Value && now <= CampaignEndDate.Value;
+            }
+            return false;
+        }
     }
 }

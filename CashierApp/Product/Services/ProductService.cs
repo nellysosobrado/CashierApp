@@ -37,6 +37,27 @@ namespace CashierApp.Product.Services
                 File.WriteAllText(FilePath, "[]"); // Create an empty JSON array
             }
         }
+        public void UpdateProduct(IProducts product)
+        {
+            var products = LoadProducts();
+            var existingProduct = products.FirstOrDefault(p => p.ProductID == product.ProductID);
+
+            if (existingProduct != null)
+            {
+                // Uppdatera den befintliga produkten
+                existingProduct.ProductName = product.ProductName;
+                existingProduct.Price = product.Price;
+                existingProduct.PriceType = product.PriceType;
+                existingProduct.Quantity = product.Quantity;
+                existingProduct.Category = product.Category;
+                existingProduct.CampaignPrice = product.CampaignPrice;
+                existingProduct.CampaignStartDate = product.CampaignStartDate;
+                existingProduct.CampaignEndDate = product.CampaignEndDate;
+
+                // Spara tillbaka till JSON
+                SaveProducts(products);
+            }
+        }
 
         // Add a new product to the JSON file
         public void AddProduct(string category, int productId, string productName, decimal price, string priceType)

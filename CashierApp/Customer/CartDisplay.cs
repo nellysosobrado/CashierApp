@@ -37,7 +37,10 @@ namespace CashierApp.Customer
             {
                 string productName = FormatProductName(item.Product.ProductName);
                 string quantityDisplay = FormatQuantity(item.Quantity);
-                decimal total = item.Product.Price * item.Quantity;
+
+                // Kontrollera om kampanjen är aktiv och använd kampanjpriset om det finns
+                decimal price = item.Product.IsCampaignActive() ? item.Product.CampaignPrice.Value : item.Product.Price;
+                decimal total = price * item.Quantity;
 
                 Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {total:C}");
             }

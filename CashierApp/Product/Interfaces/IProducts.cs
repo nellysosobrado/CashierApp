@@ -15,5 +15,13 @@ namespace CashierApp.Product.Interfaces
         string PriceType { get; set; }
         int Quantity { get; set; }
         string Category { get; set; }
+
+        // Lägg till kampanjegenskaper
+        decimal? CampaignPrice { get; set; }
+        DateTime? CampaignStartDate { get; set; }
+        DateTime? CampaignEndDate { get; set; }
+
+        // Kontrollera om kampanjen är aktiv
+        bool IsCampaignActive();
     }
 }
