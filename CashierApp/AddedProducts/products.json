@@ -5,6 +5,20 @@
     "Price": 22.5,
     "PriceType": "piece",
     "Category": "test",
+    "Campaigns": [
+      {
+        "Description": "1",
+        "CampaignPrice": 1,
+        "StartDate": "2024-11-11T00:00:00",
+        "EndDate": "2024-11-20T00:00:00"
+      },
+      {
+        "Description": "test222",
+        "CampaignPrice": 10,
+        "StartDate": "2024-11-11T00:00:00",
+        "EndDate": "2024-11-20T00:00:00"
+      }
+    ],
     "CampaignDescription": null,
     "CampaignPrice": 10,
     "CampaignStartDate": "2024-11-12T00:00:00",
@@ -16,6 +30,7 @@
     "Price": 1,
     "PriceType": "piece",
     "Category": "testcategory",
+    "Campaigns": [],
     "CampaignDescription": null,
     "CampaignPrice": null,
     "CampaignStartDate": null,
@@ -27,6 +42,7 @@
     "Price": 20,
     "PriceType": "piece",
     "Category": "pasta",
+    "Campaigns": [],
     "CampaignDescription": null,
     "CampaignPrice": null,
     "CampaignStartDate": null,
@@ -38,6 +54,7 @@
     "Price": 2,
     "PriceType": "piece",
     "Category": "test",
+    "Campaigns": [],
     "CampaignDescription": "ttext",
     "CampaignPrice": 1,
     "CampaignStartDate": "2024-11-11T00:00:00",
@@ -49,6 +66,7 @@
     "Price": 1,
     "PriceType": "piece",
     "Category": "test",
+    "Campaigns": [],
     "CampaignDescription": null,
     "CampaignPrice": null,
     "CampaignStartDate": null,
@@ -60,6 +78,7 @@
     "Price": 20,
     "PriceType": "piece",
     "Category": "test",
+    "Campaigns": [],
     "CampaignDescription": "sommar godis",
     "CampaignPrice": null,
     "CampaignStartDate": null,
@@ -71,6 +90,7 @@
     "Price": 1,
     "PriceType": "piece",
     "Category": "test",
+    "Campaigns": [],
     "CampaignDescription": "halowweee seasooon",
     "CampaignPrice": 1,
     "CampaignStartDate": "2024-11-12T00:00:00",

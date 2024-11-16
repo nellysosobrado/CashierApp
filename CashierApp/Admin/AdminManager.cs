@@ -72,18 +72,12 @@ namespace CashierApp.Admin
             Console.Clear();
             Console.WriteLine("ADD CAMPAIGN");
 
-            int productId;
-            while (true)
+            // Hämta produkt-ID
+            Console.Write("Enter the Product ID for the campaign: ");
+            if (!int.TryParse(Console.ReadLine(), out int productId))
             {
-                Console.Write("Enter the Product ID for the campaign: ");
-                if (int.TryParse(Console.ReadLine(), out productId))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Product ID. Please enter a valid number.");
-                }
+                Console.WriteLine("Invalid Product ID. Please enter a valid number.");
+                return;
             }
 
             var product = _productService.GetProductById(productId);
@@ -94,76 +88,52 @@ namespace CashierApp.Admin
                 return;
             }
 
-            decimal campaignPrice;
-            while (true)
+            // Skapa kampanj
+            Console.Write("Enter the campaign price: ");
+            if (!decimal.TryParse(Console.ReadLine(), out decimal campaignPrice) || campaignPrice <= 0)
             {
-                Console.Write("Enter the campaign price: ");
-                if (decimal.TryParse(Console.ReadLine(), out campaignPrice) && campaignPrice > 0)
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid price. Please enter a valid positive number.");
-                }
+                Console.WriteLine("Invalid price. Please enter a valid positive number.");
+                return;
             }
 
-            DateTime startDate;
-            while (true)
+            Console.Write("Enter the start date (yyyy-MM-dd): ");
+            if (!DateTime.TryParse(Console.ReadLine(), out DateTime startDate))
             {
-                Console.Write("Enter the start date (yyyy-MM-dd): ");
-                if (DateTime.TryParse(Console.ReadLine(), out startDate))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid date format. Please use 'yyyy-MM-dd'.");
-                }
+                Console.WriteLine("Invalid date format.");
+                return;
             }
 
-            DateTime endDate;
-            while (true)
+            Console.Write("Enter the end date (yyyy-MM-dd): ");
+            if (!DateTime.TryParse(Console.ReadLine(), out DateTime endDate) || endDate < startDate)
             {
-                Console.Write("Enter the end date (yyyy-MM-dd): ");
-                if (DateTime.TryParse(Console.ReadLine(), out endDate) && endDate >= startDate)
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid date. End date must be on or after the start date.");
-                }
+                Console.WriteLine("Invalid end date.");
+                return;
             }
 
-            string campaignDescription;
-            while (true)
+            Console.Write("Enter the campaign description: ");
+            string description = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(description))
             {
-                Console.Write("Enter the campaign description: ");
-                campaignDescription = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(campaignDescription))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Campaign description cannot be empty. Please enter a valid description.");
-                }
+                Console.WriteLine("Description cannot be empty.");
+                return;
             }
 
-            product.CampaignPrice = campaignPrice;
-            product.CampaignStartDate = startDate;
-            product.CampaignEndDate = endDate;
-            product.CampaignDescription = campaignDescription;
+            // Lägg till kampanjen
+            var campaign = new Campaign
+            {
+                Description = description,
+                CampaignPrice = campaignPrice,
+                StartDate = startDate,
+                EndDate = endDate
+            };
 
-            _productService.UpdateProduct(product);
-
-            Console.WriteLine($"Campaign added successfully for product {product.ProductName}.");
-            Console.WriteLine($"Campaign Description: {campaignDescription}");
-            Console.WriteLine($"Valid from {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd} at price {campaignPrice:C}.");
-            Console.WriteLine("Press any key to return to the menu.");
+            _productService.AddCampaignToProduct(productId, campaign);
+            Console.WriteLine($"Campaign successfully added to product ID {productId}.");
             Console.ReadKey();
         }
+
+
+
 
         public void RemoveCampaign()
         {

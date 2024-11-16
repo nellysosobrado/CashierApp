@@ -214,58 +214,84 @@ namespace CashierApp.Product.Services
         }
         //----------------------------------------------------------
 
-        // Get a product by name
+        
         public IProducts GetProductByName(string productName)
         {
             // Load all products from JSON and find the one with the matching name
             return LoadProducts().FirstOrDefault(p => p.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase));
         }
 
-        // Get a product by ID
+       
         public IProducts GetProductById(int productId)
         {
             // Load all products from JSON and find the one with the matching ID
             return LoadProducts().FirstOrDefault(p => p.ProductID == productId);
         }
 
-        // Get all distinct categories
+      
         public IEnumerable<string> GetDistinctCategories()
         {
-            // Load all products from JSON and return distinct categories
+            
             return LoadProducts().Select(p => p.Category).Distinct();
         }
 
-        // Get all products in a specific category
+       
         public IEnumerable<IProducts> GetProductsByCategory(string category)
         {
-            // Load all products from JSON and filter by category
+            
             return LoadProducts().Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase));
         }
 
-        // Check if a category exists
+       
         public bool CategoryExists(string categoryName)
         {
-            // Load all products from JSON and check if the category exists
+           
             return LoadProducts().Any(p => p.Category.Equals(categoryName, StringComparison.OrdinalIgnoreCase));
 
         }
 
         //------------------------------------------ JSON
-        // Load all products from the JSON file
+
         private List<IProducts> LoadProducts()
         {
             var json = File.ReadAllText(FilePath);
-            var options = new JsonSerializerOptions();
-            options.Converters.Add(new ProductConverter()); 
-            return JsonSerializer.Deserialize<List<IProducts>>(json, options) ?? new List<IProducts>();
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            return JsonSerializer.Deserialize<List<Product>>(json, options).Cast<IProducts>().ToList();
         }
 
-        // Save all products to the JSON file
+
+      
         private void SaveProducts(List<IProducts> products)
         {
-            var options = new JsonSerializerOptions { WriteIndented = true }; 
+            var options = new JsonSerializerOptions { WriteIndented = true };
             var json = JsonSerializer.Serialize(products, options);
-            File.WriteAllText(FilePath, json); 
+            File.WriteAllText(FilePath, json); // Skriv till filen
         }
+
+        public void AddCampaignToProduct(int productId, Campaign campaign)
+        {
+          
+            var products = LoadProducts();
+
+         
+            var product = products.FirstOrDefault(p => p.ProductID == productId);
+
+            if (product == null)
+            {
+                Console.WriteLine($"ERROR: Product with ID {productId} does not exist.");
+                Console.ReadKey();
+                return;
+            }
+
+      
+            product.Campaigns.Add(campaign);
+
+            SaveProducts(products);
+
+            Console.WriteLine($"Campaign added to product ID {productId}.");
+            Console.ReadKey();
+        }
+
+
     }
 }

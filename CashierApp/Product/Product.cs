@@ -9,7 +9,7 @@ namespace CashierApp.Product
 {
     public class Product : IProducts
     {
-        //Properties
+       
         public int ProductID { get; set; }
         public required string ProductName { get; set; }
         public decimal Price { get; set; }
@@ -17,13 +17,14 @@ namespace CashierApp.Product
         public required string Category { get; set; }
 
 
-        // Kampanjrelaterade egenskaper
+       
+        public List<Campaign> Campaigns { get; set; } = new List<Campaign>();
         public string? CampaignDescription { get; set; }
         public decimal? CampaignPrice { get; set; }
         public DateTime? CampaignStartDate { get; set; }
         public DateTime? CampaignEndDate { get; set; }
 
-        // Kontrollera om kampanjen är aktiv
+        
         public bool IsCampaignActive()
         {
             if (CampaignPrice.HasValue && CampaignStartDate.HasValue && CampaignEndDate.HasValue)
