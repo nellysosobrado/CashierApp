@@ -9,7 +9,7 @@ namespace CashierApp.Product.Factories
 {
     public static class ProductFactory
     {
-        public static IProducts CreateProduct(string category, int productId, string name, decimal price, string priceType)
+        public static IProducts CreateProduct(string category, int productId, string name, decimal price, string priceType, string campaignDescription = null)
         {
             //Console.WriteLine($"Creating product: {name}, Category: {category}, Price Type: {priceType}");
 
@@ -21,7 +21,8 @@ namespace CashierApp.Product.Factories
                 Price = price,
                 PriceType = priceType,
                 Category = category,
-                Quantity = 1
+                CampaignDescription = campaignDescription
+
             };
 
             return product;

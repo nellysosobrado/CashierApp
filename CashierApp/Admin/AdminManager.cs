@@ -20,95 +20,155 @@ namespace CashierApp.Admin
         
         public void HandleAdmin()
         {
-            Console.WriteLine("1. Add Product" +
-                "\n2.Edit product" +
-                "\n3.Remove product" +
-                "\n4.Add campaign" +
-                "\n5.Remove campagin");
-            string input = Console.ReadLine();
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Page: Admin Menu");
+                Console.WriteLine("\nPRODUCTS" +
+                    "\n1.Add new product" +
+                    "\n2.Edit product" +
+                    "\n3.Remove product" +
+                    "\n" +
+                    "\nCAMPAIGNS" +
+                    "\n4.Add campaign" +
+                    "\n5.Remove campagin" +
+                    "\n6.View all products" +
+                    "\n" +
+                    "\n7.Back to Main menu");
+                Console.WriteLine();
+                Console.Write(">");
+                string input = Console.ReadLine();
 
-            if (input == "1")
-            {
-                AddProduct();
+                if (input == "1")
+                {
+                    CreateNewProduct();
+                }
+                else if (input == "2")
+                {
+                    EditProductDetails();
+                }
+                else if (input == "3")
+                {
+                    RemoveProduct();
+                }
+                else if (input == "5")
+                {
+                    RemoveCampaign();
+                }
+                else if (input == "4")
+                {
+                    AddCampaign();
+                }
+                else if (input == "7")
+                {
+                    break;
+                }
             }
-            else if (input == "2")
-            {
-                UpdateProductNameFlow();
-            }
-            else if (input == "3")
-            {
-                RemoveProductFlow();
-            }
-            else if (input == "5") 
-            {
-                RemoveCampaign();
-            }
-            else if (input == "4")
-            {
-                AddCampaign();
-            }
+
 
         }
         public void AddCampaign()
         {
+            Console.Clear();
             Console.WriteLine("ADD CAMPAIGN");
 
-            // Be om produkt-ID
-            Console.Write("Enter the Product ID for the campaign: ");
-            if (!int.TryParse(Console.ReadLine(), out int productId))
+            int productId;
+            while (true)
             {
-                Console.WriteLine("Invalid Product ID. Please enter a valid number.");
-                return;
+                Console.Write("Enter the Product ID for the campaign: ");
+                if (int.TryParse(Console.ReadLine(), out productId))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Product ID. Please enter a valid number.");
+                }
             }
 
-            // Hämta produkten
             var product = _productService.GetProductById(productId);
             if (product == null)
             {
                 Console.WriteLine("Product not found.");
+                Console.ReadKey();
                 return;
             }
 
-            // Be om kampanjpriset
-            Console.Write("Enter the campaign price: ");
-            if (!decimal.TryParse(Console.ReadLine(), out decimal campaignPrice))
+            decimal campaignPrice;
+            while (true)
             {
-                Console.WriteLine("Invalid price.");
-                return;
+                Console.Write("Enter the campaign price: ");
+                if (decimal.TryParse(Console.ReadLine(), out campaignPrice) && campaignPrice > 0)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid price. Please enter a valid positive number.");
+                }
             }
 
-            // Be om startdatum
-            Console.Write("Enter the start date (yyyy-MM-dd): ");
-            if (!DateTime.TryParse(Console.ReadLine(), out DateTime startDate))
+            DateTime startDate;
+            while (true)
             {
-                Console.WriteLine("Invalid date format.");
-                return;
+                Console.Write("Enter the start date (yyyy-MM-dd): ");
+                if (DateTime.TryParse(Console.ReadLine(), out startDate))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid date format. Please use 'yyyy-MM-dd'.");
+                }
             }
 
-            // Be om slutdatum
-            Console.Write("Enter the end date (yyyy-MM-dd): ");
-            if (!DateTime.TryParse(Console.ReadLine(), out DateTime endDate))
+            DateTime endDate;
+            while (true)
             {
-                Console.WriteLine("Invalid date format.");
-                return;
+                Console.Write("Enter the end date (yyyy-MM-dd): ");
+                if (DateTime.TryParse(Console.ReadLine(), out endDate) && endDate >= startDate)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid date. End date must be on or after the start date.");
+                }
             }
 
-            // Sätt kampanjegenskaper
+            string campaignDescription;
+            while (true)
+            {
+                Console.Write("Enter the campaign description: ");
+                campaignDescription = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(campaignDescription))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Campaign description cannot be empty. Please enter a valid description.");
+                }
+            }
+
             product.CampaignPrice = campaignPrice;
             product.CampaignStartDate = startDate;
             product.CampaignEndDate = endDate;
+            product.CampaignDescription = campaignDescription;
 
-            // Uppdatera produkten i datakällan
             _productService.UpdateProduct(product);
 
             Console.WriteLine($"Campaign added successfully for product {product.ProductName}.");
+            Console.WriteLine($"Campaign Description: {campaignDescription}");
+            Console.WriteLine($"Valid from {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd} at price {campaignPrice:C}.");
+            Console.WriteLine("Press any key to return to the menu.");
             Console.ReadKey();
         }
+
         public void RemoveCampaign()
         {
             Console.WriteLine("REMOVE CAMPAIGN");
 
-            // Be om produkt-ID
             Console.Write("Enter the Product ID for the campaign to remove: ");
             if (!int.TryParse(Console.ReadLine(), out int productId))
             {
@@ -116,7 +176,6 @@ namespace CashierApp.Admin
                 return;
             }
 
-            // Hämta produkten
             var product = _productService.GetProductById(productId);
             if (product == null)
             {
@@ -124,7 +183,6 @@ namespace CashierApp.Admin
                 return;
             }
 
-            // Rensa kampanjegenskaper
             product.CampaignPrice = null;
             product.CampaignStartDate = null;
             product.CampaignEndDate = null;
@@ -133,96 +191,322 @@ namespace CashierApp.Admin
             Console.WriteLine($"Campaign removed successfully from product {product.ProductName}.");
             Console.ReadKey();
         }
-
-        public void AddProduct()
+        public void CreateNewProduct()
         {
-            Console.WriteLine("ADD NEW PRODUCT");
-            Console.Write("Category: ");
-            string category = Console.ReadLine();
+            bool runCreateNewproduct = true;
 
-            Console.Write("ProductID ");
-            int productId = int.Parse(Console.ReadLine());
-
-            Console.Write("Product Name");
-            string productName = Console.ReadLine();
-
-            Console.Write("Price ");
-            decimal price = decimal.Parse(Console.ReadLine());
-
-            Console.Write("PriceType (.'kg', 'piece'): ");
-            string priceType = Console.ReadLine();
-            if (_productService == null)
+            while (runCreateNewproduct)
             {
-                Console.WriteLine("_productService is not initalized.");
+                Console.Clear();
+
+                Console.WriteLine("ADD NEW PRODUCT");
+                Console.WriteLine("Please enter the product's details for the new product");
+                Console.WriteLine("........................................");
+
+                // New CATEGORY.....................................
+                string category;
+                while (true)
+                {
+                    Console.Write("Category: ");
+                    category = Console.ReadLine() ?? string.Empty;
+                    if (string.IsNullOrWhiteSpace(category))
+                    {
+                        Console.WriteLine("Category cannot be empty. Please enter a valid category.");
+                        continue;
+                    }
+                    break;
+                }
+
+                //New PRODUCT ID.....................................
+                int newProductId;
+                while (true)
+                {
+                    Console.Write("ProductID: ");
+                    string id = Console.ReadLine() ?? string.Empty;
+                    if (id == string.Empty)
+                    {
+                        Console.WriteLine("Input cannot be empty.");
+                        continue;
+                    }
+                    if (!int.TryParse(id, out newProductId))
+                    {
+                        Console.WriteLine("Invalid ProductID. Please enter a valid number.");
+                        continue;
+                    }
+                    if (_productService.GetProductById(newProductId) != null)
+                    {
+                        Console.WriteLine($"A product with ID {newProductId} already exists. Please try a different ID.");
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                //New PRODUCT NAME.............................................
+                string newProductName;
+                while (true)
+                {
+                    Console.Write("Product Name: ");
+
+                    newProductName = Console.ReadLine() ?? string.Empty;
+                    if (string.IsNullOrWhiteSpace(newProductName))
+                    {
+                        Console.WriteLine("Product name cannot be empty. Please enter a valid name.");
+                        continue;
+                    }
+                    if (_productService.GetProductByName(newProductName) != null)
+                    {
+                        Console.WriteLine($"'{newProductName}' already exists. Please try a different name.");
+                        continue;
+                    }
+                    break;
+                }
+
+                // New Price ..................................................
+                decimal newPrice;
+                while (true)
+                {
+                    Console.Write("Price: ");
+                    string priceInput = Console.ReadLine() ?? string.Empty;
+                    if (!decimal.TryParse(priceInput, out newPrice) || newPrice <= 0)
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid number");
+                        continue;
+                    }
+                    break;
+                }
+
+                // PRICE TYPE
+                string priceType;
+                while (true)
+                {
+                    Console.Write("PriceType (e.g., 'kg', 'piece'): ");
+                    priceType = Console.ReadLine() ?? string.Empty;
+                    if (string.IsNullOrWhiteSpace(priceType) || !(priceType.Equals("kg", StringComparison.OrdinalIgnoreCase) || priceType.Equals("piece", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        Console.WriteLine("Invalid PriceType. Please enter 'kg' or 'piece'.");
+                        continue;
+                    }
+                    break;
+                }
+
+
+                try
+                {
+                    _productService.AddProduct(category, newProductId, newProductName, newPrice, priceType);
+                    Console.WriteLine("Product successfully added!");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred while adding the product: {ex.Message}");
+                }
+
+
+
+                Console.WriteLine("Press any key to return to the Admin menu.");
                 Console.ReadKey();
-                return;
+                break;
             }
+        }
+        //EDIT PRODUCT--------------------------------
+        public void EditProductDetails()
+        {
+            Console.Clear();
+            Console.WriteLine("UPDATE PRODUCT DETAILS");
+
+            
+            int productId;
+            while (true)
+            {
+                Console.Write("Enter the product's ID you wish to edit: ");
+                if (int.TryParse(Console.ReadLine(), out productId))
+                {
+                    var product = _productService.GetProductById(productId);
+                    if (product != null)
+                    {
+                        break; 
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No product found with ID {productId}. Please try again.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ID. Please enter a valid number.");
+                }
+            }
+
+            while (true)
+            {
+                Console.WriteLine($"\n1. Change product name" +
+                                  $"\n2. Change product price" +
+                                  $"\n3. Change product ID" +
+                                  $"\n4. Change product category" +
+                                  $"\n5. Change product price type");
+                Console.Write("Enter your choice: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1": //PRODUCTNAME
+                        while (true)
+                        {
+                            Console.Write("Enter the new product name: ");
+                            string newName = Console.ReadLine();
+                            if (!string.IsNullOrWhiteSpace(newName))
+                            {
+                                _productService.UpdateProductName(productId, newName);
+                                Console.WriteLine($"Product name updated to {newName}.");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Product name cannot be empty. Please try again.");
+                            }
+                        }
+                        break;
+
+                    case "2": //PRODUCTPRICE
+                        while (true)
+                        {
+                            Console.Write("Enter the new product price: ");
+                            if (decimal.TryParse(Console.ReadLine(), out decimal newPrice) && newPrice > 0)
+                            {
+                                _productService.UpdateProductPrice(productId, newPrice);
+                                Console.WriteLine($"Product price updated to {newPrice:C}.");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid price. Please enter a positive number.");
+                            }
+                        }
+                        break;
+
+                    case "3": // PRODUCTID
+                        while (true)
+                        {
+                            Console.Write("Enter the new product ID: ");
+                            if (int.TryParse(Console.ReadLine(), out int newId))
+                            {
+                                if (_productService.GetProductById(newId) == null)
+                                {
+                                    var product = _productService.GetProductById(productId);
+                                    product.ProductID = newId;
+                                    _productService.UpdateProduct(product);
+                                    Console.WriteLine($"Product ID updated to {newId}.");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"A product with ID {newId} already exists. Please choose a different ID.");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid ID. Please enter a valid number.");
+                            }
+                        }
+                        break;
+
+                    case "4": //PRODUCTCATEGORY
+                        while (true)
+                        {
+                            Console.Write("Enter the new product category: ");
+                            string newCategory = Console.ReadLine();
+                            if (!string.IsNullOrWhiteSpace(newCategory))
+                            {
+                                var product = _productService.GetProductById(productId);
+                                product.Category = newCategory;
+                                _productService.UpdateProduct(product);
+                                Console.WriteLine($"Product category updated to {newCategory}.");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Category cannot be empty. Please try again.");
+                            }
+                        }
+                        break;
+
+                    case "5": // PRICETYPE
+                        while (true)
+                        {
+                            Console.Write("Enter the new price type (e.g., 'kg', 'piece'): ");
+                            string newPriceType = Console.ReadLine();
+                            if (!string.IsNullOrWhiteSpace(newPriceType) &&
+                                (newPriceType.Equals("kg", StringComparison.OrdinalIgnoreCase) || newPriceType.Equals("piece", StringComparison.OrdinalIgnoreCase)))
+                            {
+                                var product = _productService.GetProductById(productId);
+                                product.PriceType = newPriceType;
+                                _productService.UpdateProduct(product);
+                                Console.WriteLine($"Product price type updated to {newPriceType}.");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid price type. Please enter 'kg' or 'piece'.");
+                            }
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice. Please select a valid option.");
+                        continue;
+                }
+                break;
+            }
+
+            Console.WriteLine("Press any key to return to the menu.");
             Console.ReadKey();
-            _productService.AddProduct(category, productId, productName, price, priceType);
-            Console.ReadLine();
         }
-        public void UpdateProductNameFlow()
+        public void RemoveProduct()
         {
-            Console.WriteLine("UPDATE PRODUCT NAME");
-
- 
-            Console.Write("Enter the Product ID to update: ");
-            if (!int.TryParse(Console.ReadLine(), out int productId))
-            {
-                Console.WriteLine("Invalid ID. Please enter a valid number.");
-                return;
-            }
-
-            Console.Write("Enter the new product name: ");
-            string newName = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(newName))
-            {
-                Console.WriteLine("Product name cannot be empty.");
-                return;
-            }
-            if (_productService == null)
-            {
-                Console.WriteLine("_productService is not initialized.");
-                return;
-            }
-
-            _productService.UpdateProductName(productId, newName);
-        }
-        public void RemoveProductFlow()
-        {
+            Console.Clear();
             Console.WriteLine("REMOVE PRODUCT");
 
-            // Be användaren ange produkt-ID
-            Console.Write("Enter the Product ID to remove: ");
-            if (!int.TryParse(Console.ReadLine(), out int productId))
+            while (true)
             {
-                Console.WriteLine("Invalid ID. Please enter a valid number.");
-                return;
+                Console.Write("Enter the Product ID to remove: ");
+                string producttoremove = Console.ReadLine() ?? string.Empty;
+                if(producttoremove == string.Empty)
+                {
+                    Console.WriteLine("Invalid. Input cannot be empty");
+                    continue;
+                }
+                if (!int.TryParse(producttoremove, out int productId))
+                {
+                    Console.WriteLine("Invalid ID. Please enter a valid number.");
+                    continue; 
+                }
+
+                //Controll if product exists
+                var product = _productService.GetProductById(productId);
+                if (product == null)
+                {
+                    Console.WriteLine($"No product found with ID {productId}. Please check and try again.");
+                    continue; 
+                }
+
+                // REmove product
+                _productService.RemoveProduct(productId);
+
+                var removedProduct = _productService.GetProductById(productId);
+                if (removedProduct != null)
+                {
+                    Console.WriteLine($"\nERROR: Product ID {productId} still exists after removal. Please try again.");
+                    continue;
+                }
+                
+
+                Console.WriteLine($"Product ID {productId} has been successfully removed.");
+                break; 
             }
 
-            // Kontrollera att ProductService är initierat
-            if (_productService == null)
-            {
-                Console.WriteLine("_productService is not initialized.");
-                return;
-            }
-
-            // Ta bort produkten
-            _productService.RemoveProduct(productId);
-
-            //DEBUGG CONTROLL
-            //Ifn product exist after removing
-            var removedProduct = _productService.GetProductById(productId);
-            if(removedProduct != null)
-            {
-                Console.WriteLine($"\nDEBUG:ERROR {productId} still exists after removal");
-                Console.WriteLine("Enter any key to continue to menu.");
-                Console.ReadKey();
-            }
- 
-
+            Console.WriteLine("Press any key to return to the menu.");
+            Console.ReadKey();
         }
-
     }
 }

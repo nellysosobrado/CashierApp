@@ -1,0 +1,27 @@
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 1
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-16 11:32:47
+--------------------------
+Product             Price
+1x testnamn         1,00 kr
+1x mat              1,00 kr
+1x skor            20,00 kr
+1x testnamn         1,00 kr
+1x test2           22,50 kr
+...........................
+
+Total Amount: 33,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

@@ -48,8 +48,19 @@ namespace CashierApp.Customer
                 // Checks campaign
                 if (item.Product.IsCampaignActive())
                 {
-                   // Console.WriteLine($"                                              Campaign Price: {discountedPrice,10:C}");
-                    Console.WriteLine($"                                                       Discount:       -{discount,10:C}");
+                    string campaignDescription = item.Product.CampaignDescription ?? "Campaign";
+                    if (!string.IsNullOrWhiteSpace(item.Product.CampaignDescription))
+                    {
+                        // Visa kampanjbeskrivning om den finns
+                        Console.WriteLine($"{"",-54}{item.Product.CampaignDescription}:       -{discount,10:C}");
+                    }
+                    else
+                    {
+                        // Visa endast rabatten utan text
+                        Console.WriteLine($"{"",-73}-{discount,10:C}");
+                    }
+                    // Console.WriteLine($"                                              Campaign Price: {discountedPrice,10:C}");
+                    //Console.WriteLine($"                                                       {campaignDescription}:       -{discount,10:C}");
                 }
             }
         }

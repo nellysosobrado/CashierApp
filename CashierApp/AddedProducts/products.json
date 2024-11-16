@@ -1,57 +1,79 @@
 [
   {
-    "ProductID": 3,
-    "ProductName": "Apple",
-    "Price": 20,
+    "ProductID": 5,
+    "ProductName": "test2",
+    "Price": 22.5,
     "PriceType": "piece",
-    "Quantity": 0,
-    "Category": "fruit \u0026 greens",
+    "Category": "test",
+    "CampaignDescription": null,
     "CampaignPrice": 10,
-    "CampaignStartDate": "2024-11-13T00:00:00",
-    "CampaignEndDate": "2024-11-16T00:00:00"
-  },
-  {
-    "ProductID": 4,
-    "ProductName": "Chicken",
-    "Price": 5.99,
-    "PriceType": "kg",
-    "Quantity": 0,
-    "Category": "meat",
-    "CampaignPrice": null,
-    "CampaignStartDate": null,
-    "CampaignEndDate": null
-  },
-  {
-    "ProductID": 101,
-    "ProductName": "slay2024",
-    "Price": 1,
-    "PriceType": "piece",
-    "Quantity": 0,
-    "Category": "bajskorv",
-    "CampaignPrice": null,
-    "CampaignStartDate": null,
-    "CampaignEndDate": null
+    "CampaignStartDate": "2024-11-12T00:00:00",
+    "CampaignEndDate": "2024-11-20T00:00:00"
   },
   {
     "ProductID": 1,
-    "ProductName": "bajsdev",
-    "Price": 0,
+    "ProductName": "pasta",
+    "Price": 1,
     "PriceType": "piece",
-    "Quantity": 1,
-    "Category": "bajskorv",
+    "Category": "testcategory",
+    "CampaignDescription": null,
     "CampaignPrice": null,
     "CampaignStartDate": null,
     "CampaignEndDate": null
   },
   {
     "ProductID": 2,
-    "ProductName": "fairy",
-    "Price": 0,
+    "ProductName": "spagett",
+    "Price": 20,
     "PriceType": "piece",
-    "Quantity": 1,
-    "Category": "fairy",
+    "Category": "pasta",
+    "CampaignDescription": null,
     "CampaignPrice": null,
     "CampaignStartDate": null,
     "CampaignEndDate": null
+  },
+  {
+    "ProductID": 3,
+    "ProductName": "pastaaa",
+    "Price": 2,
+    "PriceType": "piece",
+    "Category": "test",
+    "CampaignDescription": "ttext",
+    "CampaignPrice": 1,
+    "CampaignStartDate": "2024-11-11T00:00:00",
+    "CampaignEndDate": "2024-11-20T00:00:00"
+  },
+  {
+    "ProductID": 4,
+    "ProductName": "mat",
+    "Price": 1,
+    "PriceType": "piece",
+    "Category": "test",
+    "CampaignDescription": null,
+    "CampaignPrice": null,
+    "CampaignStartDate": null,
+    "CampaignEndDate": null
+  },
+  {
+    "ProductID": 22,
+    "ProductName": "skor",
+    "Price": 20,
+    "PriceType": "piece",
+    "Category": "test",
+    "CampaignDescription": "sommar godis",
+    "CampaignPrice": null,
+    "CampaignStartDate": null,
+    "CampaignEndDate": null
+  },
+  {
+    "ProductID": 6,
+    "ProductName": "testnamn",
+    "Price": 1,
+    "PriceType": "piece",
+    "Category": "test",
+    "CampaignDescription": "halowweee seasooon",
+    "CampaignPrice": 1,
+    "CampaignStartDate": "2024-11-12T00:00:00",
+    "CampaignEndDate": "2024-11-20T00:00:00"
   }
 ]

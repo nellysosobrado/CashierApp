@@ -37,6 +37,68 @@ namespace CashierApp.Product.Services
                 File.WriteAllText(FilePath, "[]"); // Create an empty JSON array
             }
         }
+        //DEScription-------------
+        public void UpdateProductCampaignDescription(int productId, string newDescription)
+        {
+            var products = LoadProducts();
+
+            // Hitta produkten
+            var product = products.FirstOrDefault(p => p.ProductID == productId);
+
+            if (product == null)
+            {
+                Console.WriteLine($"ERROR: Product with ID {productId} does not exist.");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+                return;
+            }
+
+            product.CampaignDescription = newDescription;
+
+            SaveProducts(products);
+
+            Console.WriteLine($"Campaign description for product ID {productId} has been updated to: {newDescription}");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+        }
+        //-----------------------------
+        public void DisplayAllProducts()
+        {
+            Console.Clear();
+            Console.WriteLine("LIST OF ALL PRODUCTS (Sorted by ID)");
+            Console.WriteLine("--------------------------------------------------");
+
+            //Sorts the product by ID
+            var products = LoadProducts().OrderBy(p => p.ProductID).ToList();
+
+            
+            if (!products.Any())
+            {
+                Console.WriteLine("No products found.");
+                Console.WriteLine("Press any key to return to the menu.");
+                Console.ReadKey();
+                return;
+            }
+
+            
+            foreach (var product in products)
+            {
+                Console.WriteLine($"ID: {product.ProductID}");
+                Console.WriteLine($"Name: {product.ProductName}");
+                Console.WriteLine($"Category: {product.Category}");
+                Console.WriteLine($"Price: {product.Price:C}");
+                Console.WriteLine($"Price Type: {product.PriceType}");
+                if (product.CampaignPrice.HasValue)
+                {
+                    Console.WriteLine($"Campaign Price: {product.CampaignPrice.Value:C} (Valid: {product.CampaignStartDate?.ToShortDateString()} - {product.CampaignEndDate?.ToShortDateString()})");
+                }
+                Console.WriteLine("--------------------------------------------------");
+            }
+
+            Console.WriteLine("Press any key to return to the menu.");
+            Console.ReadKey();
+        }
+
         public void UpdateProduct(IProducts product)
         {
             var products = LoadProducts();
@@ -44,23 +106,21 @@ namespace CashierApp.Product.Services
 
             if (existingProduct != null)
             {
-                // Uppdatera den befintliga produkten
                 existingProduct.ProductName = product.ProductName;
                 existingProduct.Price = product.Price;
                 existingProduct.PriceType = product.PriceType;
-                existingProduct.Quantity = product.Quantity;
                 existingProduct.Category = product.Category;
+                existingProduct.CampaignDescription = product.CampaignDescription;
                 existingProduct.CampaignPrice = product.CampaignPrice;
                 existingProduct.CampaignStartDate = product.CampaignStartDate;
                 existingProduct.CampaignEndDate = product.CampaignEndDate;
 
-                // Spara tillbaka till JSON
                 SaveProducts(products);
             }
         }
 
         // Add a new product to the JSON file
-        public void AddProduct(string category, int productId, string productName, decimal price, string priceType)
+        public void AddProduct(string category, int productId, string productName, decimal price, string priceType, string campaignDescription = null)
         {
             // Load all products from JSON
             var products = LoadProducts();
@@ -75,7 +135,7 @@ namespace CashierApp.Product.Services
             }
 
             // Create a new product
-            var newProduct = ProductFactory.CreateProduct(category, productId, productName, price, priceType);
+            var newProduct = ProductFactory.CreateProduct(category, productId, productName, price, priceType,campaignDescription);
 
             // Add the new product to the list
             products.Add(newProduct);
@@ -83,18 +143,13 @@ namespace CashierApp.Product.Services
             // Save the updated list back to JSON
             SaveProducts(products);
 
-            Console.WriteLine($"Product {productName} has been added.");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
         }
 
         // Update the name of a product in the JSON file
         public void UpdateProductName(int productId, string newName)
         {
-            // Load all products from JSON
             var products = LoadProducts();
 
-            // Find the product by ID
             var product = products.FirstOrDefault(p => p.ProductID == productId);
 
             // If the product doesn't exist, show an error
@@ -116,17 +171,13 @@ namespace CashierApp.Product.Services
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
-
-        // Remove a product from the JSON file
-        public void RemoveProduct(int productId)
+        public void UpdateProductPrice(int productId, decimal newPrice)
         {
-            // Load all products from JSON
             var products = LoadProducts();
 
-            // Find the product by ID
-            var product = products.FirstOrDefault(p => p.ProductID == productId);
+            var product = products.FirstOrDefault(p=>p.ProductID == productId);
 
-            // If the product doesn't exist, show an error
+            //error
             if (product == null)
             {
                 Console.WriteLine($"ERROR: Product with ID {productId} does not exist.");
@@ -135,17 +186,33 @@ namespace CashierApp.Product.Services
                 return;
             }
 
+            product.Price = newPrice;
 
-            // Remove the product
-            products.Remove(product);
-
-            // Save the updated list back to JSON
             SaveProducts(products);
-
-            Console.WriteLine($"Product ID {productId} has been removed.");
+            Console.WriteLine($"Product price for {productId} has been updated to {newPrice}");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
+
+        public void RemoveProduct(int productId)
+        {
+            var products = LoadProducts();
+
+            var product = products.FirstOrDefault(p => p.ProductID == productId);
+
+            if (product == null)
+            {
+                Console.WriteLine($"ERROR: Product with ID {productId} does not exist.");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+                return;
+            }
+            products.Remove(product);
+
+            SaveProducts(products);
+
+        }
+        //----------------------------------------------------------
 
         // Get a product by name
         public IProducts GetProductByName(string productName)
@@ -180,23 +247,25 @@ namespace CashierApp.Product.Services
         {
             // Load all products from JSON and check if the category exists
             return LoadProducts().Any(p => p.Category.Equals(categoryName, StringComparison.OrdinalIgnoreCase));
+
         }
 
+        //------------------------------------------ JSON
         // Load all products from the JSON file
         private List<IProducts> LoadProducts()
         {
             var json = File.ReadAllText(FilePath);
             var options = new JsonSerializerOptions();
-            options.Converters.Add(new ProductConverter()); // Add custom converter for products
+            options.Converters.Add(new ProductConverter()); 
             return JsonSerializer.Deserialize<List<IProducts>>(json, options) ?? new List<IProducts>();
         }
 
         // Save all products to the JSON file
         private void SaveProducts(List<IProducts> products)
         {
-            var options = new JsonSerializerOptions { WriteIndented = true }; // Make JSON easier to read
+            var options = new JsonSerializerOptions { WriteIndented = true }; 
             var json = JsonSerializer.Serialize(products, options);
-            File.WriteAllText(FilePath, json); // Write JSON to the file
+            File.WriteAllText(FilePath, json); 
         }
     }
 }

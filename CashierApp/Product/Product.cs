@@ -14,10 +14,11 @@ namespace CashierApp.Product
         public required string ProductName { get; set; }
         public decimal Price { get; set; }
         public required string PriceType { get; set; }
-        public int Quantity { get; set; }
         public required string Category { get; set; }
 
+
         // Kampanjrelaterade egenskaper
+        public string? CampaignDescription { get; set; }
         public decimal? CampaignPrice { get; set; }
         public DateTime? CampaignStartDate { get; set; }
         public DateTime? CampaignEndDate { get; set; }

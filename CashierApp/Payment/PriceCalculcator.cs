@@ -12,10 +12,26 @@ namespace CashierApp.Payment
         public static decimal CalculateTotalPrice(List<(IProducts Product, int Quantity)> cart)
         {
             decimal total = 0;
+            var currentDate = DateTime.Now;
+
             foreach (var item in cart)
             {
-                total += item.Product.Price * item.Quantity;
+                var product = item.Product;
+
+                // Använd kampanjpris om det är giltigt
+                if (product.CampaignPrice.HasValue &&
+                    product.CampaignStartDate <= currentDate &&
+                    product.CampaignEndDate >= currentDate)
+                {
+                    total += product.CampaignPrice.Value * item.Quantity;
+                }
+                else
+                {
+                    // Annars använd vanligt pris
+                    total += product.Price * item.Quantity;
+                }
             }
+
             return total;
         }
     }
