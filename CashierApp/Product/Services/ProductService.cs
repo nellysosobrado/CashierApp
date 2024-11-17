@@ -272,7 +272,16 @@ namespace CashierApp.Product.Services
             {
                 var json = File.ReadAllText(FilePath);
                 var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                return JsonSerializer.Deserialize<List<Product>>(json, options).Cast<IProducts>().ToList();
+                var products = JsonSerializer.Deserialize<List<Product>>(json, options).Cast<IProducts>().ToList();
+
+                // Debug-logga alla produkter
+                Console.WriteLine("Products loaded from JSON:");
+                foreach (var product in products)
+                {
+                    Console.WriteLine($"ID: {product.ProductID}, Name: {product.ProductName}");
+                }
+
+                return products;
             }
             catch (Exception ex)
             {
@@ -285,9 +294,16 @@ namespace CashierApp.Product.Services
 
         private void SaveProducts(List<IProducts> products)
         {
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            var json = JsonSerializer.Serialize(products, options);
-            File.WriteAllText(FilePath, json); // Skriv till filen
+            try
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                var json = JsonSerializer.Serialize(products, options);
+                File.WriteAllText(FilePath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERROR: Failed to save products. Details: {ex.Message}");
+            }
         }
 
         public void AddCampaignToProduct(int productId, Campaign campaign)

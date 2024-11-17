@@ -1,98 +1,106 @@
 [
   {
-    "ProductID": 5,
-    "ProductName": "test2",
-    "Price": 22.5,
-    "PriceType": "piece",
-    "Category": "test",
+    "ProductID": 1,
+    "ProductName": "spagett",
+    "Price": 1,
+    "PriceType": "kg",
+    "Category": "pasta",
     "Campaigns": [
       {
-        "Description": "1",
+        "Description": "buy 2 spagett and get 1 ",
         "CampaignPrice": 1,
         "StartDate": "2024-11-11T00:00:00",
         "EndDate": "2024-11-20T00:00:00"
-      },
+      }
+    ]
+  },
+  {
+    "ProductID": 2,
+    "ProductName": "mjau dryfood",
+    "Price": 50,
+    "PriceType": "kg",
+    "Category": "cat food",
+    "Campaigns": [
       {
-        "Description": "test222",
-        "CampaignPrice": 10,
-        "StartDate": "2024-11-11T00:00:00",
-        "EndDate": "2024-11-20T00:00:00"
-      },
-      {
-        "Description": "Buy 2 get 1",
-        "CampaignPrice": 5,
+        "Description": "cat season",
+        "CampaignPrice": 20,
         "StartDate": "2024-11-20T00:00:00",
         "EndDate": "2024-11-25T00:00:00"
       }
     ]
   },
   {
-    "ProductID": 1,
-    "ProductName": "pasta",
-    "Price": 1,
-    "PriceType": "piece",
-    "Category": "testcategory",
-    "Campaigns": []
-  },
-  {
-    "ProductID": 2,
-    "ProductName": "spagett",
-    "Price": 20,
-    "PriceType": "piece",
-    "Category": "pasta",
-    "Campaigns": []
-  },
-  {
     "ProductID": 3,
-    "ProductName": "pastaaa",
-    "Price": 2,
-    "PriceType": "piece",
-    "Category": "test",
-    "Campaigns": []
-  },
-  {
-    "ProductID": 4,
-    "ProductName": "mat",
-    "Price": 1,
-    "PriceType": "piece",
-    "Category": "test",
+    "ProductName": "mjau wetfood",
+    "Price": 50,
+    "PriceType": "kg",
+    "Category": "cat food",
     "Campaigns": [
       {
-        "Description": "Winter camndy",
-        "CampaignPrice": 10,
-        "StartDate": "2024-11-11T00:00:00",
-        "EndDate": "2024-11-20T00:00:00"
+        "Description": "cat season",
+        "CampaignPrice": 20,
+        "StartDate": "2024-11-20T00:00:00",
+        "EndDate": "2024-11-25T00:00:00"
       }
     ]
   },
   {
-    "ProductID": 22,
-    "ProductName": "skor",
-    "Price": 20,
-    "PriceType": "piece",
-    "Category": "test",
-    "Campaigns": []
+    "ProductID": 4,
+    "ProductName": "mjau adult food",
+    "Price": 50,
+    "PriceType": "kg",
+    "Category": "cat food",
+    "Campaigns": [
+      {
+        "Description": "cat season",
+        "CampaignPrice": 20,
+        "StartDate": "2024-11-20T00:00:00",
+        "EndDate": "2024-11-25T00:00:00"
+      }
+    ]
+  },
+  {
+    "ProductID": 5,
+    "ProductName": "mjau kitten dryfood",
+    "Price": 50,
+    "PriceType": "kg",
+    "Category": "cat food",
+    "Campaigns": [
+      {
+        "Description": "cat season",
+        "CampaignPrice": 20,
+        "StartDate": "2024-11-20T00:00:00",
+        "EndDate": "2024-11-25T00:00:00"
+      }
+    ]
   },
   {
     "ProductID": 6,
-    "ProductName": "testnamn",
-    "Price": 1,
-    "PriceType": "piece",
-    "Category": "test",
-    "Campaigns": []
+    "ProductName": "mjau kitten wetfood",
+    "Price": 50,
+    "PriceType": "kg",
+    "Category": "cat food",
+    "Campaigns": [
+      {
+        "Description": "cat season",
+        "CampaignPrice": 20,
+        "StartDate": "2024-11-20T00:00:00",
+        "EndDate": "2024-11-25T00:00:00"
+      }
+    ]
   },
   {
     "ProductID": 7,
-    "ProductName": "Tortleini",
-    "Price": 5,
+    "ProductName": "mjau castrated dryfood",
+    "Price": 50,
     "PriceType": "kg",
-    "Category": "pasta",
+    "Category": "cat food",
     "Campaigns": [
       {
-        "Description": "buy 2 get 1",
-        "CampaignPrice": 1,
-        "StartDate": "2024-11-12T00:00:00",
-        "EndDate": "2024-11-20T00:00:00"
+        "Description": "cat season",
+        "CampaignPrice": 20,
+        "StartDate": "2024-11-20T00:00:00",
+        "EndDate": "2024-11-25T00:00:00"
       }
     ]
   }

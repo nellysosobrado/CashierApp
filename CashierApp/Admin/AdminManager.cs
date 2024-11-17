@@ -77,9 +77,6 @@ namespace CashierApp.Admin
         public void DisplayProductsAndCampaigns()
         {
             Console.Clear();
-            Console.WriteLine("LIST OF ALL PRODUCTS");
-            Console.WriteLine(new string('-', 30));
-
             var products = _productService.GetAllProducts();
             if (products == null || !products.Any())
             {
@@ -88,35 +85,58 @@ namespace CashierApp.Admin
                 return;
             }
 
-            
-            foreach (var product in products)
+            int pageSize = 5; 
+            int totalProducts = products.Count;
+            int currentPage = 0;
+
+            while (true)
             {
-                //PRODUCTS
-                Console.WriteLine($"ID: {product.ProductID}");
-                Console.WriteLine($"Name: {product.ProductName}");
-                Console.WriteLine($"Category: {product.Category}");
-                Console.WriteLine($"Price: {product.Price} {product.PriceType}");
+                Console.Clear();
+                Console.WriteLine($"Page {currentPage + 1}/{(int)Math.Ceiling(totalProducts / (double)pageSize)}");
+                Console.WriteLine(new string('-', 30));
 
+                var pageProducts = products.Skip(currentPage * pageSize).Take(pageSize).ToList();
 
-                if (product.Campaigns != null && product.Campaigns.Any())
+                foreach (var product in pageProducts)
                 {
-                    Console.WriteLine("Additional Campaigns:");
-                    //CAMPAIGNS
-                    foreach (var campaign in product.Campaigns)
+                    Console.WriteLine($"ID: {product.ProductID}");
+                    Console.WriteLine($"Name: {product.ProductName}");
+                    Console.WriteLine($"Category: {product.Category}");
+                    Console.WriteLine($"Price: {product.Price} {product.PriceType}");
+
+                    if (product.Campaigns != null && product.Campaigns.Any())
                     {
-                        Console.WriteLine($" - Description: {campaign.Description}");
-                        Console.WriteLine($"   Price: {campaign.CampaignPrice}");
-                        Console.WriteLine($"   Start Date: {campaign.StartDate:yyyy-MM-dd}");
-                        Console.WriteLine($"   End Date: {campaign.EndDate:yyyy-MM-dd}");
+                        Console.WriteLine("Additional Campaigns:");
+                        foreach (var campaign in product.Campaigns)
+                        {
+                            Console.WriteLine($" - Description: {campaign.Description}");
+                            Console.WriteLine($"   Price: {campaign.CampaignPrice}");
+                            Console.WriteLine($"   Start Date: {campaign.StartDate:yyyy-MM-dd}");
+                            Console.WriteLine($"   End Date: {campaign.EndDate:yyyy-MM-dd}");
+                        }
                     }
+                    Console.WriteLine(new string('-', 30));
                 }
 
-                Console.WriteLine(new string('-', 30));
-            }
+                Console.WriteLine("[N] Next page | [P] Previous page | [Q] Quit");
+                var command = Console.ReadKey(true).Key;
 
-            Console.WriteLine("Press any key to return to the menu.");
-            Console.ReadKey();
+                if (command == ConsoleKey.N && (currentPage + 1) * pageSize < totalProducts)
+                {
+                    currentPage++;
+                }
+                else if (command == ConsoleKey.P && currentPage > 0)
+                {
+                    currentPage--;
+                }
+                else if (command == ConsoleKey.Q)
+                {
+                    break;
+                }
+            }
         }
+
+
 
 
 
@@ -169,7 +189,6 @@ namespace CashierApp.Admin
                 return;
             }
 
-            // Lägg till kampanjen
             var campaign = new Campaign
             {
                 Description = description,
