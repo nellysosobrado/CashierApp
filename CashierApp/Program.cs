@@ -1,7 +1,6 @@
 ﻿using Autofac;
-using CashierApp.DI;
-using CashierApp.Product.Factories;
-using CashierApp.Product.Interfaces;
+using CashierApp.Infrastructure.DI;
+//using CashierApp.Product.Interfaces;
 
 namespace CashierApp
 {

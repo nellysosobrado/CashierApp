@@ -1,20 +1,5 @@
 [
   {
-    "ProductID": 1,
-    "ProductName": "spagett",
-    "Price": 1,
-    "PriceType": "kg",
-    "Category": "pasta",
-    "Campaigns": [
-      {
-        "Description": "buy 2 spagett and get 1 ",
-        "CampaignPrice": 1,
-        "StartDate": "2024-11-11T00:00:00",
-        "EndDate": "2024-11-20T00:00:00"
-      }
-    ]
-  },
-  {
     "ProductID": 2,
     "ProductName": "mjau dryfood",
     "Price": 50,
@@ -80,14 +65,7 @@
     "Price": 50,
     "PriceType": "kg",
     "Category": "cat food",
-    "Campaigns": [
-      {
-        "Description": "cat season",
-        "CampaignPrice": 20,
-        "StartDate": "2024-11-20T00:00:00",
-        "EndDate": "2024-11-25T00:00:00"
-      }
-    ]
+    "Campaigns": []
   },
   {
     "ProductID": 7,
@@ -103,5 +81,21 @@
         "EndDate": "2024-11-25T00:00:00"
       }
     ]
+  },
+  {
+    "ProductID": 8,
+    "ProductName": "Test2",
+    "Price": 100,
+    "PriceType": "piece",
+    "Category": "test",
+    "Campaigns": []
+  },
+  {
+    "ProductID": 9,
+    "ProductName": "test1",
+    "Price": 100,
+    "PriceType": "piece",
+    "Category": "test",
+    "Campaigns": []
   }
 ]

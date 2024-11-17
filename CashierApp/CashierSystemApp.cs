@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashierApp.Admin;
-using CashierApp.Customer;
-using CashierApp.Menu;
+using CashierApp.Application.Admin;
+using CashierApp.Application.Services;
 
 namespace CashierApp
 {
     //Program core, focuses on the program flow
     public class CashierSystemApp
     {
-        private readonly Menu.MenuService _menuHandler;
+        private readonly MenuService _menuHandler;
         private readonly CustomerService _customerHandler;
-        private readonly AdminManager _adminHandler;
+        private readonly AdminMenu _adminHandler;
 
-        public CashierSystemApp(Menu.MenuService menuHandler, CustomerService customerHandler, AdminManager adminHandler)
+        public CashierSystemApp(MenuService menuHandler, CustomerService customerHandler, AdminMenu adminHandler)
         {
             _menuHandler = menuHandler;
             _customerHandler = customerHandler;
