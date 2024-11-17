@@ -12,5 +12,6 @@ namespace CashierApp
         public decimal? CampaignPrice { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; } 
+
     }
 }

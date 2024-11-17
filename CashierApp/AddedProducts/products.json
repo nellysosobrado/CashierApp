@@ -17,6 +17,12 @@
         "CampaignPrice": 10,
         "StartDate": "2024-11-11T00:00:00",
         "EndDate": "2024-11-20T00:00:00"
+      },
+      {
+        "Description": "Buy 2 get 1",
+        "CampaignPrice": 5,
+        "StartDate": "2024-11-20T00:00:00",
+        "EndDate": "2024-11-25T00:00:00"
       }
     ],
     "CampaignDescription": null,
@@ -66,7 +72,14 @@
     "Price": 1,
     "PriceType": "piece",
     "Category": "test",
-    "Campaigns": [],
+    "Campaigns": [
+      {
+        "Description": "Winter camndy",
+        "CampaignPrice": 10,
+        "StartDate": "2024-11-11T00:00:00",
+        "EndDate": "2024-11-20T00:00:00"
+      }
+    ],
     "CampaignDescription": null,
     "CampaignPrice": null,
     "CampaignStartDate": null,

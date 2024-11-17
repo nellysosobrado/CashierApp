@@ -254,13 +254,21 @@ namespace CashierApp.Product.Services
 
         private List<IProducts> LoadProducts()
         {
-            var json = File.ReadAllText(FilePath);
-            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            return JsonSerializer.Deserialize<List<Product>>(json, options).Cast<IProducts>().ToList();
+            try
+            {
+                var json = File.ReadAllText(FilePath);
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                return JsonSerializer.Deserialize<List<Product>>(json, options).Cast<IProducts>().ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERROR: Failed to load products. Details: {ex.Message}");
+                return new List<IProducts>();
+            }
         }
 
 
-      
+
         private void SaveProducts(List<IProducts> products)
         {
             var options = new JsonSerializerOptions { WriteIndented = true };
@@ -283,14 +291,21 @@ namespace CashierApp.Product.Services
                 return;
             }
 
-      
+
             product.Campaigns.Add(campaign);
+
 
             SaveProducts(products);
 
             Console.WriteLine($"Campaign added to product ID {productId}.");
             Console.ReadKey();
         }
+        public List<Product> GetAllProducts()
+        {
+            // Ladda alla produkter från JSON-filen
+            return LoadProducts().Cast<Product>().ToList();
+        }
+
 
 
     }
