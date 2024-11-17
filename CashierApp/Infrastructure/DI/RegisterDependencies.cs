@@ -1,7 +1,12 @@
 ﻿using Autofac;
 using CashierApp.Application.Admin;
 using CashierApp.Application.Factories;
-using CashierApp.Application.Services;
+using CashierApp.Application.Services.Campaigns;
+using CashierApp.Application.Services.Customer;
+using CashierApp.Application.Services.Menu;
+using CashierApp.Application.Services.Payment;
+using CashierApp.Application.Services.StoreProduct;
+using CashierApp.Application.Services.Receipts;
 using CashierApp.Core.Interfaces;
 using CashierApp.Infrastructure.ErrorManagement;
 using CashierApp.Presentation.Customer;

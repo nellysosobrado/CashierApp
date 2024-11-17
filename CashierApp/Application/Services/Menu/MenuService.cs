@@ -1,4 +1,5 @@
 ﻿using CashierApp.Application.Admin;
+using CashierApp.Application.Services.Customer;
 using CashierApp.Core.Interfaces;
 using CashierApp.Presentation.Menu;
 using System;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 //using CashierApp.ErrorManagement;
 
-namespace CashierApp.Application.Services
+namespace CashierApp.Application.Services.Menu
 {
     //Menu Logic
     //UI Menu

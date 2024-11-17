@@ -1,11 +1,12 @@
-﻿using CashierApp.Core.Interfaces;
+﻿using CashierApp.Application.Services.Campaigns;
+using CashierApp.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashierApp.Application.Services
+namespace CashierApp.Application.Services.Payment
 {
     public static class PriceCalculator
     {

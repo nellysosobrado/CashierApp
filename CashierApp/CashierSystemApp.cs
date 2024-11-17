@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CashierApp.Application.Admin;
-using CashierApp.Application.Services;
+using CashierApp.Application.Services.Customer;
+using CashierApp.Application.Services.Menu;
 
 namespace CashierApp
 {

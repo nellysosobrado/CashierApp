@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using CashierApp.Core.Interfaces;
 using CashierApp.Core.Entities;
 using CashierApp.Application.Factories;
+using CashierApp.Application.Services.Receipts;
 
 //using CashierApp.Product;
 
-namespace CashierApp.Application.Services
+namespace CashierApp.Application.Services.Payment
 {
     /// <summary>
     /// PaymentService, takes care of the payment. And calls receipt class

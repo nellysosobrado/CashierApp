@@ -6,14 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using CashierApp.Core.Factories;
-using CashierApp.Core.Entities;
+using CashierApp.Core.Entities; 
 using CashierApp.Core.Interfaces;
+using CashierApp.Application.Services.Campaigns;
 
 //using CashierApp.Customer;
 //using CashierApp.ErrorManagement;
 
 
-namespace CashierApp.Application.Services
+namespace CashierApp.Application.Services.StoreProduct
 {
     /// <summary>
     /// Manages product data using a json file as the main source

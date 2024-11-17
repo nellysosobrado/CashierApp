@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CashierApp.Core.Entities;
 
-namespace CashierApp.Application.Services
+namespace CashierApp.Application.Services.Receipts
 {
     public class ReceiptService
     {

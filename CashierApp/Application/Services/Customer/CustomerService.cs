@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CashierApp.Application.Services.Payment;
+using CashierApp.Application.Services.StoreProduct;
 using CashierApp.Core.Interfaces;
 using CashierApp.Presentation.Customer;
 using CashierApp.Presentation.Products;
@@ -10,7 +12,7 @@ using CashierApp.Presentation.Products;
 //using CashierApp.Menu;
 
 
-namespace CashierApp.Application.Services
+namespace CashierApp.Application.Services.Customer
 {
     public class CustomerService
     {

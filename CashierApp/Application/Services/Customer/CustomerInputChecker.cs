@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 //using CashierApp.Product.Services;
 
-namespace CashierApp.Application.Services
+namespace CashierApp.Application.Services.Customer
 {
     //Error handler
     //Checks user input

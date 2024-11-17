@@ -1,12 +1,10 @@
-﻿using CashierApp.Core.Entities;
-using CashierApp.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CashierApp.Core.Interfaces;
+using CashierApp.Core.Entities;
 
-namespace CashierApp.Application.Services
+
+
+
+namespace CashierApp.Application.Services.Campaigns
 {
     public class CampaignService : ICampaignManager
     {
