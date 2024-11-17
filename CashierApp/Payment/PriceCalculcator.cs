@@ -9,25 +9,27 @@ namespace CashierApp.Payment
 {
     public static class PriceCalculator
     {
+        private static CampaignManager _campaignManager = new CampaignManager();
+
         public static decimal CalculateTotalPrice(List<(IProducts Product, int Quantity)> cart)
         {
             decimal total = 0;
-            var currentDate = DateTime.Now;
 
             foreach (var item in cart)
             {
                 var product = item.Product;
 
-                // Använd kampanjpris om det är giltigt
-                if (product.CampaignPrice.HasValue &&
-                    product.CampaignStartDate <= currentDate &&
-                    product.CampaignEndDate >= currentDate)
+                // Hämta aktiva kampanjer
+                var activeCampaigns = _campaignManager.GetActiveCampaigns(product.Campaigns);
+
+                if (activeCampaigns.Any())
                 {
-                    total += product.CampaignPrice.Value * item.Quantity;
+                    // Använd det första kampanjpriset
+                    total += activeCampaigns.First().CampaignPrice.Value * item.Quantity;
                 }
                 else
                 {
-                    // Annars använd vanligt pris
+                    // Använd standardpris om ingen kampanj är aktiv
                     total += product.Price * item.Quantity;
                 }
             }

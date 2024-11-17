@@ -19,20 +19,6 @@ namespace CashierApp.Product
 
        
         public List<Campaign> Campaigns { get; set; } = new List<Campaign>();
-        public string? CampaignDescription { get; set; }
-        public decimal? CampaignPrice { get; set; }
-        public DateTime? CampaignStartDate { get; set; }
-        public DateTime? CampaignEndDate { get; set; }
-
         
-        public bool IsCampaignActive()
-        {
-            if (CampaignPrice.HasValue && CampaignStartDate.HasValue && CampaignEndDate.HasValue)
-            {
-                DateTime now = DateTime.Now;
-                return now >= CampaignStartDate.Value && now <= CampaignEndDate.Value;
-            }
-            return false;
-        }
     }
 }

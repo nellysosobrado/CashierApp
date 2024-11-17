@@ -10,6 +10,12 @@ namespace CashierApp.Product
     //Display Products
     public class ProductDisplay
     {
+        private readonly CampaignManager _campaignManager;
+
+        public ProductDisplay(CampaignManager campaignManager)
+        {
+            _campaignManager = campaignManager;
+        }
         public void ShowCategories(IEnumerable<string> categories) //CATEGORIES
         {
             Console.Clear();
@@ -40,18 +46,22 @@ namespace CashierApp.Product
             Console.WriteLine("                                   ────────────────────────────────────────────────");
 
             foreach (var product in products)
-    {
-        // Kontrollera om kampanjen är aktiv
-        if (product.IsCampaignActive())
-        {
-            Console.WriteLine($"                                  ID: {product.ProductID} | Name: {product.ProductName} | Campaign Price: {product.CampaignPrice:C} | Regular Price: {product.Price:C}");
-            Console.WriteLine($"                                  Campaign Active: {product.CampaignStartDate:yyyy-MM-dd} to {product.CampaignEndDate:yyyy-MM-dd}");
-        }
-        else
-        {
-            Console.WriteLine($"ID: {product.ProductID} | Name: {product.ProductName} | Price: {product.Price:C}");
-        }
-    }
+            {
+                var activeCampaigns = _campaignManager.GetActiveCampaigns(product.Campaigns);
+
+                if (activeCampaigns.Any())
+                {
+                    var campaign = activeCampaigns.First(); // Använd den första aktiva kampanjen
+                    Console.WriteLine($"                                  ID: {product.ProductID} | Name: {product.ProductName} | Campaign Price: {campaign.CampaignPrice:C} | Regular Price: {product.Price:C}");
+                    Console.WriteLine($"                                  Campaign Active: {campaign.StartDate:yyyy-MM-dd} to {campaign.EndDate:yyyy-MM-dd}");
+                }
+                else
+                {
+                    Console.WriteLine($"ID: {product.ProductID} | Name: {product.ProductName} | Price: {product.Price:C}");
+                }
+            }
+
+
 
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             CenterText("[N] Next page  [P] Previous page  ");

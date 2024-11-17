@@ -24,11 +24,7 @@
         "StartDate": "2024-11-20T00:00:00",
         "EndDate": "2024-11-25T00:00:00"
       }
-    ],
-    "CampaignDescription": null,
-    "CampaignPrice": 10,
-    "CampaignStartDate": "2024-11-12T00:00:00",
-    "CampaignEndDate": "2024-11-20T00:00:00"
+    ]
   },
   {
     "ProductID": 1,
@@ -36,11 +32,7 @@
     "Price": 1,
     "PriceType": "piece",
     "Category": "testcategory",
-    "Campaigns": [],
-    "CampaignDescription": null,
-    "CampaignPrice": null,
-    "CampaignStartDate": null,
-    "CampaignEndDate": null
+    "Campaigns": []
   },
   {
     "ProductID": 2,
@@ -48,11 +40,7 @@
     "Price": 20,
     "PriceType": "piece",
     "Category": "pasta",
-    "Campaigns": [],
-    "CampaignDescription": null,
-    "CampaignPrice": null,
-    "CampaignStartDate": null,
-    "CampaignEndDate": null
+    "Campaigns": []
   },
   {
     "ProductID": 3,
@@ -60,11 +48,7 @@
     "Price": 2,
     "PriceType": "piece",
     "Category": "test",
-    "Campaigns": [],
-    "CampaignDescription": "ttext",
-    "CampaignPrice": 1,
-    "CampaignStartDate": "2024-11-11T00:00:00",
-    "CampaignEndDate": "2024-11-20T00:00:00"
+    "Campaigns": []
   },
   {
     "ProductID": 4,
@@ -79,11 +63,7 @@
         "StartDate": "2024-11-11T00:00:00",
         "EndDate": "2024-11-20T00:00:00"
       }
-    ],
-    "CampaignDescription": null,
-    "CampaignPrice": null,
-    "CampaignStartDate": null,
-    "CampaignEndDate": null
+    ]
   },
   {
     "ProductID": 22,
@@ -91,11 +71,7 @@
     "Price": 20,
     "PriceType": "piece",
     "Category": "test",
-    "Campaigns": [],
-    "CampaignDescription": "sommar godis",
-    "CampaignPrice": null,
-    "CampaignStartDate": null,
-    "CampaignEndDate": null
+    "Campaigns": []
   },
   {
     "ProductID": 6,
@@ -103,10 +79,21 @@
     "Price": 1,
     "PriceType": "piece",
     "Category": "test",
-    "Campaigns": [],
-    "CampaignDescription": "halowweee seasooon",
-    "CampaignPrice": 1,
-    "CampaignStartDate": "2024-11-12T00:00:00",
-    "CampaignEndDate": "2024-11-20T00:00:00"
+    "Campaigns": []
+  },
+  {
+    "ProductID": 7,
+    "ProductName": "Tortleini",
+    "Price": 5,
+    "PriceType": "kg",
+    "Category": "pasta",
+    "Campaigns": [
+      {
+        "Description": "buy 2 get 1",
+        "CampaignPrice": 1,
+        "StartDate": "2024-11-12T00:00:00",
+        "EndDate": "2024-11-20T00:00:00"
+      }
+    ]
   }
 ]

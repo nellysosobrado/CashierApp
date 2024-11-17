@@ -53,7 +53,16 @@ namespace CashierApp.Product.Services
                 return;
             }
 
-            product.CampaignDescription = newDescription;
+            // Kontrollera om kampanjer finns
+            if (product.Campaigns == null || !product.Campaigns.Any())
+            {
+                Console.WriteLine("No campaigns found for this product.");
+                Console.ReadKey();
+                return;
+            }
+
+            // Uppdatera beskrivningen för den första kampanjen (eller annan logik)
+            product.Campaigns.First().Description = newDescription;
 
             SaveProducts(products);
 
@@ -68,10 +77,8 @@ namespace CashierApp.Product.Services
             Console.WriteLine("LIST OF ALL PRODUCTS (Sorted by ID)");
             Console.WriteLine("--------------------------------------------------");
 
-            //Sorts the product by ID
             var products = LoadProducts().OrderBy(p => p.ProductID).ToList();
 
-            
             if (!products.Any())
             {
                 Console.WriteLine("No products found.");
@@ -80,7 +87,6 @@ namespace CashierApp.Product.Services
                 return;
             }
 
-            
             foreach (var product in products)
             {
                 Console.WriteLine($"ID: {product.ProductID}");
@@ -88,10 +94,15 @@ namespace CashierApp.Product.Services
                 Console.WriteLine($"Category: {product.Category}");
                 Console.WriteLine($"Price: {product.Price:C}");
                 Console.WriteLine($"Price Type: {product.PriceType}");
-                if (product.CampaignPrice.HasValue)
+
+                // Visa aktiva kampanjer
+                foreach (var campaign in product.Campaigns)
                 {
-                    Console.WriteLine($"Campaign Price: {product.CampaignPrice.Value:C} (Valid: {product.CampaignStartDate?.ToShortDateString()} - {product.CampaignEndDate?.ToShortDateString()})");
+                    Console.WriteLine($" - Campaign: {campaign.Description}");
+                    Console.WriteLine($"   Price: {campaign.CampaignPrice:C}");
+                    Console.WriteLine($"   Valid: {campaign.StartDate:yyyy-MM-dd} to {campaign.EndDate:yyyy-MM-dd}");
                 }
+
                 Console.WriteLine("--------------------------------------------------");
             }
 
@@ -110,12 +121,15 @@ namespace CashierApp.Product.Services
                 existingProduct.Price = product.Price;
                 existingProduct.PriceType = product.PriceType;
                 existingProduct.Category = product.Category;
-                existingProduct.CampaignDescription = product.CampaignDescription;
-                existingProduct.CampaignPrice = product.CampaignPrice;
-                existingProduct.CampaignStartDate = product.CampaignStartDate;
-                existingProduct.CampaignEndDate = product.CampaignEndDate;
+
+                // Uppdatera kampanjer om det behövs
+                existingProduct.Campaigns = product.Campaigns;
 
                 SaveProducts(products);
+            }
+            else
+            {
+                Console.WriteLine($"ERROR: Product with ID {product.ProductID} not found.");
             }
         }
 

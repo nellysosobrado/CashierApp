@@ -11,22 +11,24 @@ namespace CashierApp.Product.Factories
     {
         public static IProducts CreateProduct(string category, int productId, string name, decimal price, string priceType, string campaignDescription = null)
         {
-            //Console.WriteLine($"Creating product: {name}, Category: {category}, Price Type: {priceType}");
-
-
             var product = new Product
             {
                 ProductID = productId,
                 ProductName = name,
                 Price = price,
                 PriceType = priceType,
-                Category = category,
-                CampaignDescription = campaignDescription
-
+                Category = category
             };
 
-            return product;
+            if (!string.IsNullOrWhiteSpace(campaignDescription))
+            {
+                product.Campaigns.Add(new Campaign
+                {
+                    Description = campaignDescription
+                });
+            }
 
+            return product;
         }
     }
 }

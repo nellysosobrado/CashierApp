@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CashierApp
 {
-    internal class ICampaignManager
+    public interface ICampaignManager
     {
+        bool IsCampaignActive(Campaign campaign);
+        List<Campaign> GetActiveCampaigns(List<Campaign> campaigns);
     }
 }

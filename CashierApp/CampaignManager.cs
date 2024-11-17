@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace CashierApp
 {
-    internal class CampaignManager
+    public class CampaignManager : ICampaignManager
     {
+        public bool IsCampaignActive(Campaign campaign)
+        {
+            if (campaign.CampaignPrice.HasValue && campaign.StartDate.HasValue && campaign.EndDate.HasValue)
+            {
+                DateTime now = DateTime.Now;
+                return now >= campaign.StartDate.Value && now <= campaign.EndDate.Value;
+            }
+            return false;
+        }
+
+        public List<Campaign> GetActiveCampaigns(List<Campaign> campaigns)
+        {
+            return campaigns.Where(IsCampaignActive).ToList();
+        }
     }
 }

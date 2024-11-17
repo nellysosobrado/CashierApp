@@ -188,12 +188,14 @@ namespace CashierApp.Admin
 
         public void RemoveCampaign()
         {
+            Console.Clear();
             Console.WriteLine("REMOVE CAMPAIGN");
 
             Console.Write("Enter the Product ID for the campaign to remove: ");
             if (!int.TryParse(Console.ReadLine(), out int productId))
             {
                 Console.WriteLine("Invalid Product ID. Please enter a valid number.");
+                Console.ReadKey();
                 return;
             }
 
@@ -201,17 +203,39 @@ namespace CashierApp.Admin
             if (product == null)
             {
                 Console.WriteLine("Product not found.");
+                Console.ReadKey();
                 return;
             }
 
-            product.CampaignPrice = null;
-            product.CampaignStartDate = null;
-            product.CampaignEndDate = null;
+            if (product.Campaigns == null || !product.Campaigns.Any())
+            {
+                Console.WriteLine("No campaigns found for this product.");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("Available campaigns:");
+            for (int i = 0; i < product.Campaigns.Count; i++)
+            {
+                var campaign = product.Campaigns[i];
+                Console.WriteLine($"{i + 1}. {campaign.Description} (Price: {campaign.CampaignPrice}, {campaign.StartDate:yyyy-MM-dd} to {campaign.EndDate:yyyy-MM-dd})");
+            }
+
+            Console.Write("Select the campaign number to remove: ");
+            if (!int.TryParse(Console.ReadLine(), out int campaignIndex) || campaignIndex < 1 || campaignIndex > product.Campaigns.Count)
+            {
+                Console.WriteLine("Invalid selection.");
+                Console.ReadKey();
+                return;
+            }
+
+            product.Campaigns.RemoveAt(campaignIndex - 1);
             _productService.UpdateProduct(product);
 
-            Console.WriteLine($"Campaign removed successfully from product {product.ProductName}.");
+            Console.WriteLine("Campaign removed successfully.");
             Console.ReadKey();
         }
+
         public void CreateNewProduct()
         {
             bool runCreateNewproduct = true;

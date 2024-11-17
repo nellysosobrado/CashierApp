@@ -10,6 +10,13 @@ namespace CashierApp.Customer
 {
     public class CartDisplay
     {
+        private readonly CampaignManager _campaignManager;
+
+        public CartDisplay(CampaignManager campaignManager)
+        {
+            _campaignManager = campaignManager;
+        }
+
         public void DisplayCartUI(List<(IProducts Product, int Quantity)> cart)
         {
             Console.Clear();
@@ -39,28 +46,21 @@ namespace CashierApp.Customer
                 string quantityDisplay = FormatQuantity(item.Quantity);
 
                 decimal originalPrice = item.Product.Price * item.Quantity;
-                decimal discountedPrice = item.Product.IsCampaignActive() ? item.Product.CampaignPrice.Value * item.Quantity : originalPrice;
+
+                // Använd CampaignManager för att avgöra om kampanjen är aktiv
+                var activeCampaigns = _campaignManager.GetActiveCampaigns(item.Product.Campaigns);
+                decimal discountedPrice = activeCampaigns.Any()
+                    ? activeCampaigns.First().CampaignPrice.Value * item.Quantity
+                    : originalPrice;
+
                 decimal discount = originalPrice - discountedPrice;
 
-                
                 Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {originalPrice,10:C}");
 
-                // Checks campaign
-                if (item.Product.IsCampaignActive())
+                if (activeCampaigns.Any())
                 {
-                    string campaignDescription = item.Product.CampaignDescription ?? "Campaign";
-                    if (!string.IsNullOrWhiteSpace(item.Product.CampaignDescription))
-                    {
-                        // Visa kampanjbeskrivning om den finns
-                        Console.WriteLine($"{"",-54}{item.Product.CampaignDescription}:       -{discount,10:C}");
-                    }
-                    else
-                    {
-                        // Visa endast rabatten utan text
-                        Console.WriteLine($"{"",-73}-{discount,10:C}");
-                    }
-                    // Console.WriteLine($"                                              Campaign Price: {discountedPrice,10:C}");
-                    //Console.WriteLine($"                                                       {campaignDescription}:       -{discount,10:C}");
+                    var campaign = activeCampaigns.First();
+                    Console.WriteLine($"{"",-54}{campaign.Description}:       -{discount,10:C}");
                 }
             }
         }
@@ -102,4 +102,5 @@ namespace CashierApp.Customer
             Console.WriteLine(text);
         }
     }
+
 }

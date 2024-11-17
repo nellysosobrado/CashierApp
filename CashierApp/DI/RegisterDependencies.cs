@@ -20,6 +20,12 @@ namespace CashierApp.DI
     {
         public static void RegisterDependencies(ContainerBuilder builder)
         {
+            builder.RegisterType<CampaignManager>().AsSelf().SingleInstance();
+            builder.RegisterType<ProductDisplay>().AsSelf();
+            builder.RegisterType<CartDisplay>().AsSelf();
+            builder.RegisterType<MenuService>().AsSelf();
+
+
             // Get the assembly containing all types in the current project
             var assembly = Assembly.GetExecutingAssembly();
 
