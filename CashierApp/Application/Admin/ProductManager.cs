@@ -1,5 +1,5 @@
 ﻿using CashierApp.Core.Interfaces.Admin;
-using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.StoreProducts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

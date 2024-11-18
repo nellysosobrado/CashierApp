@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using CashierApp.Core.Interfaces.ErrorManagement;
-using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.StoreProducts;
 
 namespace CashierApp.Presentation.Customer
 {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CashierApp.Core.Entities;
 
-namespace CashierApp.Core.Interfaces.Campaign
+namespace CashierApp.Core.Interfaces.StoreCampaigns
 {
     public interface ICampaignManager
     {

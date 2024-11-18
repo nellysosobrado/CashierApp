@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CashierApp.Core.Entities;
 
-namespace CashierApp.Core.Interfaces.Product
+namespace CashierApp.Core.Interfaces.StoreProducts
 {
 
     public interface IProducts
@@ -16,7 +16,6 @@ namespace CashierApp.Core.Interfaces.Product
         string PriceType { get; set; }
         string Category { get; set; }
 
-        // Endast referens till kampanjer
         List<Campaign> Campaigns { get; set; }
     }
 }

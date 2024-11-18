@@ -1,7 +1,7 @@
 ﻿using CashierApp.Application.Utilities;
 using CashierApp.Core.Entities;
 using CashierApp.Core.Interfaces.Admin;
-using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.StoreProducts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +32,7 @@ namespace CashierApp.Application.Admin
             var product = new Product
             {
                 Category = _inputValidator.GetValidatedInput(
-                    "Category",                             
+                    "Category",                            
                     input => !string.IsNullOrWhiteSpace(input),
                     "Category cannot be empty."
                 ),

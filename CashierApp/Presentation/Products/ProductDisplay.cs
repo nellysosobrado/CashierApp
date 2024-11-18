@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CashierApp.Presentation.Products;
 using CashierApp.Application.Services.Campaigns;
 using CashierApp.Core.Entities;
-using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.StoreProducts;
 
 namespace CashierApp.Presentation.Products
 {

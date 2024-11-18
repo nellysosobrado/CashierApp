@@ -12,8 +12,8 @@ using CashierApp.Application.Services.Payment;
 using CashierApp.Application.Services.StoreProduct;
 using CashierApp.Application.Services.Campaigns;
 using CashierApp.Core.Interfaces.ErrorManagement;
-using CashierApp.Core.Interfaces.Product;
-using CashierApp.Core.Interfaces.Campaign;
+using CashierApp.Core.Interfaces.StoreProducts;
+using CashierApp.Core.Interfaces.StoreCampaigns;
 
 
 //using CashierApp.ErrorManagement;

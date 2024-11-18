@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.StoreProducts;
 
 namespace CashierApp.Core.Entities
 {

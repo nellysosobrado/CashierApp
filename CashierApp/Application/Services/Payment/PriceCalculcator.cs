@@ -1,6 +1,6 @@
 ﻿using CashierApp.Application.Services.Campaigns;
 using CashierApp.Core.Entities;
-using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.StoreProducts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

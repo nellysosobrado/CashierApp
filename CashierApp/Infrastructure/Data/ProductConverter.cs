@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CashierApp.Core.Entities;
-using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.StoreProducts;
 
 namespace CashierApp.Infrastructure.Data
 {

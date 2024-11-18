@@ -8,8 +8,8 @@ using CashierApp.Presentation.Menu;
 using CashierApp.Application.Admin;
 using CashierApp.Core.Interfaces.Admin;
 using CashierApp.Core.Interfaces.ErrorManagement;
-using CashierApp.Core.Interfaces.Product;
-using CashierApp.Core.Interfaces.Campaign;
+using CashierApp.Core.Interfaces.StoreProducts;
+using CashierApp.Core.Interfaces.StoreCampaigns;
 
 namespace CashierApp.Application.Admin
 {

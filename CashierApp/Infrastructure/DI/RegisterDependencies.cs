@@ -6,7 +6,7 @@ using CashierApp.Application.Services.Customer;
 using CashierApp.Application.Services.Menu;
 using CashierApp.Application.Services.Payment;
 using CashierApp.Application.Services.StoreProduct;
-using CashierApp.Application.Services.Receipts;
+using CashierApp.Application.Services.StoreReceipts;
 using CashierApp.Infrastructure.ErrorManagement;
 using CashierApp.Presentation.Customer;
 using CashierApp.Presentation.Menu;
@@ -20,8 +20,8 @@ using System.Threading.Tasks;
 using CashierApp.Application.Utilities;
 using CashierApp.Core.Interfaces.Admin;
 using CashierApp.Core.Interfaces.ErrorManagement;
-using CashierApp.Core.Interfaces.Product;
-using CashierApp.Core.Interfaces.Campaign;
+using CashierApp.Core.Interfaces.StoreProducts;
+using CashierApp.Core.Interfaces.StoreCampaigns;
 using CashierApp.Core.Interfaces.Menu;
 
 namespace CashierApp.Infrastructure.DI

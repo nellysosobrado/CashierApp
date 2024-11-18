@@ -1,5 +1,6 @@
 ﻿using CashierApp.Core.Entities;
-using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.StoreProducts;
+using CashierApp.Core.Interfaces.StoreCampaigns;
 using CashierApp.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
