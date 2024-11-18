@@ -15,61 +15,80 @@ using CashierApp.Core.Interfaces.ErrorManagement;
 using CashierApp.Core.Interfaces.StoreProducts;
 using CashierApp.Core.Interfaces.StoreCampaigns;
 
-
-//using CashierApp.ErrorManagement;
-//using CashierApp.Product;
-//using CashierApp.Campaigns;
-
-
 namespace CashierApp.Application.Factories
 {
+    /// <summary>
+    /// MenuFactory creates and sets up services 
+    /// </summary>
     public class MenuFactory
     {
         private readonly IErrorManager _errorManager;
 
-        // Konstruktor för att injicera IErrorManager
+        /// <summary>
+        /// Constructor to inject IErrorManager
+        /// </summary>
+        /// <param name="errorManager"></param>
         public MenuFactory(IErrorManager errorManager)
         {
             _errorManager = errorManager;
         }
+
+        /// <summary>
+        /// Create a ProductService instance
+        /// </summary>
+        /// <returns></returns>
         public ProductService CreateProductService()
         {
             return new ProductService();
         }
 
+        /// <summary>
+        /// Create a PaymentService (PAY) instance
+        /// </summary>
+        /// <returns></returns>
         public PAY CreatePaymentService()
         {
-            var productService = new ProductService(); // Skapa en instans av ProductService
-            var campaignService = new CampaignService(productService); // Skapa CampaignService
-            return new PAY(campaignService); // Skicka CampaignService till PAY
+            var productService = CreateProductService();
+            var campaignService = new CampaignService(productService);
+            return new PAY(campaignService);
         }
 
-        public CustomerService CreateCustomerManager(IErrorManager errorManager)
+        /// <summary>
+        /// Create a CustomerService instance
+        /// </summary>
+        /// <returns></returns>
+        public CustomerService CreateCustomerService()
         {
-            var productService = new ProductService();
+            var productService = CreateProductService();
             var paymentService = CreatePaymentService();
+            var campaignService = new CampaignService(productService);
 
-            var campaignManager = new CampaignService(productService);
-            var productDisplay = new ProductDisplay(campaignManager);
-            var newCustomer = new CartDisplay(campaignManager,errorManager);
+            var productDisplay = new ProductDisplay(campaignService);
+            var cartDisplay = new CartDisplay(campaignService, _errorManager);
             var productCatalog = new ProductCatalog(productService, productDisplay);
-            var customerInputChecker = new CustomerInputChecker(productService, errorManager);
-            return new CustomerService(productService, paymentService, _errorManager, productDisplay, newCustomer, productCatalog, customerInputChecker);
+            var customerInputChecker = new CustomerInputChecker(productService, _errorManager);
+
+            return new CustomerService(productService, paymentService, _errorManager, productDisplay, cartDisplay, productCatalog, customerInputChecker);
         }
 
-        public AdminMenu CreateAdminMenu(IProductManager productManager, ICampaignManager campaignManager,IErrorManager errorManagerm)
+        /// <summary>
+        /// Create an AdminMenu instance
+        /// </summary>
+        /// <param name="productManager"></param>
+        /// <param name="campaignManager"></param>
+        /// <returns></returns>
+        public AdminMenu CreateAdminMenu(IProductManager productManager, ICampaignManager campaignManager)
         {
-            return new AdminMenu(productManager, campaignManager, errorManagerm);
+            return new AdminMenu(productManager, campaignManager, _errorManager);
         }
 
-        public static MenuDisplay CreateMenuDisplay()
+        /// <summary>
+        /// Create a MenuDisplay instance
+        /// </summary>
+        /// <returns></returns>
+        public MenuDisplay CreateMenuDisplay()
         {
             return new MenuDisplay();
         }
-
-        //public static MenuNavigation CreateMenuNavigation()
-        //{
-        //    return new MenuNavigation();
-        //}
     }
 }

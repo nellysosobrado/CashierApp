@@ -8,9 +8,6 @@ using CashierApp.Core.Entities;
 
 namespace CashierApp.Application.Services.StoreReceipts
 {
-
-
-
     public class ReceiptService
     {
         private readonly CampaignService _campaignService;
@@ -73,37 +70,27 @@ namespace CashierApp.Application.Services.StoreReceipts
             {
                 decimal itemTotal = group.RegularPriceTotal;
 
-                // Kontrollera om det finns en kampanj
                 if (group.Campaign != null && group.Campaign.CampaignPrice.HasValue)
                 {
                     itemTotal = group.Campaign.CampaignPrice.Value * group.Quantity;
                 }
 
-                // Skapa produktens rad med ditt format
                 string productLine = $"{group.Product.ProductName,-17}({group.Product.PriceType})   {group.Quantity} * {group.Product.Price,8:C} ";
 
-                // Lägg till raden i kvittot
                 receiptBuilder.AppendLine(productLine);
 
-                // Lägg till kampanjinformation (om tillgängligt)
                 if (group.Campaign != null && !string.IsNullOrWhiteSpace(group.Campaign.Description))
                 {
                     receiptBuilder.AppendLine($"   {group.Campaign.Description} -{group.Campaign.CampaignPrice.Value:C}");
                 }
             }
-
-
-            // Kvittots footer
             receiptBuilder.AppendLine("...........................\n");
             receiptBuilder.AppendLine($"Total Amount: {receipt.TotalPrice:C2}");
             receiptBuilder.AppendLine("...........................\n");
             receiptBuilder.AppendLine("\nThank you for shopping with us!");
             receiptBuilder.AppendLine("===========================\n");
-
             return receiptBuilder.ToString();
         }
-
-
         public static void ReceiptDisplay(string receiptContent)
         {
             Console.Clear();

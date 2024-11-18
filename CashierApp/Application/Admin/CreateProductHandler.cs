@@ -1,6 +1,7 @@
 ﻿using CashierApp.Application.Utilities;
 using CashierApp.Core.Entities;
 using CashierApp.Core.Interfaces.Admin;
+using CashierApp.Core.Interfaces.ErrorManagement;
 using CashierApp.Core.Interfaces.StoreProducts;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,13 @@ namespace CashierApp.Application.Admin
     {
         private readonly IProductService _productService;
         private readonly InputValidator _inputValidator;
+        private readonly IErrorManager _errorManager;
 
-        public CreateProductHandler(IProductService productService, InputValidator inputValidator)
+        public CreateProductHandler(IProductService productService, InputValidator inputValidator, IErrorManager errorManager)
         {
             _productService = productService;
             _inputValidator = inputValidator;
+            _errorManager = errorManager;
         }
 
         public void CreateNewProduct()
@@ -64,7 +67,7 @@ namespace CashierApp.Application.Admin
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while adding the product: {ex.Message}");
+                _errorManager.DisplayError($"An error occurred while adding the product: {ex.Message}");
             }
 
             Console.WriteLine("Press any key to return to the Admin menu.");
