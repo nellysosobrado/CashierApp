@@ -21,7 +21,7 @@ namespace CashierApp.Presentation.Customer
         {
             _campaignManager = campaignManager;
         }
-        public void DisplayCartUI(List<(IProducts Product, int Quantity)> cart)
+        public void DisplayCart(List<(IProducts Product, int Quantity)> cart)
         {
             Console.Clear();
             DisplayTitle();
@@ -38,8 +38,6 @@ namespace CashierApp.Presentation.Customer
             CenterText(" Product            │    Total");
             CenterText("─────────────────────────────────────────────────");
         }
-
-
         private void DisplayCartItems(List<(IProducts Product, int Quantity)> cart)
         {
             foreach (var item in cart)

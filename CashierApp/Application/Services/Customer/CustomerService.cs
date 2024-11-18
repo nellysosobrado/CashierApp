@@ -47,7 +47,7 @@ namespace CashierApp.Application.Services.Customer
 
             while (!IsReturningToMenu)
             {
-                _newCustomer.DisplayCartUI(_cart);
+                _newCustomer.DisplayCart(_cart);
                 var input = Console.ReadLine()?.Trim();
 
                 if (string.IsNullOrEmpty(input))
@@ -84,7 +84,7 @@ namespace CashierApp.Application.Services.Customer
                     if (result.HasValue)
                     {
                         _cart.Add(result.Value);
-                        _newCustomer.DisplayCartUI(_cart);
+                        _newCustomer.DisplayCart(_cart);
                     }
                     return true;
             }
@@ -101,7 +101,7 @@ namespace CashierApp.Application.Services.Customer
         private void DisplayProductCatalog()
         {
             _productCatalog.ShowProductCatalog();
-            _newCustomer.DisplayCartUI(_cart);
+            _newCustomer.DisplayCart(_cart);
         }
 
         private void ReturnToMainMenu()
