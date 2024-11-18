@@ -1,4 +1,4 @@
-﻿using CashierApp.Core.Interfaces;
+﻿using CashierApp.Core.Interfaces.ErrorManagement;
 using CashierApp.Presentation.Products;
 using System;
 using System.Collections.Generic;

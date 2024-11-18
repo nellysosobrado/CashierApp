@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashierApp.Core.Interfaces
+namespace CashierApp.Core.Interfaces.Product
 {
     public interface IProductManager
     {

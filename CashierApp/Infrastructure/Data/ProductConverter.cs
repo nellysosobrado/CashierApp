@@ -5,8 +5,8 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Threading.Tasks;
-using CashierApp.Core.Interfaces;
 using CashierApp.Core.Entities;
+using CashierApp.Core.Interfaces.Product;
 
 namespace CashierApp.Infrastructure.Data
 {

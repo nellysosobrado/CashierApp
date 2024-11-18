@@ -1,5 +1,4 @@
-﻿using CashierApp.Core.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +6,7 @@ using System.Threading.Tasks;
 using CashierApp.Presentation.Products;
 using CashierApp.Application.Services.Campaigns;
 using CashierApp.Core.Entities;
+using CashierApp.Core.Interfaces.Product;
 
 namespace CashierApp.Presentation.Products
 {

@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using CashierApp.Core.Factories;
-using CashierApp.Core.Entities; 
-using CashierApp.Core.Interfaces;
+using CashierApp.Core.Entities;
 using CashierApp.Application.Services.Campaigns;
+using CashierApp.Core.Interfaces.Product;
 
 //using CashierApp.Customer;
 //using CashierApp.ErrorManagement;

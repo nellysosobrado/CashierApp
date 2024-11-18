@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CashierApp.Application.Services.Payment;
 using CashierApp.Application.Services.StoreProduct;
-using CashierApp.Core.Interfaces;
+using CashierApp.Core.Interfaces.ErrorManagement;
+using CashierApp.Core.Interfaces.Product;
 using CashierApp.Presentation.Customer;
 using CashierApp.Presentation.Products;
 

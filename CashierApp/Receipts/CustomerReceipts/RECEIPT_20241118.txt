@@ -645,3 +645,197 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 27
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:12:41
+--------------------------
+Product             Price
+1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 28
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:12:53
+--------------------------
+Product             Price
+1x mjau adult food 50,00 kr
+   test               -1,00 kr
+2x mjau adult food 100,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 148,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 29
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:15:15
+--------------------------
+Product             Price
+ 3x mjau adult food  3,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 148,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 30
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:16:23
+--------------------------
+Product             Price
+ 3x mjau adult food 150,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 148,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 31
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:16:59
+--------------------------
+Product             Price
+ 3x mjau adult food 150,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 148,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 32
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:22:49
+--------------------------
+Product             Price
+ 6x mjau adult food 300,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 297,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 33
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:23:32
+--------------------------
+Product             Price
+ 1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 34
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:23:45
+--------------------------
+Product             Price
+ 2x mjau adult food 100,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 99,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

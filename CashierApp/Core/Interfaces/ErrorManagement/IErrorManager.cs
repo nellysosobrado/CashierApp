@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashierApp.Core.Interfaces
+namespace CashierApp.Core.Interfaces.ErrorManagement
 {
     //Implements error message loose coupled
     public interface IErrorManager

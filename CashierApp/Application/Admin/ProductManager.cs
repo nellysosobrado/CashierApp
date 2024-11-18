@@ -1,4 +1,5 @@
-﻿using CashierApp.Core.Interfaces;
+﻿using CashierApp.Core.Interfaces.Admin;
+using CashierApp.Core.Interfaces.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,133 +11,16 @@ namespace CashierApp.Application.Admin
     public class ProductManager : IProductManager
     {
         private readonly IProductService _productService;
+        private readonly ICreateProductHandler _createProductHandler;
 
-        public ProductManager(IProductService productService)
+        public ProductManager(IProductService productService, ICreateProductHandler createProductHandler)
         {
             _productService = productService;
+            _createProductHandler = createProductHandler;
         }
-
-        //CREATE NEW PRODUCT
         public void CreateNewProduct()
         {
-            bool runCreateNewproduct = true;
-
-            while (runCreateNewproduct)
-            {
-                Console.Clear();
-
-                Console.WriteLine("ADD NEW PRODUCT");
-                Console.WriteLine("Please enter the product's details for the new product");
-                Console.WriteLine("........................................");
-
-                // New CATEGORY.....................................
-                string category;
-                while (true)
-                {
-                    Console.Write("Category: ");
-                    category = Console.ReadLine() ?? string.Empty;
-                    if (string.IsNullOrWhiteSpace(category))
-                    {
-                        Console.WriteLine("Category cannot be empty. Please enter a valid category.");
-                        continue;
-                    }
-                    break;
-                }
-
-                // New PRODUCT ID.....................................
-                int newProductId;
-                while (true)
-                {
-                    Console.Write("ProductID: ");
-                    string id = Console.ReadLine() ?? string.Empty;
-                    if (string.IsNullOrWhiteSpace(id))
-                    {
-                        Console.WriteLine("Input cannot be empty.");
-                        continue;
-                    }
-                    if (!int.TryParse(id, out newProductId))
-                    {
-                        Console.WriteLine("Invalid ProductID. Please enter a valid number.");
-                        continue;
-                    }
-                    if (newProductId == 0)
-                    {
-                        Console.WriteLine("ERROR: ProductID cannot be 0. Please enter a valid ProductID.");
-                        continue;
-                    }
-                    if (_productService.GetProductById(newProductId) != null)
-                    {
-                        Console.WriteLine($"A product with ID {newProductId} already exists. Please try a different ID.");
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                // New PRODUCT NAME.............................................
-                string newProductName;
-                while (true)
-                {
-                    Console.Write("Product Name: ");
-
-                    newProductName = Console.ReadLine() ?? string.Empty;
-                    if (string.IsNullOrWhiteSpace(newProductName))
-                    {
-                        Console.WriteLine("Product name cannot be empty. Please enter a valid name.");
-                        continue;
-                    }
-                    if (_productService.GetProductByName(newProductName) != null)
-                    {
-                        Console.WriteLine($"'{newProductName}' already exists. Please try a different name.");
-                        continue;
-                    }
-                    break;
-                }
-
-                // New Price ..................................................
-                decimal newPrice;
-                while (true)
-                {
-                    Console.Write("Price: ");
-                    string priceInput = Console.ReadLine() ?? string.Empty;
-                    if (!decimal.TryParse(priceInput, out newPrice) || newPrice <= 0)
-                    {
-                        Console.WriteLine("Invalid input. Please enter a valid number");
-                        continue;
-                    }
-                    break;
-                }
-
-                // PRICE TYPE
-                string priceType;
-                while (true)
-                {
-                    Console.Write("PriceType (e.g., 'kg', 'piece'): ");
-                    priceType = Console.ReadLine() ?? string.Empty;
-                    if (string.IsNullOrWhiteSpace(priceType) || !(priceType.Equals("kg", StringComparison.OrdinalIgnoreCase) || priceType.Equals("piece", StringComparison.OrdinalIgnoreCase)))
-                    {
-                        Console.WriteLine("Invalid PriceType. Please enter 'kg' or 'piece'.");
-                        continue;
-                    }
-                    break;
-                }
-
-                // Try to add the product
-                try
-                {
-                    _productService.AddProduct(category, newProductId, newProductName, newPrice, priceType);
-                    Console.WriteLine("Product successfully added!");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"An error occurred while adding the product: {ex.Message}");
-                }
-
-                Console.WriteLine("Press any key to return to the Admin menu.");
-                Console.ReadKey();
-                break;
-            }
+            _createProductHandler.CreateNewProduct();
         }
 
         //EDIT PRODUCT--------------------------------

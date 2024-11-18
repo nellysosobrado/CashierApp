@@ -7,7 +7,6 @@ using CashierApp.Application.Services.Menu;
 using CashierApp.Application.Services.Payment;
 using CashierApp.Application.Services.StoreProduct;
 using CashierApp.Application.Services.Receipts;
-using CashierApp.Core.Interfaces;
 using CashierApp.Infrastructure.ErrorManagement;
 using CashierApp.Presentation.Customer;
 using CashierApp.Presentation.Menu;
@@ -18,6 +17,12 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using CashierApp.Application.Utilities;
+using CashierApp.Core.Interfaces.Admin;
+using CashierApp.Core.Interfaces.ErrorManagement;
+using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.Campaign;
+using CashierApp.Core.Interfaces.Menu;
 
 namespace CashierApp.Infrastructure.DI
 {
@@ -25,6 +30,13 @@ namespace CashierApp.Infrastructure.DI
     {
         public static void RegisterDependencies(ContainerBuilder builder)
         {
+
+            builder.RegisterType<InputValidator>().AsSelf().SingleInstance();
+
+            builder.RegisterType<CreateProductHandler>().As<ICreateProductHandler>().SingleInstance();
+            builder.RegisterType<ProductManager>().As<IProductManager>().SingleInstance();
+
+
             // Core services
             builder.RegisterType<ProductService>().As<IProductService>().AsSelf().SingleInstance();
             builder.RegisterType<CampaignService>().As<ICampaignManager>().AsSelf().SingleInstance();

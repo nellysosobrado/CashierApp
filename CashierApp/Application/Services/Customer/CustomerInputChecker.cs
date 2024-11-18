@@ -1,4 +1,5 @@
-﻿using CashierApp.Core.Interfaces;
+﻿using CashierApp.Core.Interfaces.ErrorManagement;
+using CashierApp.Core.Interfaces.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;

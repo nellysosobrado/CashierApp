@@ -1,6 +1,6 @@
 ﻿using CashierApp.Application.Admin;
 using CashierApp.Application.Services.Customer;
-using CashierApp.Core.Interfaces;
+using CashierApp.Core.Interfaces.Menu;
 using CashierApp.Presentation.Menu;
 using System;
 using System.Collections.Generic;

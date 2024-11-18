@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashierApp.Core.Interfaces;
 using CashierApp.Core.Entities;
 using CashierApp.Presentation.Menu;
+using CashierApp.Application.Admin;
+using CashierApp.Core.Interfaces.Admin;
+using CashierApp.Core.Interfaces.ErrorManagement;
+using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.Campaign;
 
 namespace CashierApp.Application.Admin
 {

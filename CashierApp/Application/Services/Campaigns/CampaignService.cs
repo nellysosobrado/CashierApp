@@ -1,5 +1,6 @@
-﻿using CashierApp.Core.Interfaces;
-using CashierApp.Core.Entities;
+﻿using CashierApp.Core.Entities;
+using CashierApp.Core.Interfaces.Campaign;
+using CashierApp.Core.Interfaces.Product;
 
 
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashierApp.Core.Interfaces;
 using CashierApp.Application.Admin;
 using CashierApp.Presentation.Menu;
 using CashierApp.Presentation.Customer;
@@ -12,6 +11,9 @@ using CashierApp.Application.Services.Customer;
 using CashierApp.Application.Services.Payment;
 using CashierApp.Application.Services.StoreProduct;
 using CashierApp.Application.Services.Campaigns;
+using CashierApp.Core.Interfaces.ErrorManagement;
+using CashierApp.Core.Interfaces.Product;
+using CashierApp.Core.Interfaces.Campaign;
 
 
 //using CashierApp.ErrorManagement;

@@ -40,6 +40,8 @@ namespace CashierApp.Application.Services.Receipts
         public string CreateReceipt(Receipt receipt)
         {
             var receiptBuilder = new StringBuilder();
+
+            // Kvittots header
             receiptBuilder.AppendLine("\n==== Store ==============");
             receiptBuilder.AppendLine("Store Liljeholmen, Stockholm");
             receiptBuilder.AppendLine("Årstaängsvägen 31");
@@ -52,31 +54,41 @@ namespace CashierApp.Application.Services.Receipts
             receiptBuilder.AppendLine("--------------------------");
             receiptBuilder.AppendLine("Product             Price");
 
-            foreach (var item in receipt.Cart)
+            // Grupprodukterna baserat på ProductID
+            var groupedCart = receipt.Cart
+                .GroupBy(item => item.Product.ProductID)
+                .Select(group => new
+                {
+                    Product = group.First().Product,
+                    Quantity = group.Sum(item => item.Quantity),
+                    RegularPriceTotal = group.Sum(item => item.Product.Price * item.Quantity),
+                    Campaign = _campaignService.GetCampaignForProduct(group.Key)
+                });
+
+            // Iterera över grupperade produkter
+            foreach (var group in groupedCart)
             {
-                var campaign = _campaignService.GetCampaignForProduct(item.Product.ProductID);
-
-                decimal regularPriceTotal = item.Product.Price * item.Quantity;
-
-                decimal itemTotal = regularPriceTotal;
-
+                decimal itemTotal = group.RegularPriceTotal;
                 string campaignDescription = string.Empty;
 
-                if (campaign != null && campaign.CampaignPrice.HasValue)
+                // Kontrollera om det finns en kampanj
+                if (group.Campaign != null && group.Campaign.CampaignPrice.HasValue)
                 {
-                    itemTotal = campaign.CampaignPrice.Value * item.Quantity;
-
-                    campaignDescription = $"{campaign.Description}               -{campaign.CampaignPrice.Value:C2}";
+                    itemTotal = group.Campaign.CampaignPrice.Value * group.RegularPriceTotal;
+                    campaignDescription = $"{group.Campaign.Description}               -{group.Campaign.CampaignPrice.Value:C2}";
                 }
 
-                receiptBuilder.AppendLine($"{item.Quantity,1}x {item.Product.ProductName.PadRight(15)} {regularPriceTotal,8:C2}");
+                // Lägg till produktinformation
+                receiptBuilder.AppendLine($"{group.Quantity,2}x {group.Product.ProductName.PadRight(15)} {itemTotal,8:C2}");
 
+                // Lägg till kampanjinformation
                 if (!string.IsNullOrWhiteSpace(campaignDescription))
                 {
                     receiptBuilder.AppendLine($"   {campaignDescription}");
                 }
             }
 
+            // Kvittots footer
             receiptBuilder.AppendLine("...........................\n");
             receiptBuilder.AppendLine($"Total Amount: {receipt.TotalPrice:C2}");
             receiptBuilder.AppendLine("...........................\n");
@@ -85,6 +97,7 @@ namespace CashierApp.Application.Services.Receipts
 
             return receiptBuilder.ToString();
         }
+
 
         public static void ReceiptDisplay(string receiptContent)
         {

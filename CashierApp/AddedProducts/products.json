@@ -124,5 +124,45 @@
     "PriceType": "piece",
     "Category": "test",
     "Campaigns": []
+  },
+  {
+    "ProductID": 11,
+    "ProductName": "salmon",
+    "Price": 100,
+    "PriceType": "kg",
+    "Category": "fish",
+    "Campaigns": []
+  },
+  {
+    "ProductID": 12,
+    "ProductName": "tuna",
+    "Price": 200,
+    "PriceType": "piece",
+    "Category": "fish",
+    "Campaigns": []
+  },
+  {
+    "ProductID": 13,
+    "ProductName": "biggest salmon",
+    "Price": 200,
+    "PriceType": "piece",
+    "Category": "fish",
+    "Campaigns": []
+  },
+  {
+    "ProductID": 14,
+    "ProductName": "smal tuna",
+    "Price": 5,
+    "PriceType": "kg",
+    "Category": "fish",
+    "Campaigns": []
+  },
+  {
+    "ProductID": 214124124,
+    "ProductName": " dsfsdfg",
+    "Price": 214124,
+    "PriceType": "piece",
+    "Category": "sdgsdg",
+    "Campaigns": []
   }
 ]

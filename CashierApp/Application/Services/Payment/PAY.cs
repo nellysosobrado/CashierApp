@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashierApp.Core.Interfaces;
 using CashierApp.Core.Entities;
 using CashierApp.Application.Factories;
 using CashierApp.Application.Services.Receipts;
 using CashierApp.Application.Services.Campaigns;
+using CashierApp.Core.Interfaces.Product;
 
 //using CashierApp.Product;
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CashierApp.Core.Entities;
 
-namespace CashierApp.Core.Interfaces
+namespace CashierApp.Core.Interfaces.Product
 {
     public interface IProductService
     {
