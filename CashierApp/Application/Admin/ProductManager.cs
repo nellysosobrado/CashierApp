@@ -43,13 +43,13 @@ namespace CashierApp.Application.Admin
                     break;
                 }
 
-                //New PRODUCT ID.....................................
+                // New PRODUCT ID.....................................
                 int newProductId;
                 while (true)
                 {
                     Console.Write("ProductID: ");
                     string id = Console.ReadLine() ?? string.Empty;
-                    if (id == string.Empty)
+                    if (string.IsNullOrWhiteSpace(id))
                     {
                         Console.WriteLine("Input cannot be empty.");
                         continue;
@@ -57,6 +57,11 @@ namespace CashierApp.Application.Admin
                     if (!int.TryParse(id, out newProductId))
                     {
                         Console.WriteLine("Invalid ProductID. Please enter a valid number.");
+                        continue;
+                    }
+                    if (newProductId == 0)
+                    {
+                        Console.WriteLine("ERROR: ProductID cannot be 0. Please enter a valid ProductID.");
                         continue;
                     }
                     if (_productService.GetProductById(newProductId) != null)
@@ -69,7 +74,7 @@ namespace CashierApp.Application.Admin
                     }
                 }
 
-                //New PRODUCT NAME.............................................
+                // New PRODUCT NAME.............................................
                 string newProductName;
                 while (true)
                 {
@@ -117,7 +122,7 @@ namespace CashierApp.Application.Admin
                     break;
                 }
 
-
+                // Try to add the product
                 try
                 {
                     _productService.AddProduct(category, newProductId, newProductName, newPrice, priceType);
@@ -127,8 +132,6 @@ namespace CashierApp.Application.Admin
                 {
                     Console.WriteLine($"An error occurred while adding the product: {ex.Message}");
                 }
-
-
 
                 Console.WriteLine("Press any key to return to the Admin menu.");
                 Console.ReadKey();
@@ -340,9 +343,9 @@ namespace CashierApp.Application.Admin
         }
 
         //DISPLAY ALL
+
         public void DisplayProductsAndCampaigns()
         {
-            Console.Clear();
             var products = _productService.GetAllProducts();
             if (products == null || !products.Any())
             {
@@ -351,55 +354,28 @@ namespace CashierApp.Application.Admin
                 return;
             }
 
-            int pageSize = 5;
-            int totalProducts = products.Count;
-            int currentPage = 0;
+            int pageSize = 5, currentPage = 0, totalPages = (int)Math.Ceiling(products.Count / (double)pageSize);
 
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine($"Page {currentPage + 1}/{(int)Math.Ceiling(totalProducts / (double)pageSize)}");
-                Console.WriteLine(new string('-', 30));
+                Console.WriteLine($"Page {currentPage + 1}/{totalPages}");
+                Console.WriteLine(new string('-', 50));
 
-                var pageProducts = products.Skip(currentPage * pageSize).Take(pageSize).ToList();
-
-                foreach (var product in pageProducts)
+                products.Skip(currentPage * pageSize).Take(pageSize).ToList().ForEach(product =>
                 {
-                    Console.WriteLine($"ID: {product.ProductID}");
-                    Console.WriteLine($"Name: {product.ProductName}");
-                    Console.WriteLine($"Category: {product.Category}");
-                    Console.WriteLine($"Price: {product.Price} {product.PriceType}");
-
-                    if (product.Campaigns != null && product.Campaigns.Any())
-                    {
-                        Console.WriteLine("Additional Campaigns:");
-                        foreach (var campaign in product.Campaigns)
-                        {
-                            Console.WriteLine($" - Description: {campaign.Description}");
-                            Console.WriteLine($"   Price: {campaign.CampaignPrice}");
-                            Console.WriteLine($"   Start Date: {campaign.StartDate:yyyy-MM-dd}");
-                            Console.WriteLine($"   End Date: {campaign.EndDate:yyyy-MM-dd}");
-                        }
-                    }
-                    Console.WriteLine(new string('-', 30));
-                }
+                    Console.WriteLine($"ID: {product.ProductID} | Name: {product.ProductName} | Price: {product.Price} {product.PriceType}");
+                    product.Campaigns?.ForEach(c => Console.WriteLine($"   Campaign: {c.Description}, {c.CampaignPrice:C} ({c.StartDate:yyyy-MM-dd} to {c.EndDate:yyyy-MM-dd})"));
+                    Console.WriteLine(new string('-', 50));
+                });
 
                 Console.WriteLine("[N] Next page | [P] Previous page | [Q] Quit");
                 var command = Console.ReadKey(true).Key;
-
-                if (command == ConsoleKey.N && (currentPage + 1) * pageSize < totalProducts)
-                {
-                    currentPage++;
-                }
-                else if (command == ConsoleKey.P && currentPage > 0)
-                {
-                    currentPage--;
-                }
-                else if (command == ConsoleKey.Q)
-                {
-                    break;
-                }
+                if (command == ConsoleKey.N && currentPage < totalPages - 1) currentPage++;
+                else if (command == ConsoleKey.P && currentPage > 0) currentPage--;
+                else if (command == ConsoleKey.Q) break;
             }
         }
+
     }
 }

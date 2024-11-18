@@ -14,15 +14,21 @@ namespace CashierApp.Infrastructure.Data
     {
         public override IProducts Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-
-            var product = JsonSerializer.Deserialize<Product>(ref reader, options);
-            return product;
+            // Deserialisera till Product
+            return JsonSerializer.Deserialize<Product>(ref reader, options);
         }
 
         public override void Write(Utf8JsonWriter writer, IProducts value, JsonSerializerOptions options)
         {
-
-            JsonSerializer.Serialize(writer, (Product)value, options);
+            // Kontrollera att värdet är av typen Product
+            if (value is Product product)
+            {
+                JsonSerializer.Serialize(writer, product, options);
+            }
+            else
+            {
+                throw new JsonException("Unsupported type for serialization.");
+            }
         }
     }
 }

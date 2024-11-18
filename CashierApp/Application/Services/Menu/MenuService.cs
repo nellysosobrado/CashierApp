@@ -53,7 +53,7 @@ namespace CashierApp.Application.Services.Menu
 
         private void UserSelectedOption(int selectedIndex)
         {
-            Console.Clear();
+            //Console.Clear();
 
             switch (selectedIndex)
             {

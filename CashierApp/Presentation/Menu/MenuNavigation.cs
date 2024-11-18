@@ -12,43 +12,30 @@ namespace CashierApp.Presentation.Menu
 
         public int UserNavigation(string[] options, Action<int> displayMenu)
         {
-            ConsoleKey key;
+            int selectedIndex = 0;
 
-            do
+            while (true)
             {
+                displayMenu(selectedIndex);
 
-                displayMenu(SelectedIndex);
-
-                key = Console.ReadKey(true).Key;
+                var key = Console.ReadKey(true).Key;
 
                 if (key == ConsoleKey.UpArrow)
                 {
-
-                    if (SelectedIndex == 0)
-                    {
-                        SelectedIndex = options.Length - 1;
-                    }
-                    else
-                    {
-                        SelectedIndex--;
-                    }
+                    selectedIndex = selectedIndex == 0 ? options.Length - 1 : selectedIndex - 1;
                 }
                 else if (key == ConsoleKey.DownArrow)
                 {
-
-                    if (SelectedIndex == options.Length - 1)
-                    {
-                        SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        SelectedIndex++;
-                    }
+                    selectedIndex = selectedIndex == options.Length - 1 ? 0 : selectedIndex + 1;
                 }
-
-            } while (key != ConsoleKey.Enter);
-
-            return SelectedIndex;
+                else if (key == ConsoleKey.Enter)
+                {
+                    return selectedIndex;
+                }
+            }
         }
+
+       
     }
+
 }

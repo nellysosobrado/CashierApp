@@ -55,9 +55,9 @@ namespace CashierApp.Application.Factories
             return new CustomerService(productService, paymentService, _errorManager, productDisplay, newCustomer, productCatalog, customerInputChecker);
         }
 
-        public AdminMenu CreateAdminMenu(IProductManager productManager, ICampaignManager campaignManager)
+        public AdminMenu CreateAdminMenu(IProductManager productManager, ICampaignManager campaignManager,IErrorManager errorManagerm)
         {
-            return new AdminMenu(productManager, campaignManager);
+            return new AdminMenu(productManager, campaignManager, errorManagerm);
         }
 
         public static MenuDisplay CreateMenuDisplay()
@@ -65,9 +65,9 @@ namespace CashierApp.Application.Factories
             return new MenuDisplay();
         }
 
-        public static MenuNavigation CreateMenuNavigation()
-        {
-            return new MenuNavigation();
-        }
+        //public static MenuNavigation CreateMenuNavigation()
+        //{
+        //    return new MenuNavigation();
+        //}
     }
 }
