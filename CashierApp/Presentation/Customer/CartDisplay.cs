@@ -50,7 +50,7 @@ namespace CashierApp.Presentation.Customer
         {
             foreach (var item in cart)
             {
-                    string productLine = $"ID:{item.Product.ProductID,-5} │ {item.Product.ProductName,-17}   {item.Quantity} * {item.Product.Price,8:C}";
+                    string productLine = $"ID:{item.Product.ProductID,-5} │ {item.Product.ProductName,-17}({item.Product.PriceType})   {item.Quantity} * {item.Product.Price,8:C} ";
                     CenterText(productLine);
 
                     var campaign = _campaignService.GetCampaignForProduct(item.Product.ProductID);
