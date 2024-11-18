@@ -60,10 +60,11 @@ namespace CashierApp.Presentation.Customer
                         CenterText(campaignLine);
                     }
                 CenterText("─────────────────────────────────────────────────");
-               var totalAmount = PriceCalculator.CalculateTotalPrice(cart);
-                CenterText($"Total: {totalAmount,10:C}");
+               
 
             }
+            var totalAmount = PriceCalculator.CalculateTotalPrice(cart);
+            CenterText($"Total: {totalAmount,10:C}");
         }
         private string FormatQuantity(int quantity)
         {

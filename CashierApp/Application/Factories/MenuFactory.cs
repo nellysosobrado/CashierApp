@@ -35,9 +35,11 @@ namespace CashierApp.Application.Factories
             return new ProductService();
         }
 
-        public static PAY CreatePaymentService()
+        public PAY CreatePaymentService()
         {
-            return new PAY();
+            var productService = new ProductService(); // Skapa en instans av ProductService
+            var campaignService = new CampaignService(productService); // Skapa CampaignService
+            return new PAY(campaignService); // Skicka CampaignService till PAY
         }
 
         public CustomerService CreateCustomerManager(IErrorManager errorManager)

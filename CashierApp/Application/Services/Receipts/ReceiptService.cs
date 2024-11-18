@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CashierApp.Application.Services.Campaigns;
 using CashierApp.Core.Entities;
 
 namespace CashierApp.Application.Services.Receipts
 {
     public class ReceiptService
     {
+        private readonly CampaignService _campaignService;
         private readonly string folderPath = "../../../Receipts/CustomerReceipts";
         private readonly string receiptFileName = $"RECEIPT_{DateTime.Now:yyyyMMdd}.txt";
 
-        public ReceiptService()
+        public ReceiptService(CampaignService campaignService)
         {
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
+            _campaignService = campaignService;
         }
 
         public string GetFilePath()
@@ -51,8 +54,27 @@ namespace CashierApp.Application.Services.Receipts
 
             foreach (var item in receipt.Cart)
             {
-                decimal itemTotal = item.Product.Price * item.Quantity;
-                receiptBuilder.AppendLine($"{item.Quantity,1}x {item.Product.ProductName.PadRight(15)} {itemTotal,8:C2}");
+                var campaign = _campaignService.GetCampaignForProduct(item.Product.ProductID);
+
+                decimal regularPriceTotal = item.Product.Price * item.Quantity;
+
+                decimal itemTotal = regularPriceTotal;
+
+                string campaignDescription = string.Empty;
+
+                if (campaign != null && campaign.CampaignPrice.HasValue)
+                {
+                    itemTotal = campaign.CampaignPrice.Value * item.Quantity;
+
+                    campaignDescription = $"{campaign.Description}               -{campaign.CampaignPrice.Value:C2}";
+                }
+
+                receiptBuilder.AppendLine($"{item.Quantity,1}x {item.Product.ProductName.PadRight(15)} {regularPriceTotal,8:C2}");
+
+                if (!string.IsNullOrWhiteSpace(campaignDescription))
+                {
+                    receiptBuilder.AppendLine($"   {campaignDescription}");
+                }
             }
 
             receiptBuilder.AppendLine("...........................\n");

@@ -7,6 +7,7 @@ using CashierApp.Core.Interfaces;
 using CashierApp.Core.Entities;
 using CashierApp.Application.Factories;
 using CashierApp.Application.Services.Receipts;
+using CashierApp.Application.Services.Campaigns;
 
 //using CashierApp.Product;
 
@@ -20,10 +21,10 @@ namespace CashierApp.Application.Services.Payment
         private readonly ReceiptFactory _receiptFactory;
         private readonly ReceiptService _receiptManager;
 
-        public PAY()
+        public PAY(CampaignService campaignService)
         {
             _receiptFactory = new ReceiptFactory();
-            _receiptManager = new ReceiptService();
+            _receiptManager = new ReceiptService(campaignService); // Skicka CampaignService här
         }
 
         public void ProcessPayment(List<(IProducts Product, int Quantity)> cart, decimal totalPrice)
