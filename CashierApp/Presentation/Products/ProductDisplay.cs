@@ -40,9 +40,9 @@ namespace CashierApp.Presentation.Products
         public void ShowProductsByCategory(IEnumerable<IProducts> products, string category, int currentPage, int pageSize) //PRODUCTS, after categoires
         {
             Console.Clear();
-            CenterText("╔═══════════════════════════════════════════════╗");
-            CenterText($"║       PRODUCTS IN CATEGORY: '{category.ToUpper()}'       ║");
-            CenterText("╚═══════════════════════════════════════════════╝");
+            Console.WriteLine();
+            CenterText($"{category.ToUpper()}");
+
             CenterText("───────────────────────────────────────────────");
             CenterText($"Page {currentPage + 1}");
             CenterText("ID    │ Product Name           │   Price   │");
@@ -65,10 +65,6 @@ namespace CashierApp.Presentation.Products
                     CenterText($"{product.ProductID,-5} │ {product.ProductName.PadRight(25)} │ {product.Price,10:C2}");
                 }
             }
-
-
-
-
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             CenterText("[N] Next page  [P] Previous page  ");
             CenterText("[C] Return to cart  [R] Return to categories");

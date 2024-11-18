@@ -84,7 +84,7 @@ namespace CashierApp.Application.Services.StoreProduct
                                 return;
 
                             default:
-                                Console.WriteLine("Invalid command. Press any key to try again...");
+                                _errorManager.DisplayError($"Invalid command Press any key to try again...");
                                 Console.ReadKey();
                                 break;
                         }
