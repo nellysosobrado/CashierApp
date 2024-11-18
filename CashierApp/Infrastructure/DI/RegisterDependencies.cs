@@ -61,8 +61,8 @@ namespace CashierApp.Infrastructure.DI
             // Debugging callback (optional for troubleshooting)
             builder.RegisterBuildCallback(container =>
             {
-                var campaignManager = container.Resolve<CampaignService>();
-                PriceCalculator.Initialize(campaignManager);
+                var campaignManager = new CampaignService(new ProductService()); // Exempel
+                PriceCalculator.SetCampaignManager(campaignManager);
 
                 Console.WriteLine("Dependencies registered and PriceCalculator initialized.");
             });
