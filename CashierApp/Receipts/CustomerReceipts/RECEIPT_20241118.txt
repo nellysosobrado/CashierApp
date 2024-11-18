@@ -621,3 +621,27 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 26
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 10:19:53
+--------------------------
+Product             Price
+1x mjau wetfood    50,00 kr
+   cat season               -10,00 kr
+...........................
+
+Total Amount: 40,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

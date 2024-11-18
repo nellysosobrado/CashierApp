@@ -40,29 +40,32 @@ namespace CashierApp.Presentation.Products
         public void ShowProductsByCategory(IEnumerable<IProducts> products, string category, int currentPage, int pageSize) //PRODUCTS, after categoires
         {
             Console.Clear();
-            Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
-            Console.WriteLine($"                                   ║       PRODUCTS IN CATEGORY: '{category.ToUpper()}'       ║");
-            Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
-            Console.WriteLine("                                   ────────────────────────────────────────────────");
-            Console.WriteLine($"                                   Page {currentPage + 1}");
-            Console.WriteLine("                                    ID    │ Product ProductName        │   Price   │   Unit");
-            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            CenterText("╔═══════════════════════════════════════════════╗");
+            CenterText($"║       PRODUCTS IN CATEGORY: '{category.ToUpper()}'       ║");
+            CenterText("╚═══════════════════════════════════════════════╝");
+            CenterText("───────────────────────────────────────────────");
+            CenterText($"Page {currentPage + 1}");
+            CenterText("ID    │ Product Name           │   Price   │");
+            CenterText("───────────────────────────────────────────────");
 
             foreach (var product in products)
             {
                 var activeCampaigns = _campaignManager.GetActiveCampaigns(product.Campaigns);
-
                 if (activeCampaigns.Any())
                 {
                     var campaign = activeCampaigns.First(); // Använd den första aktiva kampanjen
-                    Console.WriteLine($"                                  ID: {product.ProductID} | Name: {product.ProductName} | Campaign Price: {campaign.CampaignPrice:C} | Regular Price: {product.Price:C}");
-                    Console.WriteLine($"                                  Campaign Active: {campaign.StartDate:yyyy-MM-dd} to {campaign.EndDate:yyyy-MM-dd}");
+                    var productPriceWithCampaign = product.Price - campaign.CampaignPrice;
+
+                    // Produkt med kampanj
+                    CenterText($"{product.ProductID,-5} │ {product.ProductName.PadRight(25)} │ {productPriceWithCampaign,10:C2}");
                 }
                 else
                 {
-                    Console.WriteLine($"ID: {product.ProductID} | Name: {product.ProductName} | Price: {product.Price:C}");
+                    // Produkt utan kampanj
+                    CenterText($"{product.ProductID,-5} │ {product.ProductName.PadRight(25)} │ {product.Price,10:C2}");
                 }
             }
+
 
 
 
@@ -71,7 +74,7 @@ namespace CashierApp.Presentation.Products
             CenterText("[C] Return to cart  [R] Return to categories");
             Console.Write("                                                      Command: ");
         }
-
+        //Console.Write("                                                      Command: ");
         private void CenterText(string text) //Design
         {
             int windowWidth = Console.WindowWidth;
