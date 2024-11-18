@@ -12,9 +12,6 @@ using CashierApp.Presentation.Customer;
 using CashierApp.Presentation.Products;
 using CashierApp.Core.Entities;
 
-//using CashierApp.Menu;
-
-
 namespace CashierApp.Application.Services.Customer
 {
     public class CustomerService
@@ -29,7 +26,6 @@ namespace CashierApp.Application.Services.Customer
         private readonly CustomerInputChecker _CustomerInputChecker;
         private List<(IProducts Product, int Quantity)> _cart = new List<(IProducts Product, int Quantity)>();
 
-        //Constructor
         public CustomerService
             (ProductService productService, PAY paymentService,
             IErrorManager errorManager, ProductDisplay productDisplay,

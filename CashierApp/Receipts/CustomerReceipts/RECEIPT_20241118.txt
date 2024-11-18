@@ -839,3 +839,159 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 35
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:40:41
+--------------------------
+Product             Price
+ 1x mjau wetfood    500,00 kr
+   cat season               -10,00 kr
+ 1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 36
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:40:58
+--------------------------
+Product             Price
+ 1x mjau wetfood    500,00 kr
+   cat season               -10,00 kr
+ 1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 37
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:54:23
+--------------------------
+Product             Price
+ 1x mjau wetfood    500,00 kr
+   cat season               -10,00 kr
+ 1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 38
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:55:57
+--------------------------
+Product             Price
+ID:4     │ mjau adult food  (kg)   1 * 50,00 kr 
+   test -1,00 kr
+ID:3     │ mjau wetfood     (kg)   1 * 50,00 kr 
+   cat season -10,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 39
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:56:27
+--------------------------
+Product             Price
+mjau wetfood     (kg)   1 * 50,00 kr 
+   cat season -10,00 kr
+mjau adult food  (kg)   1 * 50,00 kr 
+   test -1,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 40
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:56:45
+--------------------------
+Product             Price
+mjau adult food  (kg)   2 * 50,00 kr 
+   test -1,00 kr
+mjau wetfood     (kg)   3 * 50,00 kr 
+   cat season -10,00 kr
+...........................
+
+Total Amount: 228,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
