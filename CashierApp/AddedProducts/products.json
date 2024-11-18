@@ -41,6 +41,12 @@
         "CampaignPrice": 20,
         "StartDate": "2024-11-20T00:00:00",
         "EndDate": "2024-11-25T00:00:00"
+      },
+      {
+        "Description": "test",
+        "CampaignPrice": 1,
+        "StartDate": "2024-11-11T00:00:00",
+        "EndDate": "2024-11-20T00:00:00"
       }
     ]
   },

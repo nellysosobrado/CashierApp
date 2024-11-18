@@ -150,5 +150,16 @@ namespace CashierApp.Application.Services.Campaigns
             var currentDate = DateTime.Now;
             return campaigns.Where(c => c.StartDate <= currentDate && c.EndDate >= currentDate).ToList();
         }
+        public Campaign? GetCampaignForProduct(int productId)
+        {
+            var product = _productService.GetProductById(productId);
+            if (product == null || product.Campaigns == null || !product.Campaigns.Any())
+            {
+                return null; // Returnera null om produkten eller dess kampanjer inte finns
+            }
+
+            // Returnera den första aktiva kampanjen
+            return product.Campaigns.FirstOrDefault(IsCampaignActive);
+        }
     }
 }

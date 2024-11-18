@@ -15,11 +15,11 @@ namespace CashierApp.Presentation.Customer
 {
     public class CartDisplay
     {
-        private readonly CampaignService _campaignManager;
+        private readonly CampaignService _campaignService;
 
         public CartDisplay(CampaignService campaignManager)
         {
-            _campaignManager = campaignManager;
+            _campaignService = campaignManager;
         }
         public void DisplayCart(List<(IProducts Product, int Quantity)> cart)
         {
@@ -44,7 +44,16 @@ namespace CashierApp.Presentation.Customer
             {
                 string productLine = $"ID:{item.Product.ProductID,-5} │ {item.Product.ProductName,-17}   {item.Quantity} * {item.Product.Price,8:C}";
                 CenterText(productLine);
-                CenterText("─────────────────────────────────────────────────");
+                var campaign = _campaignService.GetCampaignForProduct(item.Product.ProductID);
+                if (campaign != null && !string.IsNullOrWhiteSpace(campaign.Description))
+                {
+                    string campaignLine = $"{campaign.Description} -{campaign.CampaignPrice:C}";
+                    CenterText(campaignLine);
+                }
+
+                CenterText("─────────────────────────────────────────────────"); 
+
+
             }
         }
         private void DisplayTotal(decimal totalAmount)
