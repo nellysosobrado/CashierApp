@@ -66,8 +66,7 @@ namespace CashierApp.Presentation.Products
                 }
             }
             Console.WriteLine("                                   ────────────────────────────────────────────────");
-            CenterText("[N] Next page  [P] Previous page  ");
-            CenterText("[C] Return to cart  [R] Return to categories");
+            CenterText("[N] Next page  [P] Previous page [C] Return to cart  [R] Return to categories  ");
             Console.Write("                                                      Command: ");
         }
         //Console.Write("                                                      Command: ");

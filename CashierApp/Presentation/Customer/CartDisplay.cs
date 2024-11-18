@@ -48,21 +48,30 @@ namespace CashierApp.Presentation.Customer
         }
         private void DisplayCartContent(List<(IProducts Product, int Quantity)> cart)
         {
-            foreach (var item in cart)
+            // Gruppera produkter baserat på ProductID och summera kvantiteter
+            var groupedCart = cart
+                .GroupBy(item => item.Product.ProductID)
+                .Select(group => (
+                    Product: group.First().Product,
+                    Quantity: group.Sum(item => item.Quantity)
+                ))
+                .ToList();
+
+            // Iterera över den grupperade kundvagnen och visa produkter
+            foreach (var item in groupedCart)
             {
-                    string productLine = $"ID:{item.Product.ProductID,-5} │ {item.Product.ProductName,-17}({item.Product.PriceType})   {item.Quantity} * {item.Product.Price,8:C} ";
-                    CenterText(productLine);
+                string productLine = $"ID:{item.Product.ProductID,-5} │ {item.Product.ProductName,-17}({item.Product.PriceType})   {item.Quantity} * {item.Product.Price,8:C} ";
+                CenterText(productLine);
 
-                    var campaign = _campaignService.GetCampaignForProduct(item.Product.ProductID);
-                    if (campaign != null && !string.IsNullOrWhiteSpace(campaign.Description))
-                    {
-                        string campaignLine = $"{campaign.Description} -{campaign.CampaignPrice:C}";
-                        CenterText(campaignLine);
-                    }
+                var campaign = _campaignService.GetCampaignForProduct(item.Product.ProductID);
+                if (campaign != null && !string.IsNullOrWhiteSpace(campaign.Description))
+                {
+                    string campaignLine = $"{campaign.Description} -{campaign.CampaignPrice:C}";
+                    CenterText(campaignLine);
+                }
                 CenterText("─────────────────────────────────────────────────");
-               
-
             }
+
             var totalAmount = PriceCalculator.CalculateTotalPrice(cart);
             CenterText($"Total: {totalAmount,10:C}");
         }

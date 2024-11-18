@@ -74,7 +74,7 @@ namespace CashierApp.Application.Admin
             {
                 if (i == selectedIndex)
                 {
-                    CenterText($"> {options[i]} <"); // Markera valt alternativ
+                    CenterText($"> {options[i]} <");
                 }
                 else
                 {

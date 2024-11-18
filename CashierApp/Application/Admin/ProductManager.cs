@@ -149,6 +149,7 @@ namespace CashierApp.Application.Admin
             int productId;
             while (true)
             {
+                
                 Console.Write("Enter the product's ID you wish to edit: ");
                 if (int.TryParse(Console.ReadLine(), out productId))
                 {
@@ -170,6 +171,7 @@ namespace CashierApp.Application.Admin
 
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine($"\n1. Change product name" +
                                   $"\n2. Change product price" +
                                   $"\n3. Change product ID" +
@@ -177,7 +179,7 @@ namespace CashierApp.Application.Admin
                                   $"\n5. Change product price type");
                 Console.Write("Enter your choice: ");
                 string choice = Console.ReadLine();
-
+                
                 switch (choice)
                 {
                     case "1": //PRODUCTNAME
@@ -194,6 +196,7 @@ namespace CashierApp.Application.Admin
                             else
                             {
                                 Console.WriteLine("Product name cannot be empty. Please try again.");
+                                Console.ReadKey();
                             }
                         }
                         break;
@@ -211,6 +214,7 @@ namespace CashierApp.Application.Admin
                             else
                             {
                                 Console.WriteLine("Invalid price. Please enter a positive number.");
+                                Console.ReadKey();
                             }
                         }
                         break;
@@ -284,6 +288,8 @@ namespace CashierApp.Application.Admin
 
                     default:
                         Console.WriteLine("Invalid choice. Please select a valid option.");
+                        Console.WriteLine("Press any key to try again");
+                        Console.ReadKey();
                         continue;
                 }
                 break;
@@ -292,9 +298,7 @@ namespace CashierApp.Application.Admin
             Console.WriteLine("Press any key to return to the menu.");
             Console.ReadKey();
         }
-
         //REMOVE PRODUYCT
-
         public void RemoveProduct()
         {
             Console.Clear();
