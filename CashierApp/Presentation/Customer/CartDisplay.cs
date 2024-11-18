@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CashierApp.Presentation.Customer
 {
@@ -34,44 +35,54 @@ namespace CashierApp.Presentation.Customer
         private void DisplayHeader()
         {
             CenterText("╔═══════════════════════════════════════════════╗");
-            CenterText("║                     CASHIER                   ║");
+            CenterText("║                     CART                      ║");
             CenterText("╚═══════════════════════════════════════════════╝");
-            Console.WriteLine("                                                      Current Cart");
-            Console.WriteLine("                                   ────────────────────────────────────────────────");
-            Console.WriteLine("                                    ID    │ Product         │   Qty     │    Total");
-            Console.WriteLine("                                   ────────────────────────────────────────────────");
+            CenterText("─────────────────────────────────────────────────");
+            CenterText(" Product            │    Total");
+            CenterText("─────────────────────────────────────────────────");
         }
+
 
         private void DisplayCartItems(List<(IProducts Product, int Quantity)> cart)
         {
             foreach (var item in cart)
             {
                 string productName = FormatProductName(item.Product.ProductName);
-                string quantityDisplay = FormatQuantity(item.Quantity);
+                int quantity = item.Quantity;
 
-                decimal originalPrice = item.Product.Price * item.Quantity;
+                decimal unitPrice = item.Product.Price;
+                decimal originalPrice = unitPrice * quantity;
+                string priceType = item.Product.PriceType; // Hämta pris-typen (t.ex. kg, piece)
 
-                // Använd CampaignManager för att avgöra om kampanjen är aktiv
+                // Hämta aktiva kampanjer
                 var activeCampaigns = _campaignManager.GetActiveCampaigns(item.Product.Campaigns);
-                decimal discountedPrice = activeCampaigns.Any()
-                    ? activeCampaigns.First().CampaignPrice.Value * item.Quantity
-                    : originalPrice;
+                decimal discountedPricePerUnit = activeCampaigns.Any()
+                    ? activeCampaigns.First().CampaignPrice.Value
+                    : unitPrice;
 
-                decimal discount = originalPrice - discountedPrice;
+                decimal totalDiscount = (unitPrice - discountedPricePerUnit) * quantity;
+                decimal discountedTotalPrice = discountedPricePerUnit * quantity;
 
-                Console.WriteLine($"                                    {item.Product.ProductID,-5} │ {productName,-17} │ {quantityDisplay,7} │ {originalPrice,10:C}");
+                // Visa produktinformationen i formatet t.ex. 7 * 10 kr (kg)
+                string productLine = $"ID:{item.Product.ProductID,-5} │ {productName,-17} │ {quantity} * {discountedPricePerUnit,8:C} ({priceType})";
+                CenterText(productLine);
 
+                // Visa rabattinformation om en kampanj är aktiv
                 if (activeCampaigns.Any())
                 {
                     var campaign = activeCampaigns.First();
-                    Console.WriteLine($"{"",-54}{campaign.Description}:       -{discount,10:C}");
+                    string campaignLine = $"{campaign.Description}: -{totalDiscount,10:C}";
+                    CenterText(campaignLine);
                 }
+
+                CenterText("─────────────────────────────────────────────────");
             }
         }
 
+
+
         private void DisplayTotal(decimal totalAmount)
         {
-            Console.WriteLine("                                   ────────────────────────────────────────────────");
             CenterText($"Total: {totalAmount,10:C}");
         }
 
