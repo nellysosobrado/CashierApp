@@ -42,7 +42,7 @@ namespace CashierApp.Presentation.Customer
         private void DisplayCommand()
         {
             CenterText("─────────────────────────────────────────────────");
-            CenterText("[1] Products    [2] Menu    [PAY] PAY");
+            CenterText("[1] Product Catalog    [2] Menu    [PAY] PAY");
             CenterText("─────────────────────────────────────────────────");
             Console.Write("                                                      Command: ");
         }

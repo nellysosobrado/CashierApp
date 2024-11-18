@@ -20,7 +20,6 @@ namespace CashierApp.Application.Services.StoreProduct
             _productDisplay = productDisplay;
             _errorManager = errorManager;
         }
-
         public void ShowProductCatalog()
         {
             while (true)
@@ -28,14 +27,11 @@ namespace CashierApp.Application.Services.StoreProduct
                 Console.Clear();
                 var categories = _productService.GetDistinctCategories();
                 _productDisplay.ShowCategories(categories);
-
                 string input = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
-
                 if (input == "c")
                 {
                     return;
                 }
-
                 var products = _productService.GetProductsByCategory(input);
 
                 if (products.Any())
