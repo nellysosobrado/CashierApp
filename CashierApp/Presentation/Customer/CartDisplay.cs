@@ -16,17 +16,18 @@ namespace CashierApp.Presentation.Customer
     public class CartDisplay
     {
         private readonly CampaignService _campaignService;
+        private readonly IErrorManager _errorManager;
 
-        public CartDisplay(CampaignService campaignManager)
+        public CartDisplay(CampaignService campaignManager, IErrorManager errorManager)
         {
             _campaignService = campaignManager;
+            _errorManager = errorManager;
         }
         public void DisplayCart(List<(IProducts Product, int Quantity)> cart)
         {
             Console.Clear();
             DisplayTitle();
-            DisplayCartItems(cart);
-            DisplayTotal(PriceCalculator.CalculateTotalPrice(cart));
+            DisplayCartContent(cart);
             DisplayCommand();
         }
         private void DisplayTitle()
@@ -38,34 +39,31 @@ namespace CashierApp.Presentation.Customer
             CenterText(" Product            │    Total");
             CenterText("─────────────────────────────────────────────────");
         }
-        private void DisplayCartItems(List<(IProducts Product, int Quantity)> cart)
+        private void DisplayCommand()
+        {
+            CenterText("─────────────────────────────────────────────────");
+            CenterText("[1] Products    [2] Menu    [PAY] PAY");
+            CenterText("─────────────────────────────────────────────────");
+            Console.Write("                                                      Command: ");
+        }
+        private void DisplayCartContent(List<(IProducts Product, int Quantity)> cart)
         {
             foreach (var item in cart)
             {
-                string productLine = $"ID:{item.Product.ProductID,-5} │ {item.Product.ProductName,-17}   {item.Quantity} * {item.Product.Price,8:C}";
-                CenterText(productLine);
-                var campaign = _campaignService.GetCampaignForProduct(item.Product.ProductID);
-                if (campaign != null && !string.IsNullOrWhiteSpace(campaign.Description))
-                {
-                    string campaignLine = $"{campaign.Description} -{campaign.CampaignPrice:C}";
-                    CenterText(campaignLine);
-                }
+                    string productLine = $"ID:{item.Product.ProductID,-5} │ {item.Product.ProductName,-17}   {item.Quantity} * {item.Product.Price,8:C}";
+                    CenterText(productLine);
 
-                CenterText("─────────────────────────────────────────────────"); 
-
+                    var campaign = _campaignService.GetCampaignForProduct(item.Product.ProductID);
+                    if (campaign != null && !string.IsNullOrWhiteSpace(campaign.Description))
+                    {
+                        string campaignLine = $"{campaign.Description} -{campaign.CampaignPrice:C}";
+                        CenterText(campaignLine);
+                    }
+                CenterText("─────────────────────────────────────────────────");
+               var totalAmount = PriceCalculator.CalculateTotalPrice(cart);
+                CenterText($"Total: {totalAmount,10:C}");
 
             }
-        }
-        private void DisplayTotal(decimal totalAmount)
-        {
-            CenterText($"Total: {totalAmount,10:C}");
-        }
-        private void DisplayCommand()
-        {
-            Console.WriteLine("                                   ────────────────────────────────────────────────");
-            Console.WriteLine("                                        [1] Products    [2] Menu    [PAY] PAY");
-            Console.WriteLine("                                   ────────────────────────────────────────────────");
-            Console.Write("                                                      Command: ");
         }
         private string FormatQuantity(int quantity)
         {

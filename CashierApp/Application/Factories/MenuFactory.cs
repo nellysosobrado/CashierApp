@@ -47,7 +47,7 @@ namespace CashierApp.Application.Factories
 
             var campaignManager = new CampaignService(productService);
             var productDisplay = new ProductDisplay(campaignManager);
-            var newCustomer = new CartDisplay(campaignManager);
+            var newCustomer = new CartDisplay(campaignManager,errorManager);
             var productCatalog = new ProductCatalog(productService, productDisplay);
             var customerInputChecker = new CustomerInputChecker(productService, errorManager);
             return new CustomerService(productService, paymentService, _errorManager, productDisplay, newCustomer, productCatalog, customerInputChecker);
