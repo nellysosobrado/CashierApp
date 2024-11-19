@@ -7,30 +7,33 @@ using System.Linq;
 
 namespace CashierApp.Application.Services.Payment
 {
+    /// <summary>
+    /// Calculates the total price for a shopping cart, considering active campaigns
+    /// </summary>
     public class PriceCalculator
     {
         private readonly CampaignService _campaignService;
-
         public PriceCalculator(CampaignService campaignService)
         {
             _campaignService = campaignService ?? throw new ArgumentNullException(nameof(campaignService));
         }
-
+        /// <summary>
+        /// Calculates the total price for all items in the cart, applying campaign discounts if available.
+        /// </summary>
+        /// <param name="cart">A list of products with their quantities.</param>
+        /// <returns>The total price of the cart, including campaign discounts.</returns>
         public decimal CalculateTotalPrice(List<(IProducts Product, int Quantity)> cart)
         {
-            if (_campaignService == null)
-            {
-                throw new InvalidOperationException("CampaignService has not been set.");
-            }
-
             decimal finalAmount = 0;
 
             foreach (var item in cart)
             {
+                // Check if there is an active campaign for the product
                 var campaign = _campaignService.GetCampaignForProduct(item.Product.ProductID);
-
+                // Calculate the price for the quantity of this product
                 decimal totalPrice = item.Quantity * item.Product.Price;
 
+                // Apply campaign discount if active
                 if (campaign != null && _campaignService.IsCampaignActive(campaign))
                 {
                     finalAmount += totalPrice - (campaign.CampaignPrice ?? 0);
@@ -40,7 +43,6 @@ namespace CashierApp.Application.Services.Payment
                     finalAmount += totalPrice;
                 }
             }
-
             return finalAmount;
         }
     }
