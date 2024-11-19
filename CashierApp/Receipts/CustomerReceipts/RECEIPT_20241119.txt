@@ -47,3 +47,27 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 3
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-19 20:08:34
+--------------------------
+Product             Price
+mjau adult food  (kg)   1 * 50,00 kr 
+   test -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

@@ -27,7 +27,7 @@ namespace CashierApp.Application.Services.Payment
             _receiptService = new ReceiptService(campaignService); // Skicka CampaignService här
         }
 
-        public void ProcessPayment(List<(IProducts Product, int Quantity)> cart, decimal totalPrice)
+        public void CreateReceipt(List<(IProducts Product, int Quantity)> cart, decimal totalPrice)
         {
             Console.WriteLine("Processing payment and generating receipt...");
 

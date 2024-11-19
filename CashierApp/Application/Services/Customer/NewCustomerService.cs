@@ -101,7 +101,7 @@ namespace CashierApp.Application.Services.Customer
         {
             Console.WriteLine("\nProcessing payment...");
             decimal totalPrice = _priceCalculator.CalculateTotalPrice(_cart);
-            _pay.ProcessPayment(_cart, totalPrice);
+            _pay.CreateReceipt(_cart, totalPrice);
             _cart.Clear();
         }
 
