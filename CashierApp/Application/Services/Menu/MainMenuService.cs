@@ -37,7 +37,7 @@ namespace CashierApp.Application.Services.Menu
             do
             {
                 selectedIndex = _mainMenuNavigation.MainMenuUserNavigation(_options, DisplayMainMenu);
-                UserChoises(selectedIndex);
+                UserChoise(selectedIndex);
             }
             while (selectedIndex != 2);
         }
@@ -55,7 +55,7 @@ namespace CashierApp.Application.Services.Menu
         /// Manages the user menu choises, and delegates further into the program depending on their 'choise'
         /// </summary>
         /// <param name="selectedIndex"></param>
-        private void UserChoises(int selectedIndex)
+        private void UserChoise(int selectedIndex)
         {
             switch (selectedIndex)
             {
