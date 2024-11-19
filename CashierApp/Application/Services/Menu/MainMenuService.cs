@@ -28,6 +28,10 @@ namespace CashierApp.Application.Services.Menu
             _menuDisplay = menuDisplay;
             _mainMenuNavigation = menuNavigation;
         }
+
+        /// <summary>
+        /// User stays in the menu until they selected "Exit"
+        /// </summary>
         public void RunMenu()
         {
             int selectedIndex;
@@ -38,10 +42,20 @@ namespace CashierApp.Application.Services.Menu
             }
             while (selectedIndex != 2);
         }
+
+        /// <summary>
+        /// Displays the main menu options 
+        /// </summary>
+        /// <param name="index"></param>
         private void DisplayMainMenu(int index)
         {
             _menuDisplay.ShowMenuOptions(_options, index);
         }
+
+        /// <summary>
+        /// Manages the user menu choises, and delegates further into the program depending on their 'choise'
+        /// </summary>
+        /// <param name="selectedIndex"></param>
         private void UserChoises(int selectedIndex)
         {
             switch (selectedIndex)
