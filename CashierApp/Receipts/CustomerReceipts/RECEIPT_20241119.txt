@@ -23,3 +23,27 @@ Thank you for shopping with us!
 ===========================
 
 
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 2
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-19 10:39:26
+--------------------------
+Product             Price
+dog dryfood      (kg)   1 * 100,00 kr 
+   hund season -50,00 kr
+...........................
+
+Total Amount: 50,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

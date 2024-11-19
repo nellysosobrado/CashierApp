@@ -14,57 +14,59 @@ using CashierApp.Core.Entities;
 
 namespace CashierApp.Application.Services.Customer
 {
-    public class CustomerService
+    /// <summary>
+    /// CustomerService handles all customer-related actions, including cart management, payment, and product browsing.
+    /// </summary>
+    public class NewCustomerService
     {
-        private readonly PriceCalculator _priceCalculator;
         public bool IsReturningToMenu { get; private set; }
-        private readonly CartDisplay _newCustomer;
-        private readonly ProductDisplay _productDisplay;
+        private readonly CartDisplay _cartDisplay;
         private readonly IErrorManager _errorManager;
-        private readonly ProductService _productService;
-        private readonly PAY _paymentService;
+        private readonly PAY _pay;
         private readonly ProductCatalog _productCatalog;
-        private readonly CustomerInputChecker _CustomerInputChecker;
+        private readonly NewCustomerInputValidator _newCustomerInputValidator;
         private List<(IProducts Product, int Quantity)> _cart = new List<(IProducts Product, int Quantity)>();
+        private readonly PriceCalculator _priceCalculator;
 
-        public CustomerService
-            (ProductService productService, PAY paymentService,
-            IErrorManager errorManager, ProductDisplay productDisplay,
-            CartDisplay newCustomer, ProductCatalog productCatalog, CustomerInputChecker CustomerInputChecker,
+        public NewCustomerService
+            (PAY paymentService,
+            IErrorManager errorManager,
+            CartDisplay newCustomer, ProductCatalog productCatalog, NewCustomerInputValidator CustomerInputChecker,
             PriceCalculator priceCalculator
             )
         {
             _priceCalculator = priceCalculator;
-            _newCustomer = newCustomer;
-            _productService = productService;
-            _paymentService = paymentService;
+            _cartDisplay = newCustomer;
+            _pay = paymentService;
             _errorManager = errorManager;
-            _productDisplay = productDisplay;
             _productCatalog = productCatalog;
-            _CustomerInputChecker = CustomerInputChecker;
+            _newCustomerInputValidator = CustomerInputChecker;
         }
-        public void HandleCustomer()
+
+        /// <summary>
+        /// Takes care of customers intereaction loop
+        /// </summary>
+        public void ManageCustomerSession()
         {
             IsReturningToMenu = false;
-
             while (!IsReturningToMenu)
             {
-                _newCustomer.DisplayCart(_cart);
+                _cartDisplay.DisplayCart(_cart);
                 var input = Console.ReadLine()?.Trim();
-
                 if (string.IsNullOrEmpty(input))
                 {
                     DisplayEmptyInputError();
                     continue;
                 }
-
-                if (!ProcessCustomerInput(input))
+                if (!ProcessCustomerInput(input))//Processs the input and decide if the loop should continue
                 {
                     break;
                 }
             }
         }
-
+        /// <summary>
+        /// Processes the user's input and performs corresponding actions.
+        /// </summary>
         private bool ProcessCustomerInput(string input)
         {
             switch (input.ToUpper())
@@ -81,38 +83,47 @@ namespace CashierApp.Application.Services.Customer
                     ReturnToMainMenu();
                     return false;
 
-                default:
-                    var result = _CustomerInputChecker.ProcessProductInput(input);
+                default://Checks if the input is a product
+                    var result = _newCustomerInputValidator.ProcessProductInput(input);
                     if (result.HasValue)
                     {
                         _cart.Add(result.Value);
-                        _newCustomer.DisplayCart(_cart);
+                        _cartDisplay.DisplayCart(_cart);//Refreshes the cart display
                     }
                     return true;
             }
         }
-
+        /// <summary>
+        /// Processes the payment for the items in the cart.
+        /// </summary>
         private void ProcessPayment()
         {
             Console.WriteLine("\nProcessing payment...");
             decimal totalPrice = _priceCalculator.CalculateTotalPrice(_cart);
-            _paymentService.ProcessPayment(_cart, totalPrice);
+            _pay.ProcessPayment(_cart, totalPrice);
             _cart.Clear();
         }
 
+        /// <summary>
+        /// Displays the product catalog to the customer.
+        /// </summary>
         private void DisplayProductCatalog()
         {
             _productCatalog.ShowProductCatalog();
-            _newCustomer.DisplayCart(_cart);
+            _cartDisplay.DisplayCart(_cart);
         }
-
+        /// <summary>
+        /// Clears the cart and sets the flag to return to the main menu.
+        /// </summary>
         private void ReturnToMainMenu()
         {
             Console.WriteLine("\nReturning to Main Menu...");
-            _cart.Clear();
+            _cart.Clear();//Clears cart, incasse the user wants to buy again
             IsReturningToMenu = true;
         }
-
+        /// <summary>
+        /// Displays an error message for empty input.
+        /// </summary>
         private void DisplayEmptyInputError()
         {
             _errorManager.DisplayError("Input cannot be empty. Press any key to try again");

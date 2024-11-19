@@ -32,7 +32,6 @@ namespace CashierApp.Application.Factories
         {
             _errorManager = errorManager;
         }
-
         /// <summary>
         /// Create a ProductService instance
         /// </summary>
@@ -52,12 +51,7 @@ namespace CashierApp.Application.Factories
             var campaignService = new CampaignService(productService);
             return new PAY(campaignService);
         }
-
-        /// <summary>
-        /// Create a CustomerService instance
-        /// </summary>
-        /// <returns></returns>
-        public CustomerService CreateCustomerService()
+        public NewCustomerService CreateCustomerService()
         {
             var productService = CreateProductService();
             var paymentService = CreatePaymentService();
@@ -67,12 +61,11 @@ namespace CashierApp.Application.Factories
             var productDisplay = new ProductDisplay(campaignService);
             var cartDisplay = new CartDisplay(campaignService, _errorManager, priceCalculator);
             var productCatalog = new ProductCatalog(productService, productDisplay);
-            var customerInputChecker = new CustomerInputChecker(productService, _errorManager);
+            var customerInputChecker = new NewCustomerInputValidator(productService, _errorManager);
             
 
-            return new CustomerService(productService, paymentService, _errorManager, productDisplay, cartDisplay, productCatalog, customerInputChecker, priceCalculator);
+            return new NewCustomerService(paymentService, _errorManager, cartDisplay, productCatalog, customerInputChecker, priceCalculator);
         }
-
         /// <summary>
         /// Create an AdminMenu instance
         /// </summary>
@@ -83,7 +76,6 @@ namespace CashierApp.Application.Factories
         {
             return new AdminMenu(productManager, campaignManager, _errorManager);
         }
-
         /// <summary>
         /// Create a MenuDisplay instance
         /// </summary>

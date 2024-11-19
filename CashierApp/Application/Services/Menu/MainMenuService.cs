@@ -15,20 +15,19 @@ namespace CashierApp.Application.Services.Menu
     /// </summary>
     public class MainMenuService : IMainMenuService
     {
-        private readonly CustomerService _customerService;
+        private readonly NewCustomerService _newCustomerService;
         private readonly MenuDisplay _menuDisplay;
         private readonly MainMenuNavigation _mainMenuNavigation;
         private readonly AdminMenu _adminMenu;
         private readonly string[] _options = { "1. New Customer", "2. Admin Settings", "3. Exit" };
 
-        public MainMenuService(CustomerService customerHandler, MenuDisplay menuDisplay, MainMenuNavigation menuNavigation, AdminMenu adminMenu)
+        public MainMenuService(NewCustomerService customerHandler, MenuDisplay menuDisplay, MainMenuNavigation menuNavigation, AdminMenu adminMenu)
         {
             _adminMenu = adminMenu;
-            _customerService = customerHandler;
+            _newCustomerService = customerHandler;
             _menuDisplay = menuDisplay;
             _mainMenuNavigation = menuNavigation;
         }
-
         /// <summary>
         /// User stays in the menu until they selected "Exit"
         /// </summary>
@@ -60,10 +59,9 @@ namespace CashierApp.Application.Services.Menu
         {
             switch (selectedIndex)
             {
-                case 0:
-                    Console.WriteLine("You selected: New Customer\n");
-                    _customerService.HandleCustomer();
-                    if (_customerService.IsReturningToMenu)
+                case 0://New Customer
+                    _newCustomerService.ManageCustomerSession();
+                    if (_newCustomerService.IsReturningToMenu)
                     {
                         break;
                     }
@@ -72,14 +70,12 @@ namespace CashierApp.Application.Services.Menu
                         Console.WriteLine("Exiting...");
                         selectedIndex = 2;
                     }
-
                     break;
-                case 1:
-                    Console.WriteLine("You selected: Admin Settings\n");
+                case 1://Admin settings
                     _adminMenu.DisplayAdminMenu();
 
                     break;
-                case 2:
+                case 2://Exits the program
                     Console.WriteLine("Exiting...");
                     break;
                 default:

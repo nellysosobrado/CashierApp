@@ -18,12 +18,12 @@ namespace CashierApp.Application.Services.Customer
 
     public delegate IProducts ProductSearchDelegate(string input);
 
-    public class CustomerInputChecker
+    public class NewCustomerInputValidator
     {
         private readonly IProductService _productService;
         private readonly IErrorManager _errorManager;
 
-        public CustomerInputChecker(IProductService productService, IErrorManager errorManager)
+        public NewCustomerInputValidator(IProductService productService, IErrorManager errorManager)
         {
             _productService = productService;
             _errorManager = errorManager;

@@ -46,8 +46,8 @@ namespace CashierApp.Infrastructure.DI
 
             // Application services......................................................
             builder.RegisterType<MainMenuService>().As<IMainMenuService>().AsSelf().SingleInstance();
-            builder.RegisterType<CustomerService>().AsSelf().SingleInstance();
-            builder.RegisterType<CustomerInputChecker>().AsSelf().SingleInstance();
+            builder.RegisterType<NewCustomerService>().AsSelf().SingleInstance();
+            builder.RegisterType<NewCustomerInputValidator>().AsSelf().SingleInstance();
 
 
             // Presentation layer
