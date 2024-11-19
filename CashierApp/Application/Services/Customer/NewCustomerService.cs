@@ -55,10 +55,11 @@ namespace CashierApp.Application.Services.Customer
                 var input = Console.ReadLine()?.Trim();
                 if (string.IsNullOrEmpty(input))
                 {
-                    DisplayEmptyInputError();
+                    _errorManager.DisplayError("Input cannot be empty. Press any key to try again");
+                    Console.ReadKey();
                     continue;
                 }
-                if (!ProcessCustomerInput(input))//Processs the input and decide if the loop should continue
+                if (!ProcessCustomerInput(input))//Processs the input and decide which method to start depending on the user input
                 {
                     break;
                 }
@@ -126,8 +127,7 @@ namespace CashierApp.Application.Services.Customer
         /// </summary>
         private void DisplayEmptyInputError()
         {
-            _errorManager.DisplayError("Input cannot be empty. Press any key to try again");
-            Console.ReadKey();
+            
         }
 
     }

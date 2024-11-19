@@ -13,6 +13,9 @@ using CashierApp.Core.Interfaces.StoreProducts;
 
 namespace CashierApp.Presentation.Customer
 {
+    /// <summary>
+    /// CartDisplay manages the display of the customer's cart, including products, campaigns, and total price.
+    /// </summary>
     public class CartDisplay
     {
         private readonly PriceCalculator _priceCalculator;
@@ -48,9 +51,11 @@ namespace CashierApp.Presentation.Customer
             CenterText("─────────────────────────────────────────────────");
             Console.Write("                                                      Command: ");
         }
+        /// <summary>
+        /// Displays the content of the cart, including products, quantities, prices, and campaigns.
+        /// </summary>
         private void DisplayCartContent(List<(IProducts Product, int Quantity)> cart)
         {
-            // Gruppera produkter baserat på ProductID och summera kvantiteter
             var groupedCart = cart
                 .GroupBy(item => item.Product.ProductID)
                 .Select(group => (
@@ -59,7 +64,6 @@ namespace CashierApp.Presentation.Customer
                 ))
                 .ToList();
 
-            // Iterera över den grupperade kundvagnen och visa produkter
             foreach (var item in groupedCart)
             {
                 string productLine = $"ID:{item.Product.ProductID,-5} │ {item.Product.ProductName,-17}({item.Product.PriceType})   {item.Quantity} * {item.Product.Price,8:C} ";
@@ -73,10 +77,12 @@ namespace CashierApp.Presentation.Customer
                 }
                 CenterText("─────────────────────────────────────────────────");
             }
-
             var totalAmount = _priceCalculator.CalculateTotalPrice(cart);
             CenterText($"Total: {totalAmount,10:C}");
         }
+        /// <summary>
+        /// Formats the quantity of a product for display, limiting its length if necessary.
+        /// </summary>
         private string FormatQuantity(int quantity)
         {
             string quantityDisplay = quantity.ToString();

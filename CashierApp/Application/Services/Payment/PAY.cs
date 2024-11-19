@@ -19,12 +19,12 @@ namespace CashierApp.Application.Services.Payment
     public class PAY
     {
         private readonly ReceiptFactory _receiptFactory;
-        private readonly ReceiptService _receiptManager;
+        private readonly ReceiptService _receiptService;
 
         public PAY(CampaignService campaignService)
         {
             _receiptFactory = new ReceiptFactory();
-            _receiptManager = new ReceiptService(campaignService); // Skicka CampaignService här
+            _receiptService = new ReceiptService(campaignService); // Skicka CampaignService här
         }
 
         public void ProcessPayment(List<(IProducts Product, int Quantity)> cart, decimal totalPrice)
@@ -32,10 +32,10 @@ namespace CashierApp.Application.Services.Payment
             Console.WriteLine("Processing payment and generating receipt...");
 
             Receipt receipt = _receiptFactory.CreateReceipt(cart, totalPrice);
-            string receiptContent = _receiptManager.CreateReceipt(receipt);
-            string filePath = _receiptManager.GetFilePath();
+            string receiptContent = _receiptService.CreateReceipt(receipt);
+            string filePath = _receiptService.GetFilePath();
 
-            _receiptManager.SaveReceiptToFile(receiptContent, filePath);
+            _receiptService.SaveReceiptToFile(receiptContent, filePath);
             ReceiptService.ReceiptDisplay(receiptContent);
         }
     }
