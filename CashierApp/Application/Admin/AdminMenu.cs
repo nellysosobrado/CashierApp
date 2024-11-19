@@ -18,14 +18,14 @@ namespace CashierApp.Application.Admin
         private readonly IProductManager _productManager;
         private readonly ICampaignManager _campaignManager;
         private readonly IErrorManager _errorManager;
-        private readonly MenuNavigation _menuNavigation;
+        private readonly MainMenuNavigation _menuNavigation;
 
         public AdminMenu(IProductManager productManager, ICampaignManager campaignManager, IErrorManager errorManager)
         {
             _productManager = productManager;
             _campaignManager = campaignManager;
             _errorManager = errorManager;
-            _menuNavigation = new MenuNavigation();
+            _menuNavigation = new MainMenuNavigation();
         }
 
         public void DisplayAdminMenu()
@@ -47,7 +47,7 @@ namespace CashierApp.Application.Admin
                 Console.Clear();
                 DisplayTitle();
 
-                int selectedIndex = _menuNavigation.UserNavigation(options, DisplayOptions);
+                int selectedIndex = _menuNavigation.MainMenuUserNavigation(options, DisplayOptions);
 
                 keepRunning = HandleCommand(selectedIndex);
             }

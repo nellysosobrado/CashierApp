@@ -16,6 +16,7 @@ namespace CashierApp.Application.Services.Customer
 {
     public class CustomerService
     {
+        private readonly PriceCalculator _priceCalculator;
         public bool IsReturningToMenu { get; private set; }
         private readonly CartDisplay _newCustomer;
         private readonly ProductDisplay _productDisplay;
@@ -29,9 +30,11 @@ namespace CashierApp.Application.Services.Customer
         public CustomerService
             (ProductService productService, PAY paymentService,
             IErrorManager errorManager, ProductDisplay productDisplay,
-            CartDisplay newCustomer, ProductCatalog productCatalog, CustomerInputChecker CustomerInputChecker
+            CartDisplay newCustomer, ProductCatalog productCatalog, CustomerInputChecker CustomerInputChecker,
+            PriceCalculator priceCalculator
             )
         {
+            _priceCalculator = priceCalculator;
             _newCustomer = newCustomer;
             _productService = productService;
             _paymentService = paymentService;
@@ -92,7 +95,7 @@ namespace CashierApp.Application.Services.Customer
         private void ProcessPayment()
         {
             Console.WriteLine("\nProcessing payment...");
-            decimal totalPrice = PriceCalculator.CalculateTotalPrice(_cart);
+            decimal totalPrice = _priceCalculator.CalculateTotalPrice(_cart);
             _paymentService.ProcessPayment(_cart, totalPrice);
             _cart.Clear();
         }

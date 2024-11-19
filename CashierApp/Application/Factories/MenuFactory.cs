@@ -62,13 +62,15 @@ namespace CashierApp.Application.Factories
             var productService = CreateProductService();
             var paymentService = CreatePaymentService();
             var campaignService = new CampaignService(productService);
+            var priceCalculator = new PriceCalculator(campaignService);
 
             var productDisplay = new ProductDisplay(campaignService);
-            var cartDisplay = new CartDisplay(campaignService, _errorManager);
+            var cartDisplay = new CartDisplay(campaignService, _errorManager, priceCalculator);
             var productCatalog = new ProductCatalog(productService, productDisplay);
             var customerInputChecker = new CustomerInputChecker(productService, _errorManager);
+            
 
-            return new CustomerService(productService, paymentService, _errorManager, productDisplay, cartDisplay, productCatalog, customerInputChecker);
+            return new CustomerService(productService, paymentService, _errorManager, productDisplay, cartDisplay, productCatalog, customerInputChecker, priceCalculator);
         }
 
         /// <summary>

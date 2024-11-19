@@ -7,18 +7,20 @@ using System.Linq;
 
 namespace CashierApp.Application.Services.Payment
 {
-    public static class PriceCalculator
+    public class PriceCalculator
     {
-        private static CampaignService _campaignService;
+        private readonly CampaignService _campaignService;
 
-        public static void SetCampaignManager(CampaignService campaignManager) =>
-            _campaignService = campaignManager ?? throw new ArgumentNullException(nameof(campaignManager));
+        public PriceCalculator(CampaignService campaignService)
+        {
+            _campaignService = campaignService ?? throw new ArgumentNullException(nameof(campaignService));
+        }
 
-        public static decimal CalculateTotalPrice(List<(IProducts Product, int Quantity)> cart)
+        public decimal CalculateTotalPrice(List<(IProducts Product, int Quantity)> cart)
         {
             if (_campaignService == null)
             {
-                throw new InvalidOperationException("CampaignService has not been set. Please call SetCampaignManager.");
+                throw new InvalidOperationException("CampaignService has not been set.");
             }
 
             decimal finalAmount = 0;
@@ -31,15 +33,16 @@ namespace CashierApp.Application.Services.Payment
 
                 if (campaign != null && _campaignService.IsCampaignActive(campaign))
                 {
-                    finalAmount += totalPrice - (campaign.CampaignPrice ?? 0); 
+                    finalAmount += totalPrice - (campaign.CampaignPrice ?? 0);
                 }
                 else
                 {
-                    finalAmount += totalPrice; 
+                    finalAmount += totalPrice;
                 }
             }
 
             return finalAmount;
         }
     }
+
 }

@@ -15,13 +15,15 @@ namespace CashierApp.Presentation.Customer
 {
     public class CartDisplay
     {
+        private readonly PriceCalculator _priceCalculator;
         private readonly CampaignService _campaignService;
         private readonly IErrorManager _errorManager;
 
-        public CartDisplay(CampaignService campaignManager, IErrorManager errorManager)
+        public CartDisplay(CampaignService campaignManager, IErrorManager errorManager, PriceCalculator priceCalculator)
         {
             _campaignService = campaignManager;
             _errorManager = errorManager;
+            _priceCalculator = priceCalculator;
         }
         public void DisplayCart(List<(IProducts Product, int Quantity)> cart)
         {
@@ -72,7 +74,7 @@ namespace CashierApp.Presentation.Customer
                 CenterText("─────────────────────────────────────────────────");
             }
 
-            var totalAmount = PriceCalculator.CalculateTotalPrice(cart);
+            var totalAmount = _priceCalculator.CalculateTotalPrice(cart);
             CenterText($"Total: {totalAmount,10:C}");
         }
         private string FormatQuantity(int quantity)

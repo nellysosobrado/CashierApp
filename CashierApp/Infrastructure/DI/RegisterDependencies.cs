@@ -45,14 +45,14 @@ namespace CashierApp.Infrastructure.DI
             //product & campaign services.............................................
 
             // Application services......................................................
-            builder.RegisterType<MenuService>().As<IMenuService>().AsSelf().SingleInstance();
+            builder.RegisterType<MainMenuService>().As<IMainMenuService>().AsSelf().SingleInstance();
             builder.RegisterType<CustomerService>().AsSelf().SingleInstance();
             builder.RegisterType<CustomerInputChecker>().AsSelf().SingleInstance();
 
 
             // Presentation layer
             builder.RegisterType<MenuDisplay>().AsSelf().SingleInstance();
-            builder.RegisterType<MenuNavigation>().AsSelf().SingleInstance();
+            builder.RegisterType<MainMenuNavigation>().AsSelf().SingleInstance();
 
             //New customer cart
             builder.RegisterType<CartDisplay>().AsSelf().SingleInstance();
@@ -66,6 +66,8 @@ namespace CashierApp.Infrastructure.DI
             // Receipts and payments
             builder.RegisterType<ReceiptService>().AsSelf().SingleInstance();
             builder.RegisterType<PAY>().AsSelf().SingleInstance();
+
+            builder.RegisterType<PriceCalculator>().AsSelf().SingleInstance();
 
             // Factories
             builder.RegisterType<ReceiptFactory>().AsSelf().SingleInstance();

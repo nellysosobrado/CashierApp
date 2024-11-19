@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Presentation.Menu
 {
-    public class MenuNavigation
+    public class MainMenuNavigation
     {
         public int SelectedIndex { get; private set; } = 0;
 
-        public int UserNavigation(string[] options, Action<int> displayMenu)
+        public int MainMenuUserNavigation(string[] options, Action<int> displayMenu)
         {
             int selectedIndex = 0;
 

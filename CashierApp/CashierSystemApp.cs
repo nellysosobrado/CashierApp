@@ -14,9 +14,9 @@ namespace CashierApp
     /// </summary>
     public class CashierSystemApp
     {
-        private readonly MenuService _menuHandler;
+        private readonly MainMenuService _menuHandler;
 
-        public CashierSystemApp(MenuService menuHandler)
+        public CashierSystemApp(MainMenuService menuHandler)
         {
             _menuHandler = menuHandler;
         }

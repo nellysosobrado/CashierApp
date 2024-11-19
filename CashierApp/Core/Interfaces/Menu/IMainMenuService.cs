@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Core.Interfaces.Menu
 {
-    public interface IMenuService
+    public interface IMainMenuService
     {
         void RunMenu();
     }
