@@ -76,12 +76,12 @@ namespace CashierApp.Application.Services.Customer
         private IProducts SearchById(string input)
         {
             int productId = int.Parse(input);
-            return _productService.GetProductById(productId);
+            return _productService.GetProductId(productId);
         }
 
         private IProducts SearchByName(string input)
         {
-            return _productService.GetProductByName(input.ToLower());
+            return _productService.GetProductName(input.ToLower());
         }
     }
 }

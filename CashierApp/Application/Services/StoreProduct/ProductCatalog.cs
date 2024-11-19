@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Application.Services.StoreProduct
 {
+    /// <summary>
+    /// The ProductCatalog class handles displaying product categories and products to the user
+    /// Users can navigate categories and products, with error handling for invalid input
+    /// </summary>
     public class ProductCatalog
     {
         private readonly ProductDisplay _productDisplay;
@@ -20,12 +24,15 @@ namespace CashierApp.Application.Services.StoreProduct
             _productDisplay = productDisplay;
             _errorManager = errorManager;
         }
+        /// <summary>
+        /// Displays the product catalog and allows the user to browse categories and products
+        /// </summary>
         public void ShowProductCatalog()
         {
             while (true)
             {
                 Console.Clear();
-                var categories = _productService.GetDistinctCategories();
+                var categories = _productService.FetchProductCategory();
                 _productDisplay.ShowCategories(categories);
                 string input = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
                 if (input == "c")
@@ -39,44 +46,40 @@ namespace CashierApp.Application.Services.StoreProduct
                     int pageSize = 5;
                     int currentPage = 0;
                     bool browsing = true;
-
                     while (browsing)
                     {
                         _productDisplay.ShowProductsByCategory(products, input, currentPage, pageSize);
-
                         string command = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
-
                         switch (command)
                         {
-                            case "n":
+                            case "n"://next page if there is
                                 if ((currentPage + 1) * pageSize < products.Count())
                                 {
                                     currentPage++;
                                 }
                                 else
                                 {
-                                    Console.WriteLine("You are on the last page. Press any key to continue...");
+                                    _errorManager.DisplayError("You are on the last page. Press any key to continue...");
                                     Console.ReadKey();
                                 }
                                 break;
-
-                            case "p":
+                            case "p"://Previous page
                                 if (currentPage > 0)
                                 {
                                     currentPage--;
                                 }
                                 else
                                 {
-                                    Console.WriteLine("You are on the first page. Press any key to continue...");
+                                    _errorManager.DisplayError("You are on the first page. Press any key to continue...");
                                     Console.ReadKey();
                                 }
                                 break;
 
-                            case "r":
+                            case "r"://return to category selection
                                 browsing = false;
                                 break;
 
-                            case "c":
+                            case "c"://exit the catalog, to the cart
                                 return;
 
                             default:

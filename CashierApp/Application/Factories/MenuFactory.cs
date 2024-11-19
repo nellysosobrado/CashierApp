@@ -38,7 +38,7 @@ namespace CashierApp.Application.Factories
         /// <returns></returns>
         public ProductService CreateProductService()
         {
-            return new ProductService();
+            return new ProductService(_errorManager);
         }
 
         /// <summary>

@@ -37,7 +37,7 @@ namespace CashierApp.Application.Admin
                 Console.Write("Enter the product's ID you wish to edit: ");
                 if (int.TryParse(Console.ReadLine(), out productId))
                 {
-                    var product = _productService.GetProductById(productId);
+                    var product = _productService.GetProductId(productId);
                     if (product != null)
                     {
                         break;
@@ -109,9 +109,9 @@ namespace CashierApp.Application.Admin
                             Console.Write("Enter the new product ID: ");
                             if (int.TryParse(Console.ReadLine(), out int newId))
                             {
-                                if (_productService.GetProductById(newId) == null)
+                                if (_productService.GetProductId(newId) == null)
                                 {
-                                    var product = _productService.GetProductById(productId);
+                                    var product = _productService.GetProductId(productId);
                                     product.ProductID = newId;
                                     _productService.UpdateProduct(product);
                                     Console.WriteLine($"Product ID updated to {newId}.");
@@ -136,7 +136,7 @@ namespace CashierApp.Application.Admin
                             string newCategory = Console.ReadLine();
                             if (!string.IsNullOrWhiteSpace(newCategory))
                             {
-                                var product = _productService.GetProductById(productId);
+                                var product = _productService.GetProductId(productId);
                                 product.Category = newCategory;
                                 _productService.UpdateProduct(product);
                                 Console.WriteLine($"Product category updated to {newCategory}.");
@@ -157,7 +157,7 @@ namespace CashierApp.Application.Admin
                             if (!string.IsNullOrWhiteSpace(newPriceType) &&
                                 (newPriceType.Equals("kg", StringComparison.OrdinalIgnoreCase) || newPriceType.Equals("piece", StringComparison.OrdinalIgnoreCase)))
                             {
-                                var product = _productService.GetProductById(productId);
+                                var product = _productService.GetProductId(productId);
                                 product.PriceType = newPriceType;
                                 _productService.UpdateProduct(product);
                                 Console.WriteLine($"Product price type updated to {newPriceType}.");
@@ -204,7 +204,7 @@ namespace CashierApp.Application.Admin
                 }
 
                 //Controll if product exists
-                var product = _productService.GetProductById(productId);
+                var product = _productService.GetProductId(productId);
                 if (product == null)
                 {
                     Console.WriteLine($"No product found with ID {productId}. Please check and try again.");
@@ -214,7 +214,7 @@ namespace CashierApp.Application.Admin
                 // REmove product
                 _productService.RemoveProduct(productId);
 
-                var removedProduct = _productService.GetProductById(productId);
+                var removedProduct = _productService.GetProductId(productId);
                 if (removedProduct != null)
                 {
                     Console.WriteLine($"\nERROR: Product ID {productId} still exists after removal. Please try again.");

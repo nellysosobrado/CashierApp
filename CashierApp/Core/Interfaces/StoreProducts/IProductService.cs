@@ -10,8 +10,8 @@ namespace CashierApp.Core.Interfaces.StoreProducts
 {
     public interface IProductService
     {
-        IProducts GetProductById(int productId);
-        IProducts GetProductByName(string productName);
+        IProducts GetProductId(int productId);
+        IProducts GetProductName(string productName);
 
         void AddCampaignToProduct(int productId, Campaign campaign);
         void UpdateProduct(IProducts product);

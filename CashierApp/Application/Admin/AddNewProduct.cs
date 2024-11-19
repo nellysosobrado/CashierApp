@@ -41,12 +41,12 @@ namespace CashierApp.Application.Admin
                 ),
                 ProductID = _inputValidator.GetUniqueId(
                     "ProductID",
-                    id => id > 0 && _productService.GetProductById(id) == null,
+                    id => id > 0 && _productService.GetProductId(id) == null,
                     "ProductID cannot be 0 or already exist."
                 ),
                 ProductName = _inputValidator.GetValidatedInput(
                     "Product Name",
-                    input => !string.IsNullOrWhiteSpace(input) && _productService.GetProductByName(input) == null,
+                    input => !string.IsNullOrWhiteSpace(input) && _productService.GetProductName(input) == null,
                     "Product name cannot be empty or already exist."
                 ),
                 Price = _inputValidator.GetValidatedDecimal(

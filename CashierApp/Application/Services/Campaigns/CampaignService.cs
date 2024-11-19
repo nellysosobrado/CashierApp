@@ -29,7 +29,7 @@ namespace CashierApp.Application.Services.Campaigns
                 return;
             }
 
-            var product = _productService.GetProductById(productId);
+            var product = _productService.GetProductId(productId);
             if (product == null)
             {
                 Console.WriteLine("Product not found.");
@@ -94,7 +94,7 @@ namespace CashierApp.Application.Services.Campaigns
                 return;
             }
 
-            var product = _productService.GetProductById(productId);
+            var product = _productService.GetProductId(productId);
             if (product == null)
             {
                 Console.WriteLine("Product not found.");
@@ -153,7 +153,7 @@ namespace CashierApp.Application.Services.Campaigns
         }
         public Campaign? GetCampaignForProduct(int productId)
         {
-            var product = _productService.GetProductById(productId);
+            var product = _productService.GetProductId(productId);
             if (product == null || product.Campaigns == null || !product.Campaigns.Any())
             {
                 return null; 
