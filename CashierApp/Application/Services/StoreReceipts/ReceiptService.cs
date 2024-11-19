@@ -41,7 +41,6 @@ namespace CashierApp.Application.Services.StoreReceipts
         {
             var receiptBuilder = new StringBuilder();
 
-            // Kvittots header
             receiptBuilder.AppendLine("\n==== Store ==============");
             receiptBuilder.AppendLine("Store Liljeholmen, Stockholm");
             receiptBuilder.AppendLine("Årstaängsvägen 31");
@@ -54,7 +53,6 @@ namespace CashierApp.Application.Services.StoreReceipts
             receiptBuilder.AppendLine("--------------------------");
             receiptBuilder.AppendLine("Product             Price");
 
-            // Grupprodukterna baserat på ProductID
             var groupedCart = receipt.Cart
                 .GroupBy(item => item.Product.ProductID)
                 .Select(group => new
@@ -64,8 +62,6 @@ namespace CashierApp.Application.Services.StoreReceipts
                     RegularPriceTotal = group.Sum(item => item.Product.Price * item.Quantity),
                     Campaign = _campaignService.GetCampaignForProduct(group.Key)
                 });
-
-            // Iterera över grupperade produkter
             foreach (var group in groupedCart)
             {
                 decimal itemTotal = group.RegularPriceTotal;
@@ -74,7 +70,6 @@ namespace CashierApp.Application.Services.StoreReceipts
                 {
                     itemTotal = group.Campaign.CampaignPrice.Value * group.Quantity;
                 }
-
                 string productLine = $"{group.Product.ProductName,-17}({group.Product.PriceType})   {group.Quantity} * {group.Product.Price,8:C} ";
 
                 receiptBuilder.AppendLine(productLine);
