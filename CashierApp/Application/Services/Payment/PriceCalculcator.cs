@@ -15,7 +15,10 @@ namespace CashierApp.Application.Services.Payment
         private readonly CampaignService _campaignService;
         public PriceCalculator(CampaignService campaignService)
         {
-            _campaignService = campaignService ?? throw new ArgumentNullException(nameof(campaignService));
+            if (campaignService == null)
+                throw new ArgumentNullException(nameof(campaignService));
+
+            _campaignService = campaignService;
         }
         /// <summary>
         /// Calculates the total price for all items in the cart, applying campaign discounts if available.
