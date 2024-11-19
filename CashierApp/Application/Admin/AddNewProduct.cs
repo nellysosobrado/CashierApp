@@ -11,20 +11,20 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Application.Admin
 {
-    public class CreateProductHandler : ICreateProductHandler
+    public class AddNewProduct : ICreateProductHandler
     {
         private readonly IProductService _productService;
         private readonly InputValidator _inputValidator;
         private readonly IErrorManager _errorManager;
 
-        public CreateProductHandler(IProductService productService, InputValidator inputValidator, IErrorManager errorManager)
+        public AddNewProduct(IProductService productService, InputValidator inputValidator, IErrorManager errorManager)
         {
             _productService = productService;
             _inputValidator = inputValidator;
             _errorManager = errorManager;
         }
 
-        public void CreateNewProduct()
+        public void AddProduct()
         {
             Console.Clear();
             Console.WriteLine("ADD NEW PRODUCT");

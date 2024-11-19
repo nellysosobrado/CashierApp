@@ -20,7 +20,7 @@ namespace CashierApp.Application.Admin
         }
         public void CreateNewProduct()
         {
-            _createProductHandler.CreateNewProduct();
+            _createProductHandler.AddProduct();
         }
 
         //EDIT PRODUCT--------------------------------

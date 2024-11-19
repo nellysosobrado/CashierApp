@@ -9,24 +9,24 @@ using CashierApp.Application.Services.Menu;
 
 namespace CashierApp
 {
-    //Program core, focuses on the program flow
+    /// <summary>
+    /// Starts the Cashier Application
+    /// </summary>
     public class CashierSystemApp
     {
         private readonly MenuService _menuHandler;
-        private readonly CustomerService _customerHandler;
-        private readonly AdminMenu _adminHandler;
 
-        public CashierSystemApp(MenuService menuHandler, CustomerService customerHandler, AdminMenu adminHandler)
+        public CashierSystemApp(MenuService menuHandler)
         {
             _menuHandler = menuHandler;
-            _customerHandler = customerHandler;
-            _adminHandler = adminHandler;
         }
 
+        /// <summary>
+        /// RunApp() initates the program, by calling RunMenu method from the MenuService class
+        /// </summary>
         public void RunApp()
         {
             _menuHandler.RunMenu();
-
         }
     }
 }

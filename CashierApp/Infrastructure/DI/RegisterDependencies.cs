@@ -26,32 +26,42 @@ using CashierApp.Core.Interfaces.Menu;
 
 namespace CashierApp.Infrastructure.DI
 {
+    /// <summary>
+    /// The DependencyRegister class sets upp all the required dependencies using Autofac, 
+    /// in orderr for the application to use dependency injection for managing objects
+    /// </summary>
     public static class DependencyRegister
     {
         public static void RegisterDependencies(ContainerBuilder builder)
         {
-
+            //Utility service
             builder.RegisterType<InputValidator>().AsSelf().SingleInstance();
 
-            builder.RegisterType<CreateProductHandler>().As<ICreateProductHandler>().SingleInstance();
+            //product & campaign services.............................................
+            builder.RegisterType<AddNewProduct>().As<ICreateProductHandler>().SingleInstance();
             builder.RegisterType<ProductManager>().As<IProductManager>().SingleInstance();
-
-
-            // Core services
             builder.RegisterType<ProductService>().As<IProductService>().AsSelf().SingleInstance();
             builder.RegisterType<CampaignService>().As<ICampaignManager>().AsSelf().SingleInstance();
+            //product & campaign services.............................................
 
-            // Application services
+            // Application services......................................................
             builder.RegisterType<MenuService>().As<IMenuService>().AsSelf().SingleInstance();
             builder.RegisterType<CustomerService>().AsSelf().SingleInstance();
-            builder.RegisterType<ProductCatalog>().AsSelf().SingleInstance();
             builder.RegisterType<CustomerInputChecker>().AsSelf().SingleInstance();
+
 
             // Presentation layer
             builder.RegisterType<MenuDisplay>().AsSelf().SingleInstance();
             builder.RegisterType<MenuNavigation>().AsSelf().SingleInstance();
+
+            //New customer cart
             builder.RegisterType<CartDisplay>().AsSelf().SingleInstance();
+
+            //Display all categories
             builder.RegisterType<ProductDisplay>().AsSelf().SingleInstance();
+
+            //Display products in categories
+            builder.RegisterType<ProductCatalog>().AsSelf().SingleInstance();
 
             // Receipts and payments
             builder.RegisterType<ReceiptService>().AsSelf().SingleInstance();
@@ -70,18 +80,6 @@ namespace CashierApp.Infrastructure.DI
             // Main application
             builder.RegisterType<CashierSystemApp>().AsSelf().SingleInstance();
 
-            // Debugging callback (optional for troubleshooting)
-            builder.RegisterBuildCallback(container =>
-            {
-                var campaignManager = new CampaignService(new ProductService()); // Exempel
-                PriceCalculator.SetCampaignManager(campaignManager);
-
-                Console.WriteLine("Dependencies registered and PriceCalculator initialized.");
-            });
-
-
         }
-
-
     }
 }

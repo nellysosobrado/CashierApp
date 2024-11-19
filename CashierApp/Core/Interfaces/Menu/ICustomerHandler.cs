@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashierApp.Core.Interfaces.Admin
+namespace CashierApp.Core.Interfaces.Menu
 {
-    public interface ICreateProductHandler
+    public interface ICustomerHandler
     {
-        void AddProduct();
+        void HandleCustomer();
     }
 }

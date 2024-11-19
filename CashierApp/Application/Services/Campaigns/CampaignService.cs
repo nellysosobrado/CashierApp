@@ -145,7 +145,7 @@ namespace CashierApp.Application.Services.Campaigns
         {
             if (campaigns == null || !campaigns.Any())
             {
-                return new List<Campaign>(); // Returnera en tom lista om det inte finns några kampanjer
+                return new List<Campaign>(); 
             }
 
             var currentDate = DateTime.Now;
@@ -156,10 +156,8 @@ namespace CashierApp.Application.Services.Campaigns
             var product = _productService.GetProductById(productId);
             if (product == null || product.Campaigns == null || !product.Campaigns.Any())
             {
-                return null; // Returnera null om produkten eller dess kampanjer inte finns
+                return null; 
             }
-
-            // Returnera den första aktiva kampanjen
             return product.Campaigns.FirstOrDefault(IsCampaignActive);
         }
     }
