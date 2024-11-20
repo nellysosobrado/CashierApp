@@ -1,0 +1,997 @@
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 1
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 08:26:30
+--------------------------
+Product             Price
+1x mjau castrated dryfood 50,00 kr
+1x mjau dryfood    50,00 kr
+1x mjau wetfood    50,00 kr
+1x mjau adult food 50,00 kr
+1x mjau kitten dryfood 50,00 kr
+1x mjau kitten wetfood 50,00 kr
+1x mjau castrated dryfood 50,00 kr
+1x Test2           100,00 kr
+1x test1           100,00 kr
+...........................
+
+Total Amount: 550,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 2
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 08:37:29
+--------------------------
+Product             Price
+1x mjau dryfood    50,00 kr
+1x mjau wetfood    50,00 kr
+1x mjau adult food 50,00 kr
+1x mjau kitten dryfood 50,00 kr
+1x mjau kitten wetfood 50,00 kr
+...........................
+
+Total Amount: 250,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 3
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 08:37:36
+--------------------------
+Product             Price
+1x mjau wetfood    50,00 kr
+1x mjau adult food 50,00 kr
+1x mjau kitten dryfood 50,00 kr
+...........................
+
+Total Amount: 150,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 4
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 08:39:33
+--------------------------
+Product             Price
+1x mjau castrated dryfood 50,00 kr
+1x Test2           100,00 kr
+...........................
+
+Total Amount: 150,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 5
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 08:44:03
+--------------------------
+Product             Price
+1x mjau castrated dryfood 50,00 kr
+1x Test2           100,00 kr
+1x test1           100,00 kr
+1x Test2           100,00 kr
+1x mjau kitten wetfood 50,00 kr
+1x mjau kitten dryfood 50,00 kr
+1x mjau kitten dryfood 50,00 kr
+...........................
+
+Total Amount: 500,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 6
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 08:44:10
+--------------------------
+Product             Price
+1x mjau wetfood    50,00 kr
+1x mjau adult food 50,00 kr
+1x mjau kitten dryfood 50,00 kr
+...........................
+
+Total Amount: 150,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 7
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 08:46:17
+--------------------------
+Product             Price
+1x mjau dryfood    50,00 kr
+1x mjau wetfood    50,00 kr
+1x mjau adult food 50,00 kr
+1x mjau kitten dryfood 50,00 kr
+1x mjau kitten wetfood 50,00 kr
+...........................
+
+Total Amount: 250,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 8
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 08:46:23
+--------------------------
+Product             Price
+1x mjau adult food 50,00 kr
+1x mjau kitten dryfood 50,00 kr
+...........................
+
+Total Amount: 100,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 9
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 08:47:00
+--------------------------
+Product             Price
+1x mjau castrated dryfood 50,00 kr
+1x mjau wetfood    50,00 kr
+...........................
+
+Total Amount: 100,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 10
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:35:43
+--------------------------
+Product             Price
+1x mjau adult food 50,00 kr
+1x mjau kitten dryfood 50,00 kr
+...........................
+
+Total Amount: 99,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 11
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:37:11
+--------------------------
+Product             Price
+1x mjau castrated dryfood 50,00 kr
+1x mjau adult food 50,00 kr
+1x Test2           100,00 kr
+1x mjau dryfood    50,00 kr
+...........................
+
+Total Amount: 249,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 12
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:43:40
+--------------------------
+Product             Price
+1x mjau adult food 50,00 kr
+1x mjau dryfood    50,00 kr
+...........................
+
+Total Amount: 99,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 13
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:51:40
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr (Kampanj: test, 1,00 kr)
+1x mjau dryfood    50,00 kr
+...........................
+
+Total Amount: 99,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 14
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:52:28
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr (Kampanj: test, 1,00 kr)
+ (Kampanj: test, 1,00 kr)
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 15
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:53:21
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr
+test, -1,00 kr)
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 16
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:53:47
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr
+test,     -1,00 kr)
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 17
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:55:16
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 18
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:55:29
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr
+test,           -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 19
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:55:49
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr
+test              -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 20
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:56:02
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr
+test                -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 21
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:56:14
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr
+test                -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 22
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:56:36
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr
+test               -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 23
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 09:59:34
+--------------------------
+Product             Price
+1x mjau adult food  1,00 kr
+test               -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 24
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 10:03:24
+--------------------------
+Product             Price
+1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 25
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 10:04:36
+--------------------------
+Product             Price
+1x mjau adult food 50,00 kr
+   test               -1,00 kr
+1x mjau kitten dryfood 50,00 kr
+1x mjau kitten wetfood 50,00 kr
+...........................
+
+Total Amount: 149,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 26
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 10:19:53
+--------------------------
+Product             Price
+1x mjau wetfood    50,00 kr
+   cat season               -10,00 kr
+...........................
+
+Total Amount: 40,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 27
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:12:41
+--------------------------
+Product             Price
+1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 28
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:12:53
+--------------------------
+Product             Price
+1x mjau adult food 50,00 kr
+   test               -1,00 kr
+2x mjau adult food 100,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 148,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 29
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:15:15
+--------------------------
+Product             Price
+ 3x mjau adult food  3,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 148,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 30
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:16:23
+--------------------------
+Product             Price
+ 3x mjau adult food 150,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 148,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 31
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:16:59
+--------------------------
+Product             Price
+ 3x mjau adult food 150,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 148,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 32
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:22:49
+--------------------------
+Product             Price
+ 6x mjau adult food 300,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 297,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 33
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:23:32
+--------------------------
+Product             Price
+ 1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 49,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 34
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 15:23:45
+--------------------------
+Product             Price
+ 2x mjau adult food 100,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 99,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 35
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:40:41
+--------------------------
+Product             Price
+ 1x mjau wetfood    500,00 kr
+   cat season               -10,00 kr
+ 1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 36
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:40:58
+--------------------------
+Product             Price
+ 1x mjau wetfood    500,00 kr
+   cat season               -10,00 kr
+ 1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 37
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:54:23
+--------------------------
+Product             Price
+ 1x mjau wetfood    500,00 kr
+   cat season               -10,00 kr
+ 1x mjau adult food 50,00 kr
+   test               -1,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 38
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:55:57
+--------------------------
+Product             Price
+ID:4     │ mjau adult food  (kg)   1 * 50,00 kr 
+   test -1,00 kr
+ID:3     │ mjau wetfood     (kg)   1 * 50,00 kr 
+   cat season -10,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 39
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:56:27
+--------------------------
+Product             Price
+mjau wetfood     (kg)   1 * 50,00 kr 
+   cat season -10,00 kr
+mjau adult food  (kg)   1 * 50,00 kr 
+   test -1,00 kr
+...........................
+
+Total Amount: 89,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 40
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-18 18:56:45
+--------------------------
+Product             Price
+mjau adult food  (kg)   2 * 50,00 kr 
+   test -1,00 kr
+mjau wetfood     (kg)   3 * 50,00 kr 
+   cat season -10,00 kr
+...........................
+
+Total Amount: 228,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+

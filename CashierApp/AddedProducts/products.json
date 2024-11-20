@@ -1,0 +1,47 @@
+[
+  {
+    "ProductID": 1,
+    "ProductName": "Mjau dryfood ",
+    "Price": 50,
+    "PriceType": "kg",
+    "Category": "Cat food",
+    "Campaigns": []
+  },
+  {
+    "ProductID": 2,
+    "ProductName": "Mjau wetfood",
+    "Price": 50,
+    "PriceType": "piece",
+    "Category": "Cat food",
+    "Campaigns": []
+  },
+  {
+    "ProductID": 3,
+    "ProductName": "bajskorv",
+    "Price": 1,
+    "PriceType": "piece",
+    "Category": "Human",
+    "Campaigns": []
+  },
+  {
+    "ProductID": 4,
+    "ProductName": "bajs",
+    "Price": 100,
+    "PriceType": "piece",
+    "Category": "Human",
+    "Campaigns": [
+      {
+        "Description": "poop season",
+        "CampaignPrice": 50,
+        "StartDate": "2024-11-20T00:00:00",
+        "EndDate": "2024-11-21T00:00:00"
+      },
+      {
+        "Description": "ultimate poop deal!",
+        "CampaignPrice": 50,
+        "StartDate": "2024-11-20T00:00:00",
+        "EndDate": "2024-11-30T00:00:00"
+      }
+    ]
+  }
+]

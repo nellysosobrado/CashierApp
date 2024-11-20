@@ -1,7 +1,5 @@
 ﻿using Autofac;
-using CashierApp.DI;
-using CashierApp.Product.Factories;
-using CashierApp.Product.Interfaces;
+using CashierApp.Infrastructure.DI;
 
 namespace CashierApp
 {
@@ -11,18 +9,18 @@ namespace CashierApp
         /// Program.cs creates and configures a container with the help of Autofac to manage all dependencies.
         /// It acts as the starting point where all dependencies are set up and the main program is started through RunApp.
         /// </summary>
-        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //ContainerBuilder, handles all the dependencies in the application. 
             var builder = new ContainerBuilder();
-            DependencyRegister.RegisterDependencies(builder); //Register dependencies with builder
+           
+            //'Registerdependencies' register all the app dependencies to builder
+            DependencyRegister.RegisterDependencies(builder); 
 
-
+            //Builds the container, to resolve dependencies and manage their lifetimes
             using (var container = builder.Build())
             {
-                var application = container.Resolve<CashierSystemApp>(); // Creates instances of all the dependencies
-                application.RunApp();
+                var application = container.Resolve<CashierSystemApp>(); 
+                application.RunApp();//Runs the cashier application
             }
         }
     }

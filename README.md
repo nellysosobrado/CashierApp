@@ -10,14 +10,30 @@ The system simulates cash handling in a grocery store and demonstrates my unders
 
 Program Functionality :
 
-- Product Registration: Products are stored with a product ID, name, price, and type (per kilo/unit).
-  
-- New Sale: Start a new customer transaction using commands like 300 2 (product ID and quantity).
-  
-- Payment: Complete the sale with the PAY command to generate and save the receipt in RECEIPT_yyyyMMdd.txt.
-  
-- Receipt Numbering: Receipt numbers increment automatically and continue between program runs.
-  
-- Admin Tool: Manage products, modify prices, and add new products.
-  
-- Campaign Prices: Handle time-limited campaigns that apply during specific dates and are displayed on receipts.
+- Product Registration
+Store products with attributes: Product ID, Name, Price (per unit or kilo), and Type.
+
+- New Sale
+ add items to the cart using product ID and quantity (e.g., 300 2). View the running total.
+
+- Payment and Receipt
+Finalize transactions with PAY to generate and save a detailed receipt, including discounts and a unique receipt number.
+
+- Receipt Numbering
+Maintain sequential receipt numbering across program sessions.
+
+- Admin Tools
+Add, update, and manage products, prices, and inventory.
+
+- Campaign Pricing
+Apply time-limited discounts automatically, showing original price, discount, and final price on receipts.
+
+Technical Highlights
+Object-Oriented Design: Follows principles like Single Responsibility and Encapsulation.
+File Handling: Stores receipts and product data persistently.
+User Interaction: Simple, text-based interface with error feedback.
+Advanced Features: Handles campaigns, validates input, and prevents errors.
+Program Flow
+Startup: Display options for sales or admin functions.
+Sales: Add items to the cart, view totals, and complete sales with receipts.
+Admin: Manage products, prices, and campaigns.
