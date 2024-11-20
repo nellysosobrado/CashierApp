@@ -1,6 +1,6 @@
 University Examination Project
 
-Cashier app in C#[CASHIER_UML.pdf](https://github.com/user-attachments/files/17688723/CASHIER_UML.pdf)
+Cashier app in C# ![UML](https://github.com/user-attachments/assets/1ac0c76a-9760-4577-be0f-4c1905394c1d)
 
 Description:
 This project is an object-oriented cash register system that I developed as part of my final examination assignment for the course 'OOP C#'. 
