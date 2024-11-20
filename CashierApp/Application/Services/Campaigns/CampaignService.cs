@@ -27,12 +27,11 @@ namespace CashierApp.Application.Services.Campaigns
                 Console.Clear();
                 Console.WriteLine("ADD CAMPAIGN");
 
-                // Hämta Produkt-ID
                 Console.Write("Enter the Product ID for the campaign: ");
                 if (!int.TryParse(Console.ReadLine(), out int productId))
                 {
                     _errorManager?.DisplayError("Invalid Product ID. Please enter a valid numberPress any key to try again.");
-                    continue; // Återgå till början av loopen
+                    continue; 
                 }
 
                 var product = _productService.GetProductId(productId);
@@ -40,10 +39,9 @@ namespace CashierApp.Application.Services.Campaigns
                 {
                     _errorManager?.DisplayError("Product not found. Please enter a valid Product ID.Press any key to try again");
                     Console.ReadKey();
-                    continue; // Återgå till början av loopen
+                    continue; 
                 }
 
-                // Hämta Kampanjpris
                 Console.Write("Enter the campaign price: ");
                 if (!decimal.TryParse(Console.ReadLine(), out decimal campaignPrice) || campaignPrice <= 0)
                 {
@@ -52,7 +50,6 @@ namespace CashierApp.Application.Services.Campaigns
                     continue;
                 }
 
-                // Hämta Startdatum
                 Console.Write("Enter the start date (yyyy-MM-dd): ");
                 if (!DateTime.TryParse(Console.ReadLine(), out DateTime startDate))
                 {
@@ -61,7 +58,6 @@ namespace CashierApp.Application.Services.Campaigns
                     continue;
                 }
 
-                // Hämta Slutdatum
                 Console.Write("Enter the end date (yyyy-MM-dd): ");
                 if (!DateTime.TryParse(Console.ReadLine(), out DateTime endDate) || endDate < startDate)
                 {
@@ -70,7 +66,6 @@ namespace CashierApp.Application.Services.Campaigns
                     continue;
                 }
 
-                // Hämta Beskrivning
                 Console.Write("Enter the campaign description: ");
                 string description = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(description))
@@ -80,7 +75,6 @@ namespace CashierApp.Application.Services.Campaigns
                     continue;
                 }
 
-                // Skapa Kampanjen
                 var campaign = new Campaign
                 {
                     Description = description,
@@ -92,11 +86,9 @@ namespace CashierApp.Application.Services.Campaigns
                 _productService.AddCampaignToProduct(productId, campaign);
                 Console.WriteLine("Campaign added successfully!");
                 Console.ReadKey();
-                return; // Avsluta funktionen när processen är klar
+                return; 
             }
         }
-
-
 
         //REMOVE CAMPAIGN
         public void RemoveCampaign()
