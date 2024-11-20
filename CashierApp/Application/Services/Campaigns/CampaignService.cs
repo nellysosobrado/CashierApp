@@ -18,8 +18,6 @@ namespace CashierApp.Application.Services.Campaigns
             _productService = productService;
             _errorManager = errorManager;
         }
-
-        //ADD CAMPAIGN
         public void AddCampaign()
         {
             while (true)
@@ -89,8 +87,6 @@ namespace CashierApp.Application.Services.Campaigns
                 return; 
             }
         }
-
-        //REMOVE CAMPAIGN
         public void RemoveCampaign()
         {
             Console.Clear();
