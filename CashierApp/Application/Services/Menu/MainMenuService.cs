@@ -72,7 +72,7 @@ namespace CashierApp.Application.Services.Menu
                     }
                     break;
                 case 1://Admin settings
-                    _adminMenu.DisplayAdminMenu();
+                    _adminMenu.DisplayButtons();
 
                     break;
                 case 2://Exits the program

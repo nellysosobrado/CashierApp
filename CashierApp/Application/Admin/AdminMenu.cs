@@ -13,12 +13,24 @@ using CashierApp.Core.Interfaces.StoreCampaigns;
 
 namespace CashierApp.Application.Admin
 {
+    /// <summary>
+    /// AdminMenu manages the user input 
+    /// </summary>
     public class AdminMenu : IAdminMenuManager
     {
         private readonly IProductManager _productManager;
         private readonly ICampaignManager _campaignManager;
         private readonly IErrorManager _errorManager;
         private readonly MainMenuNavigation _menuNavigation;
+        private readonly string[] _menuOptions = {
+    "Create new product",
+    "Edit product",
+    "Remove product",
+    "Add campaign",
+    "Remove campaign",
+    "View all products",
+    "Back to Main menu"
+};
 
         public AdminMenu(IProductManager productManager, ICampaignManager campaignManager, IErrorManager errorManager)
         {
@@ -27,69 +39,7 @@ namespace CashierApp.Application.Admin
             _errorManager = errorManager;
             _menuNavigation = new MainMenuNavigation();
         }
-
-        public void DisplayAdminMenu()
-        {
-            
-            bool keepRunning = true;
-            string[] options = {
-                "Create new product",
-                "Edit product",
-                "Remove product",
-                "Add campaign",
-                "Remove campaign",
-                "View all products",
-                "Back to Main menu"
-            };
-
-            while (keepRunning)
-            {
-                Console.Clear();
-                DisplayTitle();
-
-                int selectedIndex = _menuNavigation.MainMenuUserNavigation(options, DisplayOptions);
-
-                keepRunning = HandleCommand(selectedIndex);
-            }
-        }
-
-        private void DisplayTitle()
-        {
-            CenterText("╔═══════════════════════════════════════════════╗");
-            CenterText("║                  ADMIN MENU                   ║");
-            CenterText("╚═══════════════════════════════════════════════╝");
-            CenterText("─────────────────────────────────────────────────");
-        }
-
-        private void DisplayOptions(int selectedIndex)
-        {
-            Console.Clear();
-            string[] options = {
-                "Create new product",
-                "Edit product",
-                "Remove product",
-                "Add campaign",
-                "Remove campaign",
-                "View all products",
-                "Back to Main menu"
-            };
-
-            for (int i = 0; i < options.Length; i++)
-            {
-                if (i == selectedIndex)
-                {
-                    CenterText($"> {options[i]} <");
-                }
-                else
-                {
-                    CenterText($"  {options[i]}");
-                }
-            }
-
-            CenterText("─────────────────────────────────────────────────");
-        }
-
-        private bool HandleCommand(int selectedIndex)
+        private bool UserChoise(int selectedIndex)
         {
             switch (selectedIndex)
             {
@@ -119,6 +69,53 @@ namespace CashierApp.Application.Admin
             }
 
             return true; // Fortsätt i menyn
+        }
+
+        public void DisplayButtons()
+        {
+            bool keepRunning = true;
+
+            while (keepRunning)
+            {
+                Console.Clear();
+                DisplayTitle(); // Visar titeln
+
+                // Hanterar navigering och låter användaren välja
+                int selectedIndex = _menuNavigation.MainMenuUserNavigation(_menuOptions, DisplayOptions);
+
+                // Bearbetar användarens val
+                keepRunning = UserChoise(selectedIndex);
+            }
+        }
+
+        private void DisplayTitle()
+        {
+            CenterText("╔═══════════════════════════════════════════════╗");
+            CenterText("║                  ADMIN MENU                   ║");
+            CenterText("╚═══════════════════════════════════════════════╝");
+            CenterText("─────────────────────────────────────────────────");
+        }
+
+        /// <summary>
+        /// Visar alternativen i menyn med det valda alternativet markerat.
+        /// </summary>
+        private void DisplayOptions(int selectedIndex)
+        {
+            Console.Clear();
+
+            for (int i = 0; i < _menuOptions.Length; i++)
+            {
+                if (i == selectedIndex)
+                {
+                    CenterText($"> {_menuOptions[i]} <"); // Markerar det valda alternativet
+                }
+                else
+                {
+                    CenterText($"  {_menuOptions[i]}"); // Visar övriga alternativ
+                }
+            }
+
+            CenterText("─────────────────────────────────────────────────");
         }
 
         private void CenterText(string text)

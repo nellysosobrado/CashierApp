@@ -8,6 +8,6 @@ namespace CashierApp.Core.Interfaces.Admin
 {
     public interface IAdminMenuManager
     {
-        void DisplayAdminMenu();
+        void DisplayButtons();
     }
 }

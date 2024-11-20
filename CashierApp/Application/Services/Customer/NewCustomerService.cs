@@ -15,7 +15,7 @@ using CashierApp.Core.Entities;
 namespace CashierApp.Application.Services.Customer
 {
     /// <summary>
-    /// CustomerService handles all customer-related actions, including cart management, payment, and product browsing.
+    /// CustomerService handles all customer-related actions, including cart management, payment, and product browsing
     /// </summary>
     public class NewCustomerService
     {
@@ -31,7 +31,8 @@ namespace CashierApp.Application.Services.Customer
         public NewCustomerService
             (PAY paymentService,
             IErrorManager errorManager,
-            CartDisplay newCustomer, ProductCatalog productCatalog, NewCustomerInputValidator CustomerInputChecker,
+            CartDisplay newCustomer, ProductCatalog productCatalog,
+            NewCustomerInputValidator CustomerInputChecker,
             PriceCalculator priceCalculator
             )
         {
@@ -53,20 +54,22 @@ namespace CashierApp.Application.Services.Customer
             {
                 _cartDisplay.DisplayCart(_cart);
                 var input = Console.ReadLine()?.Trim();
+
+                //Processs the input and decide which method to start depending on the user input
                 if (string.IsNullOrEmpty(input))
                 {
                     _errorManager.DisplayError("Input cannot be empty. Press any key to try again");
                     Console.ReadKey();
                     continue;
                 }
-                if (!ProcessCustomerInput(input))//Processs the input and decide which method to start depending on the user input
+                if (!ProcessCustomerInput(input))
                 {
                     break;
                 }
             }
         }
         /// <summary>
-        /// Processes the user's input and performs corresponding actions.
+        /// ProcessCustomerInput, checks which choise user has entered, and continues the program according to the user input
         /// </summary>
         private bool ProcessCustomerInput(string input)
         {

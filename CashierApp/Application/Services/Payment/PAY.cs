@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CashierApp.Core.Entities;
+﻿using CashierApp.Core.Entities;
 using CashierApp.Application.Factories;
 using CashierApp.Application.Services.StoreReceipts;
 using CashierApp.Application.Services.Campaigns;
 using CashierApp.Core.Interfaces.StoreProducts;
 
-//using CashierApp.Product;
 
 namespace CashierApp.Application.Services.Payment
 {
