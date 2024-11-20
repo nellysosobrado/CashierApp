@@ -12,18 +12,18 @@ namespace CashierApp.Application.Admin
     public class AdminProductManager : IProductManager
     {
         private readonly IProductService _productService;
-        private readonly ICreateProductHandler _createProductHandler;
+        private readonly IAddProduct _AddProduct;
         private readonly IErrorManager _errorManager;
 
-        public AdminProductManager(IProductService productService, ICreateProductHandler createProductHandler, IErrorManager errorManager)
+        public AdminProductManager(IProductService productService, IAddProduct createProductHandler, IErrorManager errorManager)
         {
             _productService = productService;
-            _createProductHandler = createProductHandler;
+            _AddProduct = createProductHandler;
             _errorManager = errorManager;
         }
         public void AddNewProduct()
         {
-            _createProductHandler.AddProduct();
+            _AddProduct.AddProduct();
         }
 
         public void EditProductDetails()

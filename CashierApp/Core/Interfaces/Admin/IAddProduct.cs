@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Core.Interfaces.Admin
 {
-    public interface ICreateProductHandler
+    public interface IAddProduct
     {
         void AddProduct();
     }

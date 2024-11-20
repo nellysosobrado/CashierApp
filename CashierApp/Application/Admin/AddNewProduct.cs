@@ -14,7 +14,7 @@ namespace CashierApp.Application.Admin
     /// <summary>
     /// AddNewProduct takes care of the function to add a new product into the application
     /// </summary>
-    public class AddNewProduct : ICreateProductHandler
+    public class AddNewProduct : IAddProduct
     {
         private readonly IProductService _productService;
         private readonly InputValidator _inputValidator;

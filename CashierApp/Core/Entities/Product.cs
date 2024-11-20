@@ -15,9 +15,6 @@ namespace CashierApp.Core.Entities
         public decimal Price { get; set; }
         public required string PriceType { get; set; }
         public required string Category { get; set; }
-
-
-
         public List<Campaign> Campaigns { get; set; } = new List<Campaign>();
 
     }

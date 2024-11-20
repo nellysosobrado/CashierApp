@@ -38,7 +38,7 @@ namespace CashierApp.Infrastructure.DI
             builder.RegisterType<InputValidator>().AsSelf().SingleInstance();
 
             //product & campaign services.............................................
-            builder.RegisterType<AddNewProduct>().As<ICreateProductHandler>().SingleInstance();
+            builder.RegisterType<AddNewProduct>().As<IAddProduct>().SingleInstance();
             builder.RegisterType<AdminProductManager>().As<IProductManager>().SingleInstance();
             builder.RegisterType<ProductService>().As<IProductService>().AsSelf().SingleInstance();
             builder.RegisterType<CampaignService>().As<ICampaignManager>().AsSelf().SingleInstance();

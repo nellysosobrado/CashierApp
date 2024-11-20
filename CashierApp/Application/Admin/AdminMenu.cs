@@ -21,7 +21,7 @@ namespace CashierApp.Application.Admin
         private readonly IProductManager _productManager;
         private readonly ICampaignManager _campaignManager;
         private readonly IErrorManager _errorManager;
-        private readonly MainMenuNavigation _menuNavigation;
+        private readonly MainMenuNavigation _mainMenuNavigation;
         private readonly string[] _menuOptions = {
         "Create new product",
         "Edit product",
@@ -37,7 +37,7 @@ namespace CashierApp.Application.Admin
             _productManager = productManager;
             _campaignManager = campaignManager;
             _errorManager = errorManager;
-            _menuNavigation = new MainMenuNavigation();
+            _mainMenuNavigation = new MainMenuNavigation();
         }
         private bool UserChoise(int selectedIndex)
         {
@@ -80,7 +80,7 @@ namespace CashierApp.Application.Admin
                 Console.Clear();
                 DisplayTitle(); 
 
-                int selectedIndex = _menuNavigation.MainMenuUserNavigation(_menuOptions, DisplayOptions);
+                int selectedIndex = _mainMenuNavigation.MainMenuUserNavigation(_menuOptions, DisplayOptions);
 
                 keepRunning = UserChoise(selectedIndex);
             }

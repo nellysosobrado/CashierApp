@@ -9,7 +9,7 @@ namespace CashierApp.Core.Entities
 {
     public class Receipt
     {
-        //properties
+
         public int ReceiptNumber { get; }
         public DateTime Date { get; }
         public List<(IProducts Product, int Quantity)> Cart { get; }
