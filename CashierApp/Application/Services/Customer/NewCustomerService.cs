@@ -98,16 +98,29 @@ namespace CashierApp.Application.Services.Customer
             }
         }
         /// <summary>
-        /// Processes the payment for the items in the cart.
+        /// Processes the payment for the items in the cart. 
+        /// Displays an error if the cart is empty.
         /// </summary>
         private void ProcessPayment()
         {
+            // Check if the cart is empty
+            if (!_cart.Any())
+            {
+                _errorManager.DisplayError("Cart cannot be empty.");
+                Console.ReadKey(); // Wait for user input
+                return; // Exit the method without processing payment
+            }
+
             Console.WriteLine("\nProcessing payment...");
-            decimal totalPrice = _priceCalculator.CalculateTotalPrice(_cart);
-            _pay.CreateReceipt(_cart, totalPrice);
-            _cart.Clear();
+            decimal totalPrice = _priceCalculator.CalculateTotalPrice(_cart); // Calculate total price
+            _pay.CreateReceipt(_cart, totalPrice); // Create a receipt
+            _cart.Clear(); // Clear the cart after payment
         }
 
+        /// <summary>
+        /// Processes the payment for the items in the cart.
+        /// </summary>
+        
         /// <summary>
         /// Displays the product catalog to the customer.
         /// </summary>
