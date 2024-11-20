@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Application.Admin
 {
+    /// <summary>
+    /// AddNewProduct takes care of the function to add a new product into the application
+    /// </summary>
     public class AddNewProduct : ICreateProductHandler
     {
         private readonly IProductService _productService;
@@ -24,6 +27,9 @@ namespace CashierApp.Application.Admin
             _errorManager = errorManager;
         }
 
+        /// <summary>
+        /// Adds a new product to the system by collecting and checking user input
+        /// </summary>
         public void AddProduct()
         {
             Console.Clear();
@@ -31,8 +37,8 @@ namespace CashierApp.Application.Admin
             Console.WriteLine("Please enter the product's details for the new product");
             Console.WriteLine("........................................");
 
-            // Skapa en ny produkt och fyll dess egenskaper
-            var product = new Product
+
+            var product = new Product// Create a new product and collect its properties
             {
                 Category = _inputValidator.GetValidatedInput(
                     "Category",                            
@@ -55,7 +61,7 @@ namespace CashierApp.Application.Admin
                     "Invalid price. Must be greater than 0."
                 ),
                 PriceType = _inputValidator.GetValidatedInput(
-                    "PriceType (e.g., 'kg', 'piece')",
+                    "PriceType ('kg', 'piece')",
                     input => input.Equals("kg", StringComparison.OrdinalIgnoreCase) || input.Equals("piece", StringComparison.OrdinalIgnoreCase),
                     "Invalid PriceType. Must be 'kg' or 'piece'."
                 )
@@ -69,7 +75,6 @@ namespace CashierApp.Application.Admin
             {
                 _errorManager.DisplayError($"An error occurred while adding the product: {ex.Message}");
             }
-
             Console.WriteLine("Press any key to return to the Admin menu.");
             Console.ReadKey();
         }

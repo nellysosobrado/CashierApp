@@ -39,7 +39,7 @@ namespace CashierApp.Infrastructure.DI
 
             //product & campaign services.............................................
             builder.RegisterType<AddNewProduct>().As<ICreateProductHandler>().SingleInstance();
-            builder.RegisterType<ProductManager>().As<IProductManager>().SingleInstance();
+            builder.RegisterType<AdminProductManager>().As<IProductManager>().SingleInstance();
             builder.RegisterType<ProductService>().As<IProductService>().AsSelf().SingleInstance();
             builder.RegisterType<CampaignService>().As<ICampaignManager>().AsSelf().SingleInstance();
             //product & campaign services.............................................
@@ -74,7 +74,7 @@ namespace CashierApp.Infrastructure.DI
 
             // Admin
             builder.RegisterType<AdminMenu>().AsSelf().SingleInstance();
-            builder.RegisterType<ProductManager>().As<IProductManager>().SingleInstance();
+            builder.RegisterType<AdminProductManager>().As<IProductManager>().SingleInstance();
 
             // Error management
             builder.RegisterType<Error>().As<IErrorManager>().SingleInstance();

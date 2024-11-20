@@ -1,4 +1,5 @@
 ﻿using CashierApp.Core.Interfaces.Admin;
+using CashierApp.Core.Interfaces.ErrorManagement;
 using CashierApp.Core.Interfaces.StoreProducts;
 using System;
 using System.Collections.Generic;
@@ -8,32 +9,31 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Application.Admin
 {
-    public class ProductManager : IProductManager
+    public class AdminProductManager : IProductManager
     {
         private readonly IProductService _productService;
         private readonly ICreateProductHandler _createProductHandler;
+        private readonly IErrorManager _errorManager;
 
-        public ProductManager(IProductService productService, ICreateProductHandler createProductHandler)
+        public AdminProductManager(IProductService productService, ICreateProductHandler createProductHandler, IErrorManager errorManager)
         {
             _productService = productService;
             _createProductHandler = createProductHandler;
+            _errorManager = errorManager;
         }
-        public void CreateNewProduct()
+        public void AddNewProduct()
         {
             _createProductHandler.AddProduct();
         }
 
-        //EDIT PRODUCT--------------------------------
         public void EditProductDetails()
         {
             Console.Clear();
             Console.WriteLine("UPDATE PRODUCT DETAILS");
 
-
             int productId;
             while (true)
             {
-                
                 Console.Write("Enter the product's ID you wish to edit: ");
                 if (int.TryParse(Console.ReadLine(), out productId))
                 {
@@ -44,7 +44,7 @@ namespace CashierApp.Application.Admin
                     }
                     else
                     {
-                        Console.WriteLine($"No product found with ID {productId}. Please try again.");
+                        _errorManager.DisplayError("No product found with ID {productId}. Please try again.");
                     }
                 }
                 else
@@ -182,7 +182,7 @@ namespace CashierApp.Application.Admin
             Console.WriteLine("Press any key to return to the menu.");
             Console.ReadKey();
         }
-        //REMOVE PRODUYCT
+        //REMOVE PRODUYCT------------------------------
         public void RemoveProduct()
         {
             Console.Clear();
@@ -229,9 +229,6 @@ namespace CashierApp.Application.Admin
             Console.WriteLine("Press any key to return to the menu.");
             Console.ReadKey();
         }
-
-        //DISPLAY ALL
-
         public void DisplayProductsAndCampaigns()
         {
             var products = _productService.GetAllProducts();

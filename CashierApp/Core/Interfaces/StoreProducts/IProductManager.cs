@@ -8,7 +8,7 @@ namespace CashierApp.Core.Interfaces.StoreProducts
 {
     public interface IProductManager
     {
-        void CreateNewProduct();
+        void AddNewProduct();
         void EditProductDetails();
         void RemoveProduct();
         void DisplayProductsAndCampaigns();

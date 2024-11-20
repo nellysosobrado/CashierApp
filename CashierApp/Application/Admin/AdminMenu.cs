@@ -23,14 +23,14 @@ namespace CashierApp.Application.Admin
         private readonly IErrorManager _errorManager;
         private readonly MainMenuNavigation _menuNavigation;
         private readonly string[] _menuOptions = {
-    "Create new product",
-    "Edit product",
-    "Remove product",
-    "Add campaign",
-    "Remove campaign",
-    "View all products",
-    "Back to Main menu"
-};
+        "Create new product",
+        "Edit product",
+        "Remove product",
+        "Add campaign",
+        "Remove campaign",
+        "View all products",
+        "Back to Main menu"
+         };
 
         public AdminMenu(IProductManager productManager, ICampaignManager campaignManager, IErrorManager errorManager)
         {
@@ -44,7 +44,7 @@ namespace CashierApp.Application.Admin
             switch (selectedIndex)
             {
                 case 0:
-                    _productManager.CreateNewProduct();
+                    _productManager.AddNewProduct();
                     break;
                 case 1:
                     _productManager.EditProductDetails();
@@ -62,13 +62,13 @@ namespace CashierApp.Application.Admin
                     _productManager.DisplayProductsAndCampaigns();
                     break;
                 case 6:
-                    return false; // Gå tillbaka till huvudmenyn
+                    return false; //back to menu
                 default:
                     _errorManager.DisplayError("ERROR: Invalid option");
                     break;
             }
 
-            return true; // Fortsätt i menyn
+            return true; //continutes in the menu
         }
 
         public void DisplayButtons()
@@ -78,12 +78,10 @@ namespace CashierApp.Application.Admin
             while (keepRunning)
             {
                 Console.Clear();
-                DisplayTitle(); // Visar titeln
+                DisplayTitle(); 
 
-                // Hanterar navigering och låter användaren välja
                 int selectedIndex = _menuNavigation.MainMenuUserNavigation(_menuOptions, DisplayOptions);
 
-                // Bearbetar användarens val
                 keepRunning = UserChoise(selectedIndex);
             }
         }
@@ -107,7 +105,7 @@ namespace CashierApp.Application.Admin
             {
                 if (i == selectedIndex)
                 {
-                    CenterText($"> {_menuOptions[i]} <"); // Markerar det valda alternativet
+                    CenterText($"> {_menuOptions[i]} <"); 
                 }
                 else
                 {
