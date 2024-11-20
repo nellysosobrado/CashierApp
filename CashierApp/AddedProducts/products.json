@@ -15,21 +15,6 @@
     ]
   },
   {
-    "ProductID": 2,
-    "ProductName": "mjau dryfood",
-    "Price": 50,
-    "PriceType": "kg",
-    "Category": "cat food",
-    "Campaigns": [
-      {
-        "Description": "cat season",
-        "CampaignPrice": 20,
-        "StartDate": "2024-11-20T00:00:00",
-        "EndDate": "2024-11-25T00:00:00"
-      }
-    ]
-  },
-  {
     "ProductID": 3,
     "ProductName": "mjau wetfood",
     "Price": 50,

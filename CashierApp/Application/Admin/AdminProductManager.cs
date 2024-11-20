@@ -44,12 +44,12 @@ namespace CashierApp.Application.Admin
                     }
                     else
                     {
-                        _errorManager.DisplayError("No product found with ID {productId}. Please try again.");
+                        _errorManager.DisplayError($"No product found with ID {productId}. Please try again.");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid ID. Please enter a valid number.");
+                    _errorManager.DisplayError("Invalid ID. Please enter a valid number.");
                 }
             }
 
@@ -79,7 +79,7 @@ namespace CashierApp.Application.Admin
                             }
                             else
                             {
-                                Console.WriteLine("Product name cannot be empty. Please try again.");
+                                _errorManager.DisplayError("Product name cannot be empty. Please try again.");
                                 Console.ReadKey();
                             }
                         }
@@ -97,7 +97,7 @@ namespace CashierApp.Application.Admin
                             }
                             else
                             {
-                                Console.WriteLine("Invalid price. Please enter a positive number.");
+                                _errorManager.DisplayError("Invalid price. Please enter a positive number.");
                                 Console.ReadKey();
                             }
                         }
@@ -119,12 +119,12 @@ namespace CashierApp.Application.Admin
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"A product with ID {newId} already exists. Please choose a different ID.");
+                                    _errorManager.DisplayError($"A product with ID {newId} already exists. Please choose a different ID.");
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("Invalid ID. Please enter a valid number.");
+                                _errorManager.DisplayError($"Invalid ID. Please enter a valid number.");
                             }
                         }
                         break;
@@ -144,7 +144,8 @@ namespace CashierApp.Application.Admin
                             }
                             else
                             {
-                                Console.WriteLine("Category cannot be empty. Please try again.");
+
+                                _errorManager.DisplayError("Category cannot be empty. Please try again.");
                             }
                         }
                         break;
@@ -165,14 +166,13 @@ namespace CashierApp.Application.Admin
                             }
                             else
                             {
-                                Console.WriteLine("Invalid price type. Please enter 'kg' or 'piece'.");
+                                _errorManager.DisplayError("Invalid price type. Please enter 'kg' or 'piece'.");
                             }
                         }
                         break;
 
                     default:
-                        Console.WriteLine("Invalid choice. Please select a valid option.");
-                        Console.WriteLine("Press any key to try again");
+                        _errorManager.DisplayError("Invalid choice. Please select a valid option. Press any key to try again");
                         Console.ReadKey();
                         continue;
                 }
@@ -194,12 +194,12 @@ namespace CashierApp.Application.Admin
                 string producttoremove = Console.ReadLine() ?? string.Empty;
                 if (producttoremove == string.Empty)
                 {
-                    Console.WriteLine("Invalid. Input cannot be empty");
+                    _errorManager.DisplayError("Invalid. Input cannot be empty");
                     continue;
                 }
                 if (!int.TryParse(producttoremove, out int productId))
                 {
-                    Console.WriteLine("Invalid ID. Please enter a valid number.");
+                    _errorManager.DisplayError("Invalid ID. Please enter a valid number.");
                     continue;
                 }
 
@@ -207,7 +207,7 @@ namespace CashierApp.Application.Admin
                 var product = _productService.GetProductId(productId);
                 if (product == null)
                 {
-                    Console.WriteLine($"No product found with ID {productId}. Please check and try again.");
+                    _errorManager.DisplayError($"No product found with ID {productId}. Please check and try again.");
                     continue;
                 }
 
@@ -217,7 +217,7 @@ namespace CashierApp.Application.Admin
                 var removedProduct = _productService.GetProductId(productId);
                 if (removedProduct != null)
                 {
-                    Console.WriteLine($"\nERROR: Product ID {productId} still exists after removal. Please try again.");
+                    _errorManager.DisplayError($"\nERROR: Product ID {productId} still exists after removal. Please try again.");
                     continue;
                 }
 
