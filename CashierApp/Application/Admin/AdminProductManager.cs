@@ -234,7 +234,7 @@ namespace CashierApp.Application.Admin
             var products = _productService.GetAllProducts();
             if (products == null || !products.Any())
             {
-                Console.WriteLine("No products available.");
+                _errorManager.DisplayError("No products available.");
                 Console.ReadKey();
                 return;
             }
