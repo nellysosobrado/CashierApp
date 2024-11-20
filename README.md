@@ -1,6 +1,6 @@
-University Examination Project
+Cashier App Project
 
-Cashier app in C# UML
+UML
 ![UML](https://github.com/user-attachments/assets/597d1a29-a5e7-43c9-b835-3ea9d046bdfd)
 
 Description:
