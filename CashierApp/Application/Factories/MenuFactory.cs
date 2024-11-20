@@ -48,14 +48,14 @@ namespace CashierApp.Application.Factories
         public PAY CreatePaymentService()
         {
             var productService = CreateProductService();
-            var campaignService = new CampaignService(productService);
+            var campaignService = new CampaignService(productService, _errorManager);
             return new PAY(campaignService);
         }
         public NewCustomerService CreateCustomerService()
         {
             var productService = CreateProductService();
             var paymentService = CreatePaymentService();
-            var campaignService = new CampaignService(productService);
+            var campaignService = new CampaignService(productService, _errorManager);
             var priceCalculator = new PriceCalculator(campaignService);
 
             var productDisplay = new ProductDisplay(campaignService);

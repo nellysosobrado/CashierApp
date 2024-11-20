@@ -32,9 +32,12 @@ namespace CashierApp.Application.Services.StoreProduct
             while (true)
             {
                 Console.Clear();
+                
                 var categories = _productService.FetchProductCategory();
                 _productDisplay.ShowCategories(categories);
                 string input = Console.ReadLine()?.Trim().ToLower() ?? string.Empty;
+               
+
                 if (input == "c")
                 {
                     return;

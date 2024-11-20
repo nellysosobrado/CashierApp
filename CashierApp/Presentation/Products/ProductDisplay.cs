@@ -16,16 +16,20 @@ namespace CashierApp.Presentation.Products
         }
         public void ShowCategories(IEnumerable<string> categories) 
         {
-            Console.Clear();
+           Console.Clear();
             Console.WriteLine("\n                                   ╔═══════════════════════════════════════════════╗");
             Console.WriteLine("                                   ║                AVAILABLE CATEGORIES           ║");
             Console.WriteLine("                                   ╚═══════════════════════════════════════════════╝");
             Console.WriteLine("                                   ────────────────────────────────────────────────");
 
+
+
             foreach (var category in categories)
             {
                 CenterText($"- {category}");
+
             }
+            CenterText("[C] back to cart");
 
             Console.WriteLine("                                   ────────────────────────────────────────────────");
             CenterText("Enter a category to view its products");
