@@ -78,14 +78,13 @@ namespace CashierApp.Application.Admin
             while (keepRunning)
             {
                 Console.Clear();
-                DisplayTitle(); 
+                
 
                 int selectedIndex = _mainMenuNavigation.MainMenuUserNavigation(_menuOptions, DisplayOptions);
 
                 keepRunning = UserChoise(selectedIndex);
             }
         }
-
         private void DisplayTitle()
         {
             CenterText("╔═══════════════════════════════════════════════╗");
@@ -100,6 +99,7 @@ namespace CashierApp.Application.Admin
         private void DisplayOptions(int selectedIndex)
         {
             Console.Clear();
+            DisplayTitle();
 
             for (int i = 0; i < _menuOptions.Length; i++)
             {
