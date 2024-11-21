@@ -1,7 +1,9 @@
 ## Cashier App Project
 
 UML
-![UML](https://github.com/user-attachments/assets/597d1a29-a5e7-43c9-b835-3ea9d046bdfd)
+
+![CashierApp_UML](https://github.com/user-attachments/assets/913e7803-4670-46e0-b4d8-725efafe02a2)
+
 
 ## Description
 The project is a console based grocery store cashier register system, that I have developed as part of my final examination assignment for the course 'OOP C#' at KYH liljeholmen, Stochkolm.
