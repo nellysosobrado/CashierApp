@@ -9,17 +9,6 @@ The project is a console based grocery store cashier register system, that I hav
 
 The program uses Autofac for dependency injection, interfaces for flexibility, a factory for creating products, classes and methods. It follows S.O.L.I.D principles and clean code practices to ensure simplicity and maintainability.
 
-
-view all the products
-
-
-
-
-
-
-
-
-
 ## Program Functionality
 
 
