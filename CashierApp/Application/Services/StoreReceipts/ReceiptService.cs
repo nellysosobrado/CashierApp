@@ -48,7 +48,7 @@ namespace CashierApp.Application.Services.StoreReceipts
             receiptBuilder.AppendLine("Org:123456-1234 ");
             receiptBuilder.AppendLine("--------------------------");
             receiptBuilder.AppendLine($"Receipt number: {receipt.ReceiptNumber}");
-            receiptBuilder.AppendLine("Staff: Staff Name \t Trans: 123456");
+            receiptBuilder.AppendLine("Staff: TBA \t Trans: 123456");
             receiptBuilder.AppendLine($"Date: {receipt.Date}");
             receiptBuilder.AppendLine("--------------------------");
             receiptBuilder.AppendLine("Product             Price");

@@ -92,3 +92,73 @@ Thank you for shopping with us!
 ===========================
 
 
+
+===============================
+           STORE NAME           
+      Liljeholmen, Stockholm    
+      Årstaängsvägen 31         
+      117 43 Stockholm          
+ Org. Nr: 123456-1234           
+===============================
+Receipt #: 5
+Staff: Staff Name       Trans: 123456
+Date: 2024-11-21 11:11:00
+-------------------------------
+Product         Qty   Price      Total     
+-------------------------------
+Mjau dryfood    1     50,00 kr   50,00 kr
+-------------------------------
+TOTAL                       50,00 kr
+===============================
+
+Thank you for shopping with us!
+   Have a great day!           
+===============================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 5
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-21 11:11:16
+--------------------------
+Product             Price
+Mjau dryfood     (kg)   1 * 50,00 kr 
+...........................
+
+Total Amount: 50,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 6
+Staff: TBA 	 Trans: 123456
+Date: 2024-11-21 11:11:49
+--------------------------
+Product             Price
+Mjau dryfood     (kg)   1 * 50,00 kr 
+...........................
+
+Total Amount: 50,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
