@@ -1,40 +1,69 @@
-Cashier App Project
+## Cashier App Project
 
 UML
 ![UML](https://github.com/user-attachments/assets/597d1a29-a5e7-43c9-b835-3ea9d046bdfd)
 
 ## Description
-This project is an object-oriented console cash register system that I developed as part of my final examination assignment for the course 'OOP C#'.
+The project is a console based grocery store cashier register system, that I have developed as part of my final examination assignment for the course 'OOP C#' at KYH liljeholmen, Stochkolm.
 
-The system simulates cash handling in a grocery store and demonstrates my understanding of key programming principles, including object-oriented design, file handling, and user interaction. This project represents a comprehensive test of my ability to build a complete, functional application from scratch while incorporating advanced features and maintaining code quality.
 
-Program Functionality :
+The program uses Autofac for dependency injection, interfaces for flexibility, classes, methods, following S.O.L.I.D principles and clean code to ensure simplicity and maintainability.
 
-- Product Registration
-Store products with attributes: Product ID, Name, Price (per unit or kilo), and Type.
 
-- New Sale
- add items to the cart using product ID and quantity (e.g., 300 2). View the running total.
+view all the products
 
-- Payment and Receipt
-Finalize transactions with PAY to generate and save a detailed receipt, including discounts and a unique receipt number.
 
-- Receipt Numbering
-Maintain sequential receipt numbering across program sessions.
 
-- Admin Tools
-Add, update, and manage products, prices, and inventory.
 
-- Campaign Pricing
-Apply time-limited discounts automatically, showing original price, discount, and final price on receipts.
 
-Technical Highlights
-Object-Oriented Design: Follows principles like Single Responsibility and Encapsulation.
-File Handling: Stores receipts and product data persistently.
-User Interaction: Simple, text-based interface with error feedback.
-Advanced Features: Handles campaigns, validates input, and prevents errors.
-Program Flow
-Startup: Display options for sales or admin functions.
-Sales: Add items to the cart, view totals, and complete sales with receipts.
-Admin: Manage products, prices, and campaigns.
 
+
+
+
+## Program Functionality
+
+
+<ins>**Admin setting**</ins>
+
+The admin settings allow users to manage products and campaigns with various options to edit product attributes and campaigns.
+- ![image](https://github.com/user-attachments/assets/056aad35-0c8d-4dee-b3bd-0692bd74b7ee)
+- ![image](https://github.com/user-attachments/assets/0b88cd93-54c0-4c32-a41c-9f71ff17276d)
+One of the admin options: 'view products'
+- ![image](https://github.com/user-attachments/assets/2336ee45-7f3f-40ea-8f86-5e8aac725dbc)
+
+<ins>**Product management**</ins>
+
+Users can add, remove, and edit a product’s attributes:
+
+- Product ID
+- Name
+- Price
+- PriceType
+
+<ins>**Campaign management**</in>
+
+For products with special deals, users can add, remove, and manage campaigns
+
+- A product can have multiple campaigns.
+- Each campaign includes a Start Date and End Date.
+- Products with campaigns are only active during the specified campaign dates.
+
+<ins>**Product overview**</ins>
+
+Users can view and browse all available products, which are read from a JSON file where the product details are stored.
+
+- Products are displayed sorted by Product ID.
+
+<ins>**Cart**</ins>
+
+- Add items by product name and quantity
+- Fast command to add items by productid and quanitity (300 1)
+- ![image](https://github.com/user-attachments/assets/0b05f55b-eda4-4fe0-b2b7-3adb11deb947)
+
+<ins>**Payment & receipt**</ins>
+- Enter 'PAY' to confirm the purchase
+- purschased products, will genereate a txt receipt including the product details (price, name, campaign if it has one, total sum).
+- Each time the application starts, it reads all existing receipt.txt files to ensure correct receipt numbering
+- Receipts are saved by date. If multiple purchases occur on the same day, they are stored in the same file.
+- A new receipt.txt file is created for purchases made on a new day.
+- ![image](https://github.com/user-attachments/assets/2255d226-c5ca-47ad-9135-809ec5238efc)
