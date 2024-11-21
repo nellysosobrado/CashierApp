@@ -43,7 +43,7 @@ For products with special deals, users can add, remove, and manage campaigns
 
 Users can view and browse all available products, which are read from a JSON file where the product details are stored.
 
-- Products are displayed sorted by Product ID.
+- Products in json file are sorted by product ID. In order to maintain the storted system in json file, it also sorts whenever a new products adds
 
 <ins>**Cart**</ins>
 
