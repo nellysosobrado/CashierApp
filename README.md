@@ -9,7 +9,7 @@ UML
 The project is a console based grocery store cashier register system, that I have developed as part of my final examination assignment for the course 'OOP C#' at KYH liljeholmen, Stochkolm.
 
 
-The program uses Autofac for dependency injection, interfaces for flexibility, a factory for creating products, classes and methods. It follows S.O.L.I.D principles and clean code practices to ensure simplicity and maintainability.
+The program uses Autofac for dependency injection, interfaces for flexibility, factory design pattern, classes and methods. It follows S.O.L.I.D principles and clean code to ensure simplicity and maintainability.
 
 ## Program Functionality
 
