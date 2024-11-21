@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Presentation.Menu
 {
+    /// <summary>
+    /// Handles displaying centered and visually formatted menu options 
+    /// for the cashier system, including navigation instructions '> <'
+    /// </summary>
     public class MenuDisplay
     {
-       
-
         public void ShowMenuOptions(string[] options, int selectedIndex)
         {
             Console.Clear();
@@ -21,11 +23,11 @@ namespace CashierApp.Presentation.Menu
                 string line;
                 if (i == selectedIndex)
                 {
-                    line = $"> {options[i]} <"; // Markerat val
+                    line = $"> {options[i]} <"; 
                 }
                 else
                 {
-                    line = $"  {options[i]}"; // Omarkerade alternativ
+                    line = $"  {options[i]}";
                 }
                 CenterText(line);
             }
@@ -33,7 +35,6 @@ namespace CashierApp.Presentation.Menu
             CenterText("╚══════════════════════════════════════╝");
             CenterText("Use arrow keys and 'Enter' to select an option");
         }
-
         private void CenterText(string text)
         {
             int windowWidth = Console.WindowWidth;

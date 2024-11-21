@@ -6,15 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//using CashierApp.Product.Services;
-
 namespace CashierApp.Application.Services.Customer
 {
-    //Error handler
-    //Checks user input
-    //Product
-    //Category
-    //Input : RPdocutID & Quantity
 
     public delegate IProducts ProductSearchDelegate(string input);
 
@@ -69,7 +62,6 @@ namespace CashierApp.Application.Services.Customer
 
         private ProductSearchDelegate DetermineSearchMethod(string input)
         {
-            //Depending on user INPUT
             return int.TryParse(input, out _) ? SearchById : SearchByName;
         }
 

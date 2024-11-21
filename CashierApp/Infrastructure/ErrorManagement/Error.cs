@@ -21,12 +21,9 @@ namespace CashierApp.Infrastructure.ErrorManagement
             int errorLine = commandLine - 1;
             Console.SetCursorPosition(leftPadding, errorLine);
 
-
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(fullMessage);
             Console.ResetColor();
-
-
             Console.SetCursorPosition(0, commandLine);
         }
 

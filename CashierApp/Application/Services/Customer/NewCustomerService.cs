@@ -108,7 +108,7 @@ namespace CashierApp.Application.Services.Customer
             {
                 _errorManager.DisplayError("Cart cannot be empty.");
                 Console.ReadKey(); // Wait for user input
-                return; // Exit the method without processing payment
+                return; 
             }
 
             Console.WriteLine("\nProcessing payment...");

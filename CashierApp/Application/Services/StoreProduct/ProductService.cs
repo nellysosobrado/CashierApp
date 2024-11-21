@@ -114,7 +114,6 @@ namespace CashierApp.Application.Services.StoreProduct
                 existingProduct.PriceType = product.PriceType;
                 existingProduct.Category = product.Category;
 
-                // Uppdatera kampanjer om det behövs
                 existingProduct.Campaigns = product.Campaigns;
 
                 SaveProducts(products);

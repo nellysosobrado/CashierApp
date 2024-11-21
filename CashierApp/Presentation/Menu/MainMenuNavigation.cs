@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace CashierApp.Presentation.Menu
 {
+    /// <summary>
+    /// Manages navigation within the main menu of the cashier system.
+    /// Allows the user to cycle through menu options using arrow keys
+    /// and select an option with the Enter key.
+    /// </summary>
     public class MainMenuNavigation
     {
         public int SelectedIndex { get; private set; } = 0;
-
         public int MainMenuUserNavigation(string[] options, Action<int> displayMenu)
         {
             int selectedIndex = 0;
-
             while (true)
             {
                 displayMenu(selectedIndex);
@@ -34,8 +37,5 @@ namespace CashierApp.Presentation.Menu
                 }
             }
         }
-
-       
     }
-
 }

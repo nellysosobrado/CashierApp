@@ -18,7 +18,7 @@ namespace CashierApp.Application.Services.Payment
         public PAY(CampaignService campaignService)
         {
             _receiptFactory = new ReceiptFactory();
-            _receiptService = new ReceiptService(campaignService); // Skicka CampaignService här
+            _receiptService = new ReceiptService(campaignService); 
         }
 
         public void CreateReceipt(List<(IProducts Product, int Quantity)> cart, decimal totalPrice)

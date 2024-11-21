@@ -10,17 +10,21 @@ using CashierApp.Core.Interfaces.StoreProducts;
 
 namespace CashierApp.Infrastructure.Data
 {
+    /// <summary>
+    /// A custom JSON converter for handling serialization and deserialization
+    /// of objects implementing the IProducts interface.
+    /// </summary>
     public class ProductConverter : JsonConverter<IProducts>
     {
         public override IProducts Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            // Deserialisera till Product
+            // Deserializes the JSON into a Product object and returns it as an IProducts instance
             return JsonSerializer.Deserialize<Product>(ref reader, options);
         }
 
         public override void Write(Utf8JsonWriter writer, IProducts value, JsonSerializerOptions options)
         {
-            // Kontrollera att värdet är av typen Product
+            // Serializes the object to JSON if it's a Product type.
             if (value is Product product)
             {
                 JsonSerializer.Serialize(writer, product, options);

@@ -34,7 +34,7 @@ namespace CashierApp.Infrastructure.DI
     {
         public static void RegisterDependencies(ContainerBuilder builder)
         {
-            //Utility service
+            //Checks uses input
             builder.RegisterType<InputValidator>().AsSelf().SingleInstance();
 
             //product & campaign services.............................................

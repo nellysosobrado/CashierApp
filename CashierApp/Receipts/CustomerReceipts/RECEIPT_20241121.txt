@@ -1,0 +1,94 @@
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 1
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-21 10:46:49
+--------------------------
+Product             Price
+bajskorv         (piece)   1 *  1,00 kr 
+bajs             (piece)   1 * 100,00 kr 
+   ultimate poop deal! -50,00 kr
+...........................
+
+Total Amount: 51,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 2
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-21 10:48:45
+--------------------------
+Product             Price
+Mjau dryfood     (kg)   1 * 50,00 kr 
+...........................
+
+Total Amount: 50,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 3
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-21 10:48:50
+--------------------------
+Product             Price
+Mjau dryfood     (kg)   1 * 50,00 kr 
+...........................
+
+Total Amount: 50,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 4
+Staff: Staff Name 	 Trans: 123456
+Date: 2024-11-21 10:48:57
+--------------------------
+Product             Price
+Mjau dryfood     (kg)   1 * 50,00 kr 
+...........................
+
+Total Amount: 50,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
