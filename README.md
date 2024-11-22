@@ -1,9 +1,7 @@
 ## Cashier App Project
 
 UML
-
-![CashierApp_UML](https://github.com/user-attachments/assets/913e7803-4670-46e0-b4d8-725efafe02a2)
-
+![CashierApp_ UML_Diagram](https://github.com/user-attachments/assets/3e2f334e-add2-42d1-9447-4bb9d3527d4d)
 
 ## Description
 The project is a console based grocery store cashier register system, that I have developed as part of my final examination assignment for the course 'OOP C#' at KYH liljeholmen, Stochkolm.
@@ -17,9 +15,14 @@ The program uses Autofac for dependency injection, interfaces for flexibility, f
 <ins>**Admin setting**</ins>
 
 The admin settings allow users to manage products and campaigns with various options to edit product attributes and campaigns.
+ 
+  Startpage, a.k.a main menu
 - ![image](https://github.com/user-attachments/assets/056aad35-0c8d-4dee-b3bd-0692bd74b7ee)
+
+   Admin page
 - ![image](https://github.com/user-attachments/assets/0b88cd93-54c0-4c32-a41c-9f71ff17276d)
-One of the admin options: 'view products'
+
+  overview of one of the admin options ' view all products'
 - ![image](https://github.com/user-attachments/assets/2336ee45-7f3f-40ea-8f86-5e8aac725dbc)
 
 <ins>**Product management**</ins>
