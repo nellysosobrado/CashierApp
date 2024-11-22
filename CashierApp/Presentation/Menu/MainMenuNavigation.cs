@@ -13,7 +13,7 @@ namespace CashierApp.Presentation.Menu
     /// </summary>
     public class MainMenuNavigation
     {
-        public int SelectedIndex { get; private set; } = 0;
+        public int _selectedIndex { get; private set; } = 0;
         public int MainMenuUserNavigation(string[] options, Action<int> displayMenu)
         {
             int selectedIndex = 0;
