@@ -20,7 +20,7 @@
     "ProductName": "bajskorv",
     "Price": 1,
     "PriceType": "piece",
-    "Category": "Human",
+    "Category": "Fertilizer",
     "Campaigns": []
   },
   {
@@ -28,7 +28,7 @@
     "ProductName": "bajs",
     "Price": 100,
     "PriceType": "piece",
-    "Category": "Human",
+    "Category": "Fertilizer",
     "Campaigns": [
       {
         "Description": "poop season",
@@ -43,5 +43,21 @@
         "EndDate": "2024-11-30T00:00:00"
       }
     ]
+  },
+  {
+    "ProductID": 5,
+    "ProductName": "Lactose Milk",
+    "Price": 30,
+    "PriceType": "piece",
+    "Category": "Dairy",
+    "Campaigns": []
+  },
+  {
+    "ProductID": 6,
+    "ProductName": "Milk",
+    "Price": 20,
+    "PriceType": "piece",
+    "Category": "Dairy",
+    "Campaigns": []
   }
 ]

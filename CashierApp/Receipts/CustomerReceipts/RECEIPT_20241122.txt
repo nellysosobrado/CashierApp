@@ -1,0 +1,26 @@
+
+==== Store ==============
+Store Liljeholmen, Stockholm
+Årstaängsvägen 31
+117 43 Stockholm
+Org:123456-1234 
+--------------------------
+Receipt number: 1
+Staff: TBA 	 Trans: 123456
+Date: 2024-11-22 09:23:15
+--------------------------
+Product             Price
+bajskorv         (piece)   1 *  1,00 kr 
+Milk             (piece)   1 * 20,00 kr 
+Mjau wetfood     (piece)   1 * 50,00 kr 
+Lactose Milk     (piece)   2 * 30,00 kr 
+...........................
+
+Total Amount: 131,00 kr
+...........................
+
+
+Thank you for shopping with us!
+===========================
+
+
